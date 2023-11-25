@@ -1,7 +1,7 @@
 // import { useState } from 'react';
 // import './App.css';
 
-import React from "react";
+// import React from "react";
 
 function App() {
 //   const [count, setCount] = useState(0);
@@ -11,7 +11,7 @@ function App() {
       <h1>GraphPulse</h1>
       <div className="card">
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          Edit <code>client/App.tsx</code> and save to test HMR
         </p>
       </div>
     </>
