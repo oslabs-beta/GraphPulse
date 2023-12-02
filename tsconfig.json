@@ -4,7 +4,10 @@
       "useDefineForClassFields": true,
       "lib": ["ES2022", "DOM", "DOM.Iterable"],
       "module": "ESNext",
+      "esModuleInterop": true,
       "skipLibCheck": true,
+      "noImplicitAny": true,
+      "types": ["vite/client", "node"],
   
       /* Bundler mode */
       "moduleResolution": "bundler",
@@ -16,15 +19,20 @@
   
       /* Linting */
       "strict": true,
-      "noUnusedLocals": true,
+      // JC set to false to allow unused variables
+      "noUnusedLocals": false,
       "noUnusedParameters": true,
       "noFallthroughCasesInSwitch": true,
       
       /* TypeORM */
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
+
+      /* Apollo Server */
+      "rootDirs": ["/src"],
+      "outDir": "dist",
     },
-    "include": ["client", "server"],
+    "include": ["src"],
     "references": [{ "path": "./tsconfig.node.json" }]
   }
   

@@ -1,12 +1,12 @@
 import express, { Express, json } from 'express';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4'; 
-// import { startStandaloneServer } from '@apollo/server/standalone';
+import { startStandaloneServer } from '@apollo/server/standalone';
 import { readFileSync } from "fs";
 import gql from "graphql-tag";
 
 const app: Express = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 // import resolvers from './resolvers.ts';
 
@@ -30,16 +30,18 @@ export const typeDefs = gql(
 
 const resolvers = {
   Query: {
-    users: () => [
-      {
-        id: 2,
-        username: 'John',
-        email: "123@123.com",
-        password: "test",
-        queryLogs: [
-          { query_name: 'get', timestamp: '2023-11-29T12:00:00Z', depth: 1, latency: 20 }]
-      },
-    ],
+    users() {
+      [
+        {
+          id: 2,
+          username: 'John',
+          email: "123@123.com",
+          password: "test",
+          queryLogs: [
+            { query_name: 'get', timestamp: '2023-11-29T12:00:00Z', depth: 1, latency: 20 }]
+        }
+      ]
+    }
   },
 };
 
@@ -51,9 +53,9 @@ const server: ApolloServer = new ApolloServer({
 await server.start();
   
 
-// const { url } = await startStandaloneServer(server, {
-//   listen: { port: 4000 },
-// });
+const { url } = await startStandaloneServer(server, {
+  listen: { port: 3000 },
+});
 
 // let url;
 // startStandaloneServer(server, {
@@ -62,7 +64,7 @@ await server.start();
 //     .then(result => url = result);
 
 
-// console.log(`Server ready at: ${url}`);
+console.log(`--------------> Server ready at: ${url}`);
 app.use(
   '/graphql',
   json(),
