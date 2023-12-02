@@ -1,0 +1,46 @@
+# // ------> EXAMPLE
+# type Query {
+#   record(id:ID!): Record
+#   records: [Record]
+# }
+
+# type Mutation {
+#   createRecord(name: String!, position: String, level: String): Record
+#   deleteRecord(id: ID!): Boolean
+#   updateRecord(id: ID! name: String, position: String, level: String): Record
+# }
+
+# type Record {
+#   id: ID
+#   name: String
+#   position: String
+#   level: String
+# }
+
+# // ------> OURS
+type Query {
+  user(id:ID!): User
+  users: [User]
+}
+
+type Mutation {
+  createUser(username: String!, email: String!, password: String!): User
+  deleteUser(id: ID!): Boolean
+  updateUser(id: ID! username: String!, email: String!, password: String!): User
+}
+
+type User {
+  id: ID
+  username: String
+  email: String
+  password: String
+#   queryLogs: [QueryLog]
+}
+
+# type QueryLog {
+#   query_name: String
+#   timestamp: Date
+#   depth: Int
+#   latency: Int
+#   user: User
+# }
