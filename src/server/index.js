@@ -6,17 +6,17 @@ const fs = require('fs');
 
 const path = require("path");
 
-require('reflect-metadata');
 const app = express();
 const PORT = 3000;
 
-app.use(express.static("client"));
+// app.use(express.static("client"));
 app.use(express.json());
 
-// app.use('/', express.static(path.resolve(__dirname, '../../dist')));
-app.get('/', (req, res)=>{
-  return res.sendFile(path.join((__dirname), '../../index.html'))
-})
+app.use('/', express.static(path.resolve(__dirname, '../../dist')));
+// app.get('/', (req, res)=>{
+//   // res.setHeader('Content-Type', 'text/javascript');
+//   return res.sendFile(path.join((__dirname), '../../dist/bundle.js'))
+// })
 
 const typeDefs = gql(
   fs.readFileSync("./src/server/db/schema.graphql", {
