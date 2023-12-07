@@ -13,10 +13,10 @@ const PORT = 3000;
 app.use(express.static("client"));
 app.use(express.json());
 
-app.use('/', express.static(path.join(__dirname, '../../dist')));
-// app.get('/', (req, res)=>{
-//   return res.sendFile(path.join((__dirname), '../../dist/index.html'))
-// })
+// app.use('/', express.static(path.resolve(__dirname, '../../dist')));
+app.get('/', (req, res)=>{
+  return res.sendFile(path.join((__dirname), '../../index.html'))
+})
 
 const typeDefs = gql(
   fs.readFileSync("./src/server/db/schema.graphql", {
@@ -43,12 +43,6 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
   });
-  
-// const serverStart = async() => await server.start();
-
-// const { url } = await startStandaloneServer(server, {
-//   listen: { port: 3000 },
-// });
 
 let url;
 startStandaloneServer(server, {
@@ -57,17 +51,23 @@ startStandaloneServer(server, {
     .then(result => url = result);
 
 
-// console.log(`--------------> Server ready at: ${PORT}`);
-
 app.listen(PORT, ()=> {
   console.log(`...listening on port ${PORT}`)
 })
+
+
+// const serverStart = async() => await server.start();
+
+// const { url } = await startStandaloneServer(server, {
+//   listen: { port: 3000 },
+// });
 
 // app.use(
 //   '/graphql',
 //   serverStart,
 //   expressMiddleware(server)
 // );
+
 
 
 

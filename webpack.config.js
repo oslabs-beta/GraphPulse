@@ -3,13 +3,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: process.env.NODE_ENV, // process.env.NODE_ENV
+    mode: process.env.NODE_ENV,
     entry: {
-        src: './src/server/index.js'
+        src: './src/server/index.js',
     },
     target: 'node',
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
         publicPath: '/',
     },
@@ -22,7 +22,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                exclude: /node.modules/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader'
                 }
@@ -57,7 +57,7 @@ module.exports = {
         },
         proxy: {
             '/': {
-                target: 'http://localhost:3000/',
+                target: 'http://localhost:3000',
                 secure: false,
             }
         },
