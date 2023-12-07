@@ -1,8 +1,10 @@
 const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { startStandaloneServer } = require('@apollo/server/standalone');
-const gql = require('graphql-tag');
+const { gql } = require('graphql-tag');
 const fs = require('fs');
+const typeDefs = require('./graphql/type-defs.js');
+const resolvers = require('./graphql/resolvers.js');
 
 const path = require("path");
 
@@ -18,26 +20,11 @@ app.use('/', express.static(path.resolve(__dirname, '../../dist')));
 //   return res.sendFile(path.join((__dirname), '../../dist/bundle.js'))
 // })
 
-const typeDefs = gql(
-  fs.readFileSync("./src/server/db/schema.graphql", {
-    encoding: "utf-8",
-  })
-);
-
-const resolvers = {
-  Query: {
-    users() {
-      [
-        {
-          id: 2,
-          username: 'John',
-          email: "123@123.com",
-          password: "test",
-        }
-      ]
-    }
-  },
-};
+// const typeDefs = gql(
+//   fs.readFileSync('./src/server/db/schema.graphql', {
+//     encoding: 'utf-8',
+//   })
+// );
 
 const server = new ApolloServer({
     typeDefs,
@@ -80,7 +67,7 @@ app.listen(PORT, ()=> {
 //     password: String
 //     queryLogs: [QueryLog]
 //   }
-  
+
 //   type QueryLog {
 //     query_name: String
 //     timestamp: Date

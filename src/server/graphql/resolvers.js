@@ -1,3 +1,30 @@
+const users = require('../mockData.js');
+
+const resolvers = {
+  Query: {
+    users: () => {
+      return users;
+    },
+    user: (parent, args) => {
+      const id = args.id;
+      const user = users.find((user) => user.id === Number(args.id));
+      return user;
+    },
+  },
+};
+
+module.exports = resolvers;
+
+//const resolvers = {
+//     Query: {
+//       user(parent, args, contextValue, info) {
+//         return users.find((user) => user.id === args.id);
+//       },
+//     },
+//   };
+
+// -------------------------------
+
 // import { AppDataSource } from './db/data-source';
 // import { typeDefs } from ".";
 
@@ -6,7 +33,7 @@
 //         // do database things
 //     })
 //     .catch(err => console.log(err));
-    
+
 // const resolvers = {
 //   Record: {
 //     id: (parent) => parent.id ?? parent._id,
@@ -60,7 +87,6 @@
 //     },
 //   };
 
-
 //   const resolvers = {
 //     Query: {
 //       user(parent, args, contextValue, info) {
@@ -68,6 +94,5 @@
 //       },
 //     },
 //   };
-  
 
 // export default resolvers;
