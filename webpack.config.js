@@ -1,22 +1,15 @@
-require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: process.env.NODE_ENV,
     entry: {
-        src: './src/server/index.js',
+        src: './src/client/main.jsx',
     },
-    target: 'node',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
         publicPath: '/',
-    },
-    devServer: {
-        port: 3000,
-        hot: true,
-        open: true
     },
     module: {
         rules: [
@@ -51,6 +44,7 @@ module.exports = {
         ]
     },
     devServer: {
+        port: 8080,
         static: {
             publicPath: '/',
             directory: path.join(__dirname, '/dist')
