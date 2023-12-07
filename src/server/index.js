@@ -6,13 +6,19 @@ const fs = require('fs');
 const typeDefs = require('./graphql/type-defs.js');
 const resolvers = require('./graphql/resolvers.js');
 
-// require('reflect-metadata');
-// const app = express();
+const path = require("path");
+
+const app = express();
 const PORT = 3000;
 
-// app.use(express.static('client'));
+// app.use(express.static("client"));
+app.use(express.json());
 
-// app.use(express.json());
+app.use('/', express.static(path.resolve(__dirname, '../../dist')));
+// app.get('/', (req, res)=>{
+//   // res.setHeader('Content-Type', 'text/javascript');
+//   return res.sendFile(path.join((__dirname), '../../dist/bundle.js'))
+// })
 
 // const typeDefs = gql(
 //   fs.readFileSync('./src/server/db/schema.graphql', {
@@ -21,9 +27,21 @@ const PORT = 3000;
 // );
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
+    typeDefs,
+    resolvers,
+  });
+
+let url;
+startStandaloneServer(server, {
+    listen: {port: 4000},
+})
+    .then(result => url = result);
+
+
+app.listen(PORT, ()=> {
+  console.log(`...listening on port ${PORT}`)
+})
+
 
 // const serverStart = async() => await server.start();
 
@@ -31,21 +49,14 @@ const server = new ApolloServer({
 //   listen: { port: 3000 },
 // });
 
-let url;
-startStandaloneServer(server, {
-  listen: { port: 3000 },
-}).then((result) => (url = result));
-
-// server.listen().then(({ url }) => {
-//   console.log(`YOUR API IS RUNNING AT: ${url} :)`);
-// });
-
-console.log(`--------------> Server ready at: ${PORT}`);
 // app.use(
 //   '/graphql',
 //   serverStart,
 //   expressMiddleware(server)
 // );
+
+
+
 
 // // SCHEMA
 // const typeDefs = `#graphql

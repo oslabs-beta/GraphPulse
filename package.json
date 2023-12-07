@@ -12,7 +12,7 @@
   "scripts": {
     "start": "nodemon ./src/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack serve --mode development",
+    "dev": "nodemon server/index.js & webpack serve --mode development",
     "build": "webpack --mode production"
   },
   "keywords": [],
