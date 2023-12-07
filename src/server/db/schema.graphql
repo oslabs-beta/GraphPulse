@@ -18,7 +18,7 @@ type User {
 
 type QueryLog {
   query_name: String
-  timestamp: Date
+  timestamp: String
   depth: Int
   latency: Int
   user: User

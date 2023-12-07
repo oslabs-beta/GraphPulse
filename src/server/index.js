@@ -4,13 +4,19 @@ const { startStandaloneServer } = require('@apollo/server/standalone');
 const gql = require('graphql-tag');
 const fs = require('fs');
 
+const path = require("path");
+
 require('reflect-metadata');
 const app = express();
 const PORT = 3000;
 
 app.use(express.static("client"));
-
 app.use(express.json());
+
+app.use('/', express.static(path.join(__dirname, '../../dist')));
+// app.get('/', (req, res)=>{
+//   return res.sendFile(path.join((__dirname), '../../dist/index.html'))
+// })
 
 const typeDefs = gql(
   fs.readFileSync("./src/server/db/schema.graphql", {
@@ -46,12 +52,17 @@ const server = new ApolloServer({
 
 let url;
 startStandaloneServer(server, {
-    listen: {port: 3000},
+    listen: {port: 4000},
 })
     .then(result => url = result);
 
 
-console.log(`--------------> Server ready at: ${PORT}`);
+// console.log(`--------------> Server ready at: ${PORT}`);
+
+app.listen(PORT, ()=> {
+  console.log(`...listening on port ${PORT}`)
+})
+
 // app.use(
 //   '/graphql',
 //   serverStart,
