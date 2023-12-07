@@ -1,43 +1,30 @@
 const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { startStandaloneServer } = require('@apollo/server/standalone');
-const gql = require('graphql-tag');
+const { gql } = require('graphql-tag');
 const fs = require('fs');
+const typeDefs = require('./graphql/type-defs.js');
+const resolvers = require('./graphql/resolvers.js');
 
-require('reflect-metadata');
-const app = express();
+// require('reflect-metadata');
+// const app = express();
 const PORT = 3000;
 
-app.use(express.static("client"));
+// app.use(express.static('client'));
 
-app.use(express.json());
+// app.use(express.json());
 
-const typeDefs = gql(
-  fs.readFileSync("./src/server/db/schema.graphql", {
-    encoding: "utf-8",
-  })
-);
-
-const resolvers = {
-  Query: {
-    users() {
-      [
-        {
-          id: 2,
-          username: 'John',
-          email: "123@123.com",
-          password: "test",
-        }
-      ]
-    }
-  },
-};
+// const typeDefs = gql(
+//   fs.readFileSync('./src/server/db/schema.graphql', {
+//     encoding: 'utf-8',
+//   })
+// );
 
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-  });
-  
+  typeDefs,
+  resolvers,
+});
+
 // const serverStart = async() => await server.start();
 
 // const { url } = await startStandaloneServer(server, {
@@ -46,10 +33,12 @@ const server = new ApolloServer({
 
 let url;
 startStandaloneServer(server, {
-    listen: {port: 3000},
-})
-    .then(result => url = result);
+  listen: { port: 3000 },
+}).then((result) => (url = result));
 
+// server.listen().then(({ url }) => {
+//   console.log(`YOUR API IS RUNNING AT: ${url} :)`);
+// });
 
 console.log(`--------------> Server ready at: ${PORT}`);
 // app.use(
@@ -57,8 +46,6 @@ console.log(`--------------> Server ready at: ${PORT}`);
 //   serverStart,
 //   expressMiddleware(server)
 // );
-
-
 
 // // SCHEMA
 // const typeDefs = `#graphql
@@ -69,7 +56,7 @@ console.log(`--------------> Server ready at: ${PORT}`);
 //     password: String
 //     queryLogs: [QueryLog]
 //   }
-  
+
 //   type QueryLog {
 //     query_name: String
 //     timestamp: Date
