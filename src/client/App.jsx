@@ -1,18 +1,14 @@
+import React from "react";
 import { useState } from 'react';
 
-import React from "react";
+import AppLayout from "./components/AppLayout";
+
 
 function App() {
-//   const [count, setCount] = useState(0);
 
   return (
     <>
-      <h1>GraphPulse</h1>
-      <div className="card">
-        <p>
-          Edit <code>client/App.tsx</code> and save to test HMR
-        </p>
-      </div>
+      <AppLayout /> 
     </>
   )
 }
