@@ -1,6 +1,16 @@
+#left-container {
+    flex-direction: column;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+#graph-pulse-header {
+    display: flex;
+    flex-direction: row;
+}
+
 .projectTitle {
     font-size: 50px;
-    margin-left: 120px;
 }
 .pageLink {
     color: rgb(0, 0, 0);

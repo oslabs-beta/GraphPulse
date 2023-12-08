@@ -2,18 +2,17 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import LeftContainer from "./LeftContainer/LeftContainer";
-
+import RightContainer from "./RightContainer/containers/RightContainer"
 
 function AppLayout() {
 
     return (
         <>
             <Router>
-                {/* "Static" components like the LContainer/Navbar go outside of the routes. 
-                    Maybe EndPointBar from RContainer too? */}
-                    <img src="../assets/graphqlJPEG.jpg" alt="GraphPulse Logo"/>
-                <h1 className="projectTitle">GraphPulse</h1>
-                <LeftContainer />
+                <div id="main-container">
+                    <LeftContainer />
+                    <RightContainer />
+                </div>
                 <Routes>
                         {/* Dynamic querylogs page goes here. Might need to alter path to work (See comment example).
                         Needs element property containing respective component.*/}

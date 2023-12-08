@@ -9,9 +9,14 @@ function LeftContainer() {
 
     
     return (
-        <>
+        <div id="left-container">
+            <div id="graph-pulse-header">
+                <img src="../assets/graphqlJPEG.jpg" alt="GraphPulse Logo"/>
+                <h1 className="projectTitle">GraphPulse</h1>
+            </div>
             <Navbar />
-        </>
+        </div>
+
     );
 }
 
