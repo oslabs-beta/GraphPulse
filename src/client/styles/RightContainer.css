@@ -1,0 +1,48 @@
+#main-container {
+  display: flex;
+  
+}
+
+#right-container {
+  width: 100%;
+  height: 99vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#endpoint-bar {
+  width: 100%;
+  padding: 1em;
+  background-color: grey;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#endpoint-input {
+  height: 1em;
+  width: 50%;
+  padding: 1em;
+}
+
+#endpoint-send-btn {
+  width: 10%;
+  padding: 1em;
+  margin-left: 1em;
+}
+
+#graph-container {
+  height: 55vh;
+}
+
+#qlog-container {
+  background-color: lightgray;
+  height: 40vh;
+}
+
+#qlog-headers {
+  background-color: grey;
+  display: flex;
+  justify-content: space-around;
+}
