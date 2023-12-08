@@ -1,0 +1,15 @@
+.projectTitle {
+    font-size: 50px;
+    margin-left: 120px;
+}
+.pageLink {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    overflow: hidden;
+
+    h1 {
+        display:inline-block;
+        font-size: 30px;
+        margin: 3px;
+    }
+}
