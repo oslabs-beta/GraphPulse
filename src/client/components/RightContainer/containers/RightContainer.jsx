@@ -1,8 +1,8 @@
 import React from "react";
 
 import EndPointBar from "../components/EndPointBar";
-import GraphContainer from "./components/GraphContainer";
-import QLogsContainer from "./components/QLogsContainer";
+import GraphContainer from "./GraphContainer";
+import QLogsContainer from "./QLogsContainer";
 
 
 function RightContainer() {
