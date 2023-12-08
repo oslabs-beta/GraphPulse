@@ -5,26 +5,18 @@ const { gql } = require('graphql-tag');
 const fs = require('fs');
 const typeDefs = require('./graphql/type-defs.js');
 const resolvers = require('./graphql/resolvers.js');
+const cors = require('cors');
 
 const path = require("path");
 
+
+
 const app = express();
 const PORT = 3000;
-
-// app.use(express.static("client"));
+app.use(cors())
 app.use(express.json());
 
 app.use('/', express.static(path.resolve(__dirname, '../../dist')));
-// app.get('/', (req, res)=>{
-//   // res.setHeader('Content-Type', 'text/javascript');
-//   return res.sendFile(path.join((__dirname), '../../dist/bundle.js'))
-// })
-
-// const typeDefs = gql(
-//   fs.readFileSync('./src/server/db/schema.graphql', {
-//     encoding: 'utf-8',
-//   })
-// );
 
 const server = new ApolloServer({
     typeDefs,
