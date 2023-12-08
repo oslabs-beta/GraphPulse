@@ -27,7 +27,7 @@ function Page({pageName, pageNameDisplay}) {
         <>
             <NavLink
                 to={`/${pageName}`}
-                className="pageLink"
+                id="pageLink"
             >
                 <h1>{pageNameDisplay}</h1>
             </NavLink>

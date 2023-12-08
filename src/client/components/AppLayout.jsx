@@ -13,7 +13,9 @@ function AppLayout() {
                     <LeftContainer />
                     <RightContainer />
                 </div>
+                {/* Routes encapsulates the individual routes */}
                 <Routes>
+                        {/* INDIVIDUAL ROUTES GO HERE */}
                         {/* Dynamic querylogs page goes here. Might need to alter path to work (See comment example).
                         Needs element property containing respective component.*/}
                         {/* Example: <Route path='/login' element={<Login />} /> */}

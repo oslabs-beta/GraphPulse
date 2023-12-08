@@ -9,10 +9,11 @@
     flex-direction: row;
 }
 
-.projectTitle {
+#projectTitle {
     font-size: 50px;
 }
-.pageLink {
+
+#pageLink {
     color: rgb(0, 0, 0);
     text-decoration: none;
     overflow: hidden;
