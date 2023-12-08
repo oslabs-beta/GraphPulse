@@ -9,6 +9,8 @@ const client = new ApolloClient({
 });
 
 
+import styles from "./styles/RightContainer.css"
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
