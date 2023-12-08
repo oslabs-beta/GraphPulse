@@ -6,7 +6,7 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
-    queryLogs: [QueryLog!]!
+    queryLogs: [QueryLog]
   }
 
   type QueryLog {
@@ -22,6 +22,24 @@ const typeDefs = gql`
     user(id: ID!): User!
     querylogs: [QueryLog!]!
     querylog(name: String!): QueryLog!
+  }
+
+  input CreateUserInput {
+    username: String!
+    email: String!
+    password: String!
+  }
+
+  input UpdateUsernameInput {
+    id: ID!
+    email: String!
+    newUsername: String!
+  }
+
+  type Mutation {
+    createUser(input: CreateUserInput!): User
+    updateUser(input: UpdateUsernameInput): User
+    deleteUser(id: ID!): User
   }
 `;
 
