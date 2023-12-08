@@ -4,7 +4,7 @@ import React from "react";
 function GraphContainer() {
 
   return (
-    <div>
+    <div id="graph-container">
       This will be where our graph goes.
     </div>
   )
