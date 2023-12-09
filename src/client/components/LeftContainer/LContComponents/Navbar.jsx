@@ -1,11 +1,16 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
+import "../../../styles/staticComponents.css"
 
 
 function Navbar() {
-    const pageNames = ['Query Logs', 'Schema Tree', 'Settings'];
+    const pageNames = ['querylogs', 'schematree', 'settings'];
+    const pageNamesDisplay = ['Query Logs', 'Schema Tree', 'Settings'];
+
     const pages = [];
     for (let i = 0; i < pageNames.length; i++) {
-        pages.push(<Page key={i} pageName={pageNames[i]}/>);
+        pages.push(<Page key={i} pageName={pageNames[i]} pageNameDisplay={pageNamesDisplay[i]}/>);
     };
 
     return (
@@ -13,16 +18,22 @@ function Navbar() {
             {pages}
         </>
     );
-
 }
 
-function Page({pageName}) {
 
+function Page({pageName, pageNameDisplay}) {
 
     return (
-        <h1>{pageName}</h1>
+        <>
+            <NavLink
+                to={`/${pageName}`}
+                id="pageLink"
+            >
+                <h1>{pageNameDisplay}</h1>
+            </NavLink>
+            <br></br>
+        </>
     );
-
 }
 
 export default Navbar;

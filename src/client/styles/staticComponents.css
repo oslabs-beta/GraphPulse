@@ -1,0 +1,26 @@
+#left-container {
+    flex-direction: column;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+#graph-pulse-header {
+    display: flex;
+    flex-direction: row;
+}
+
+#projectTitle {
+    font-size: 50px;
+}
+
+#pageLink {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    overflow: hidden;
+
+    h1 {
+        display:inline-block;
+        font-size: 30px;
+        margin: 3px;
+    }
+}
