@@ -6,7 +6,7 @@ function QLogOutput() {
 
     
     return (
-        <h1>Query Log Output</h1>
+        <p>Query Log Output</p>
     );
 
 }
