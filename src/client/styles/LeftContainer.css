@@ -1,7 +1,9 @@
 #left-container {
     flex-direction: column;
-    margin-left: 14px;
-    margin-right: 14px;
+    height: 100vh;
+    background-color: #2F2D35;
+    border-style: solid;
+    border-color: #6F6B7A;
 }
 
 #graph-pulse-header {
@@ -11,12 +13,14 @@
 
 #projectTitle {
     font-size: 50px;
+    color: white;
 }
 
 #pageLink {
     color: rgb(0, 0, 0);
     text-decoration: none;
     overflow: hidden;
+    color: white;
 
     h1 {
         display:inline-block;

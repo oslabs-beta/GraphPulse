@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import "../../../styles/staticComponents.css"
+import "../../../styles/LeftContainer.css"
 
 
 function Navbar() {
-    const pageNames = ['querylogs', 'schematree', 'settings'];
-    const pageNamesDisplay = ['Query Logs', 'Schema Tree', 'Settings'];
+    const pageNames = ['querylogs', 'settings'];
+    const pageNamesDisplay = ['Query Logs', 'Settings'];
 
     const pages = [];
     for (let i = 0; i < pageNames.length; i++) {
