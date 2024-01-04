@@ -5,8 +5,16 @@ import "../../../styles/LeftContainer.css"
 
 
 function Navbar() {
-    const pageNames = ['querylogs', 'settings'];
-    const pageNamesDisplay = ['Query Logs', 'Settings'];
+    return (
+        <div id="navbar">
+            <PageContainer />
+        </div>
+    );
+}
+
+function PageContainer() {
+    const pageNames = ['home', 'settings'];
+    const pageNamesDisplay = ['Home', 'Settings'];
 
     const pages = [];
     for (let i = 0; i < pageNames.length; i++) {
@@ -14,25 +22,26 @@ function Navbar() {
     };
 
     return (
-        <>
+        <div id="page-container">
             {pages}
-        </>
+        </div>
     );
 }
-
 
 function Page({pageName, pageNameDisplay}) {
 
     return (
-        <>
-            <NavLink
-                to={`/${pageName}`}
-                id="pageLink"
-            >
-                <h1>{pageNameDisplay}</h1>
-            </NavLink>
-            <br></br>
-        </>
+        <button>
+            <div id="page-link">
+                    <NavLink
+                        to={`/${pageName}`}
+                    >
+                        <h1>{pageNameDisplay}</h1>
+                    </NavLink>
+                <br></br>
+            </div>
+
+        </button>
     );
 }
 
