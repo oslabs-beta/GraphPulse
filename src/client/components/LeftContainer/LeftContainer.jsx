@@ -1,21 +1,17 @@
-import React from "react";
+import React from 'react';
 
-// import Navbar from "./LContComponents/Navbar";
-// import QLogInput from "./LContComponents/QLogInput";
-// import QLogOutput from "./LContComponents/QLogOutput";
-
+import Navbar from './LContComponents/Navbar';
+import QLogInput from './LContComponents/QLogInput';
+import QLogOutput from './LContComponents/QLogOutput';
 
 function LeftContainer() {
-
-    
-    return (
-        <>
-            <Navbar />
-            <QLogInput />
-            <QLogOutput />
-        </>
-    );
-
+  return (
+    <>
+      <Navbar />
+      <QLogInput />
+      <QLogOutput />
+    </>
+  );
 }
 
 export default LeftContainer;
