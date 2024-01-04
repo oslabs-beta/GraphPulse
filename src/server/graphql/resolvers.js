@@ -10,6 +10,11 @@ const resolvers = {
       const user = users.find((user) => user.id === Number(args.id));
       return user;
     },
+    querylogs: () => users.flatMap((user) => user.queryLogs),
+    querylog: (parent, { name }) =>
+      users
+        .flatMap((user) => user.queryLogs)
+        .find((log) => log.query_name === name),
   },
 
   Mutation: {
@@ -36,7 +41,10 @@ const resolvers = {
 
     deleteUser: (parent, args) => {
       const id = args.id;
-      users.remove((user) => user.id === Number(id));
+      const index = users.findIndex((user) => user.id === Number(id));
+      if (index !== -1) {
+        users.splice(index, 1);
+      }
       return null;
     },
   },
