@@ -1,30 +1,103 @@
 #left-container {
     flex-direction: column;
     height: 100vh;
-    background-color: #2F2D35;
+    width: 31vw;
     border-style: solid;
-    border-color: #6F6B7A;
+    border-width: 0px 1px 0px 0px;
+    border-color: #aaa4b5;
 }
+
 
 #graph-pulse-header {
     display: flex;
     flex-direction: row;
+    padding: 20px 20px 0px 20px;
+}
+
+#graph-pulse-icon {
+    height: 70px;
+    width: 70px;
 }
 
 #projectTitle {
-    font-size: 50px;
-    color: white;
+    font-size: 40px;
+    color: #F3F3F3;
 }
 
-#pageLink {
+#page-container {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    margin-top: -5px;
+    :hover{
+        background-color: #A459BC;
+    }
+    button {
+        background-color: #29233A;
+        border-style: none;
+        border-radius: 5px;
+    }
+}
+
+#page-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     color: rgb(0, 0, 0);
     text-decoration: none;
     overflow: hidden;
-    color: white;
-
+    font-family: 'Montserrat', sans-serif;
     h1 {
         display:inline-block;
-        font-size: 30px;
+        font-size: 25px;
         margin: 3px;
+        padding-left: 10px;
+        color: #F3F3F3;
     }
 }
+
+#endpoint-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+    input::placeholder {
+        color: #B0A2B9;
+      }
+  }
+
+#endpoint-input {
+    min-width: 200px;
+    min-height: 25px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #201D34;
+    color:#B0A2B9;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #90849B;
+    padding-left: 12px;
+    outline: none;
+}
+
+#endpoint-send-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2px;
+    min-width: 50px;
+    padding: 1em;
+    margin-left: 1em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    background-color: #A459BC;
+    color: #F3F3F3;
+    border: 0;
+    border-radius: 4px;
+}
+
+#endpoint-input {
+    height: 1em;
+    width: 50%;
+  }
+  
