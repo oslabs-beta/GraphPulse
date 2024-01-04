@@ -33,7 +33,7 @@
 }
 
 #graph-container {
-  height: 55vh;
+  height: auto;
 }
 
 #qlog-container {
