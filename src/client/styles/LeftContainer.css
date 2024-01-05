@@ -22,13 +22,15 @@
 #projectTitle {
     font-size: 40px;
     color: #F3F3F3;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 #page-container {
     display: flex;
     flex-direction: column;
     margin: 1em;
-    margin-top: -5px;
+    margin-top: 5px;
     :hover{
         background-color: #A459BC;
     }

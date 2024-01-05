@@ -70,3 +70,14 @@
 #qlog-info-depth {
   margin-right: 50px;
 }
+
+.node {
+  fill: steelblue;
+  stroke: none;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1px;
+}
