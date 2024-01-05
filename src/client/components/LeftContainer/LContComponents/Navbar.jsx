@@ -1,39 +1,17 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-
-import "../../../styles/staticComponents.css"
-
+import React from 'react';
 
 function Navbar() {
-    const pageNames = ['querylogs', 'schematree', 'settings'];
-    const pageNamesDisplay = ['Query Logs', 'Schema Tree', 'Settings'];
+  const pageNames = ['Query Logs', 'Schema Tree', 'Settings'];
+  const pages = [];
+  for (let i = 0; i < pageNames.length; i++) {
+    pages.push(<Page key={i} pageName={pageNames[i]} />);
+  }
 
-    const pages = [];
-    for (let i = 0; i < pageNames.length; i++) {
-        pages.push(<Page key={i} pageName={pageNames[i]} pageNameDisplay={pageNamesDisplay[i]}/>);
-    };
-
-    return (
-        <>
-            {pages}
-        </>
-    );
+  return <>{pages}</>;
 }
 
-
-function Page({pageName, pageNameDisplay}) {
-
-    return (
-        <>
-            <NavLink
-                to={`/${pageName}`}
-                id="pageLink"
-            >
-                <h1>{pageNameDisplay}</h1>
-            </NavLink>
-            <br></br>
-        </>
-    );
+function Page({ pageName }) {
+  return <h1>{pageName}</h1>;
 }
 
 export default Navbar;
