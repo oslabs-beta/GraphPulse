@@ -1,16 +1,14 @@
-import React from "react";
+import React from 'react';
 import { useState } from 'react';
 
-import AppLayout from "./components/AppLayout";
-
+import AppLayout from './components/AppLayout';
 
 function App() {
-
   return (
     <>
-      <AppLayout /> 
+      <AppLayout />
     </>
-  )
+  );
 }
 
 export default App;
