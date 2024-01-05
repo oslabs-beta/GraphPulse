@@ -1,11 +1,11 @@
 import React from "react";
-
+import QGraph from "../components/QGraph";
 
 function GraphContainer() {
 
   return (
     <div id="graph-container">
-      This will be where our graph goes.
+      <QGraph />
     </div>
   )
 

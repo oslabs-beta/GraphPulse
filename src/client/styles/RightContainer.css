@@ -33,7 +33,7 @@
 }
 
 #graph-container {
-  height: 55vh;
+  height: auto;
 }
 
 #qlog-container {
@@ -45,4 +45,15 @@
   background-color: grey;
   display: flex;
   justify-content: space-around;
+}
+
+.node {
+  fill: steelblue;
+  stroke: none;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1px;
 }
