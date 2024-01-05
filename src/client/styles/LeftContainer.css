@@ -1,7 +1,7 @@
 #left-container {
     flex-direction: column;
     height: 100vh;
-    width: 31vw;
+    width: 27vw;
     border-style: solid;
     border-width: 0px 1px 0px 0px;
     border-color: #aaa4b5;
@@ -17,18 +17,25 @@
 #graph-pulse-icon {
     height: 70px;
     width: 70px;
+    padding-left: 10px;
 }
 
 #projectTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     font-size: 40px;
     color: #F3F3F3;
+    margin-top: 12px;
+    margin-left: 12px;
 }
 
 #page-container {
     display: flex;
     flex-direction: column;
     margin: 1em;
-    margin-top: -5px;
+    margin-top: 10px;
     :hover{
         background-color: #A459BC;
     }

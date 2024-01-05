@@ -16,6 +16,7 @@ const PORT = 3000;
 app.use(cors())
 app.use(express.json());
 
+app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 app.use('/', express.static(path.resolve(__dirname, '../../dist')));
 
 const server = new ApolloServer({

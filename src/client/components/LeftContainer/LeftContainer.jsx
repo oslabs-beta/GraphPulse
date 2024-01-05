@@ -12,7 +12,7 @@ function LeftContainer() {
     return (
         <div id="left-container">
             <div id="graph-pulse-header">
-                <img id="graph-pulse-icon" src="../../assets/graphqlJPEG.jpg" alt="GraphPulse Logo"/>
+                <img id="graph-pulse-icon" src="../../assets/grahpqllogo.png" alt="GraphPulse Logo"/>
                 <p id="projectTitle">Graph Pulse</p>
             </div>
             <Navbar />
