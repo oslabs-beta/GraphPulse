@@ -22,7 +22,8 @@ const data = {
 };
 
 const root = d3.hierarchy(data);
-const tree = d3.tree().size([640, 400]);
+const tree = d3.tree();
+tree.size([400, 700]);
 
 export default function QGraph() {
   const nodesRef = useRef();
@@ -43,6 +44,9 @@ export default function QGraph() {
       .data(root.links())
       .join('line')
       .classed('link', true)
+      // .attr('d', d3.link(d3.curveBumpX))
+      //   .x(d => d.y)
+      //   .y(d => d.x)
       .attr('x1', d => d.source.y)
       .attr('y1', d => d.source.x)
       .attr('x2', d => d.target.y + 5)
@@ -60,7 +64,7 @@ export default function QGraph() {
 
   
   return (
-    <svg width='600' height='800'>
+    <svg width='800' height='800'>
       <path fill="none" stroke="currentColor" strokeWidth={'1.5'} d={tree(root)} />
       <g className="links" ref={linksRef}></g>
       <g className="nodes" ref={nodesRef}></g>
