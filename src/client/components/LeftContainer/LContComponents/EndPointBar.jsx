@@ -4,7 +4,7 @@ import React from "react";
 function EndPointBar() {
 
   return (
-    <div id="endpoint-bar">
+    <div id="endpoint-container">
       <input id="endpoint-input" type="text" placeholder="Enter URL or endpoint"/>
       <button id="endpoint-send-btn">Send</button>
     </div>

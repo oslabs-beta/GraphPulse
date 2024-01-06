@@ -5,47 +5,71 @@
 
 #right-container {
   width: 100%;
-  height: 99vh;
+  max-height: 99vh;
   display: flex;
   flex-direction: column;
-}
 
-#endpoint-bar {
-  width: 100%;
-  padding: 1em;
-  background-color: grey;
-  height: 5vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#endpoint-input {
-  height: 1em;
-  width: 50%;
-  padding: 1em;
-}
-
-#endpoint-send-btn {
-  width: 10%;
-  padding: 1em;
-  margin-left: 1em;
 }
 
 #graph-container {
-  height: auto;
+  height: 75vh;
+  background-color: #18152B;
   padding: 2vh 0vh 0vh 2vh;
 }
 
 #qlog-container {
-  background-color: lightgray;
-  height: 40vh;
+  height: 45vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-#qlog-headers {
-  background-color: grey;
+#qlog-headers-container {
   display: flex;
   justify-content: space-around;
+  color: #F3F3F3;
+  border-style: solid;
+  border-width: 1px 0px 1px 0px;
+  border-color: #aaa4b5;
+}
+
+#qlog-info-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #F3F3F3;
+  :hover{
+    background-color: #874c9b;
+}
+}
+
+#qlog-info-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 30px;
+  font-size: 16px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #5e5769;
+}
+
+#qlog-info-timestamp {
+  margin: 0px;
+  padding: 0px;
+}
+
+#qlog-info-name {
+  margin-right: 70px;
+}
+
+#qlog-info-latency {
+  margin-right: 110px;
+}
+
+#qlog-info-depth {
+  margin-right: 50px;
 }
 
 .node {
