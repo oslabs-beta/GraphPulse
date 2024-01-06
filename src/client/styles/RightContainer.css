@@ -12,8 +12,21 @@
 }
 
 #graph-container {
-  height: 75vh;
-  background-color: #18152B;
+  height: auto;
+  padding: 3vh 0vh 0vh 2vh;
+  display: flex;
+  align-items: center;
+}
+
+.node {
+  fill: steelblue;
+  stroke: none;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1px;
 }
 
 #qlog-container {
@@ -69,15 +82,4 @@
 
 #qlog-info-depth {
   margin-right: 50px;
-}
-
-.node {
-  fill: steelblue;
-  stroke: none;
-}
-
-.link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 1px;
 }
