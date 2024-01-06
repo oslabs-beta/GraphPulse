@@ -34,6 +34,7 @@
 
 #graph-container {
   height: auto;
+  padding: 2vh 0vh 0vh 2vh;
 }
 
 #qlog-container {
