@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LeftContainer from "./LeftContainer/LeftContainer";
 import RightContainer from "./RightContainer/containers/RightContainer"
 
+import "../styles/MainContainer.css"
+
 function AppLayout() {
 
     return (
