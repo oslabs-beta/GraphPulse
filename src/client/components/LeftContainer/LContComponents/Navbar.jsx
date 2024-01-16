@@ -13,8 +13,8 @@ function Navbar() {
 }
 
 function PageContainer() {
-    const pageNames = ['home', 'settings'];
-    const pageNamesDisplay = ['Home', 'Settings'];
+    const pageNames = ['home', 'settings', 'signin'];
+    const pageNamesDisplay = ['Home', 'Settings', 'Sign In'];
 
     const pages = [];
     for (let i = 0; i < pageNames.length; i++) {

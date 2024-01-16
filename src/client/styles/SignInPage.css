@@ -1,0 +1,38 @@
+#sign-in-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+#sign-in-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    width: 300px;
+    color: white;
+    border-style: solid;
+    border-color: white;
+    margin-top: -100px;
+
+    h3 {
+        margin-bottom: 5px;
+    }
+}
+
+#sign-in-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 95px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    button {
+        width: 70px;
+        margin-top: 10px;
+    }
+}

@@ -6,8 +6,8 @@ const fs = require('fs');
 const typeDefs = require('./graphql/type-defs.js');
 const resolvers = require('./graphql/resolvers.js');
 const cors = require('cors');
-
 const path = require('path');
+const router = express.Router();
 
 const app = express();
 const PORT = 3000;
@@ -26,6 +26,14 @@ let url;
 startStandaloneServer(server, {
   listen: { port: 4000 },
 }).then((result) => (url = result));
+
+
+app.post('/signin', 
+  (req, res) => {
+    return res.status(200).send('Sign In Page');
+  }
+);
+
 
 app.listen(PORT, () => {
   console.log(`...listening on port ${PORT}`);
