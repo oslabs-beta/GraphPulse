@@ -12,9 +12,9 @@ function PageSignUp() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('FROM HANDLE SUBMIT')
-        console.log(`Username: ${username}`);
-        console.log(`Email: ${email}`);
-        console.log(`Password: ${password}`);
+        // console.log(`Username: ${username}`);
+        // console.log(`Email: ${email}`);
+        // console.log(`Password: ${password}`);
 
         fetch('/signup', {
             method: 'POST',
@@ -27,10 +27,10 @@ function PageSignUp() {
                 password: password
             })
         })
-        // .then(data => data.json()) 
-        // .then(data => {
-        //     console.log('Data received from signup:', data);
-        // })
+        .then(data => data.json()) 
+        .then(data => {
+            console.log('Data received from signup:', data);
+        })
         .catch(err => {throw new Error(err);});
     }
 

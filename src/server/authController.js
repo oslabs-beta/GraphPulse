@@ -42,6 +42,7 @@ authController.createUser = async (req, res, next) => {
                 ]);
             });
             res.locals.result = 'Sign up successful';
+            console.log('Sign up successful');
             return next();
         } else {
             console.log('User already exists in database');
