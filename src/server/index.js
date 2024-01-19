@@ -14,8 +14,6 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-const authController = require('./authController.js');
-
 app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 app.use('/', express.static(path.resolve(__dirname, '../../dist')));
 
@@ -30,24 +28,11 @@ startStandaloneServer(server, {
 }).then((result) => (url = result));
 
 
-app.post('/signup', 
-  authController.createUser,
+app.post('/signin', 
   (req, res) => {
-    res.status(200).json(res.locals);
+    return res.status(200).send('Sign In Page');
   }
 );
-
-
-app.use((err, req, res, next) => {
-  const defaultErr = {
-    log: "Express error handler caught unknown middleware error",
-    status: 500,
-    message: { err: "An error occurred" },
-  };
-  const errorObj = Object.assign({}, defaultErr, err);
-  console.log(errorObj.log);
-  return res.status(errorObj.status).json(errorObj.message);
-});
 
 
 app.listen(PORT, () => {

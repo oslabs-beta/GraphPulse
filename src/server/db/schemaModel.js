@@ -3,10 +3,7 @@ const { Pool } = require('pg');
 const PG_URI = 'postgres://exanapyf:Tltn8qzv43FUjkGxTmzsFheWqcXgpV44@berry.db.elephantsql.com/exanapyf';
 
 const pool = new Pool({
-    connectionString: PG_URI,
-    ssl: {
-      require: true,
-    }
+    connectionString: PG_URI
   });
 
   // module.exports = pool;

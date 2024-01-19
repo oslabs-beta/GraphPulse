@@ -10,7 +10,7 @@ function PageSignIn() {
             <div id="sign-in-box">
                 <h2>Sign In</h2>
                 <form id="sign-in-form">
-                    <input placeholder="Username or Email"/>
+                    <input placeholder="Username"/>
                     <input placeholder="Password"/>
                     <button>Sign In</button>
                 </form>
