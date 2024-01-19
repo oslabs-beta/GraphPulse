@@ -6,7 +6,7 @@ const pool = new Pool({
     connectionString: PG_URI
   });
 
-  // module.exports = pool;
+module.exports = pool;
 
   // module.exports = {
   //   query: (text, params, callback) => {
@@ -15,16 +15,16 @@ const pool = new Pool({
   //   }
   // };
 
-  const db = {
-    query: async (queryStr, values) => {
-      try {
-        const result = await pool.query(queryStr, values);
-        return result;
-      } catch (error) {
-        console.error("Error in db query:", error);
-        throw error;
-      }
-    },
-  };
+//   const db = {
+//     query: async (queryStr, values) => {
+//       try {
+//         const result = await pool.query(queryStr, values);
+//         return result;
+//       } catch (error) {
+//         console.error("Error in db query:", error);
+//         throw error;
+//       }
+//     },
+//   };
 
-module.exports = db;
+// module.exports = db;
