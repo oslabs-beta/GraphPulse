@@ -7,6 +7,7 @@ const typeDefs = require('./graphql/type-defs.js');
 const resolvers = require('./graphql/resolvers.js');
 const cors = require('cors');
 const path = require('path');
+const authController = require('./authController.js');
 const router = express.Router();
 
 const app = express();
@@ -28,11 +29,23 @@ startStandaloneServer(server, {
 }).then((result) => (url = result));
 
 
-app.post('/signin', 
+app.post('/signup', 
+  authController.createUser,
   (req, res) => {
-    return res.status(200).send('Sign In Page');
+    return res.status(200);
   }
 );
+
+app.use((err, req, res, next) => {
+  const defaultErr = {
+    log: "Express error handler caught unknown middleware error",
+    status: 500,
+    message: { err: "An error occurred" },
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
+});
 
 
 app.listen(PORT, () => {

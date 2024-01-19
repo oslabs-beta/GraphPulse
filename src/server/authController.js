@@ -26,7 +26,7 @@ authController.createUser = async (req, res, next) => {
         const result = await client.query(findUser, [email]);
         if (!result.rows[0]) {
             const createUserQuery = `INSERT INTO users(username, email, password) VALUES($1, $2, $3)`
-            bcrypt.hash(password, SALT_WORK_FACTOR, (err, hash) => {
+            bcrypt.hash(password, SALT_WORK_FACTOR, async (err, hash) => {
                 if (err) {
                     return next({
                         log: `authController - bcrypt error; ERROR: ${err}`,
@@ -35,13 +35,12 @@ authController.createUser = async (req, res, next) => {
                         }
                     })
                 }
-                client.query(createUserQuery, [
+                await client.query(createUserQuery, [
                     username,
                     email,
                     hash
                 ]);
             });
-            res.locals.result = 'Sign up successful';
             console.log('Sign up successful');
             return next();
         } else {
