@@ -7,13 +7,17 @@ const typeDefs = require('./graphql/type-defs.js');
 const resolvers = require('./graphql/resolvers.js');
 const cors = require('cors');
 const path = require('path');
-const authController = require('./authController.js');
 const router = express.Router();
+const cookieParser = require('cookie-parser');
+
+const authController = require('./authController.js');
+const cookieController = require('./cookieController.js');
 
 const app = express();
 const PORT = 3000;
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 app.use('/', express.static(path.resolve(__dirname, '../../dist')));
@@ -31,8 +35,17 @@ startStandaloneServer(server, {
 
 app.post('/signup', 
   authController.createUser,
+  cookieController.setSSIDCookie,
   (req, res) => {
     return res.status(200).json(res.locals);
+  }
+);
+
+app.post('/signin', 
+  authController.verifyUser, 
+  cookieController.setSSIDCookie,
+  (req, res) => {
+    return res.status(200).send('Logged In Successfully!');
   }
 );
 

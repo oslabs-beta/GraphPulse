@@ -18,7 +18,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User]
+    users: [User!]!
     user(_id: ID!): User!
     querylogs: [QueryLog!]!
     querylog(name: String!): QueryLog!

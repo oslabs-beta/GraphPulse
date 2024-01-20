@@ -43,7 +43,7 @@ authController.createUser = async (req, res, next) => {
             });
             console.log('Sign up successful');
             res.locals.result = 'Login successful';
-            return next();
+            // return next();
         } else {
             console.log('User already exists in database');
             res.locals.result = 'User already exists';
@@ -56,10 +56,41 @@ authController.createUser = async (req, res, next) => {
             }
         });
     } finally {
-        client.release();
+        // client.release();
         return next();
     }
 };
+
+authController.verifyUser = async (req, res, next) => {
+    const client = await pool.connect().catch((err) =>
+      next({
+        log: `authController - pool connection failed; ERROR: ${err}`,
+        message: {
+          err: 'Error in authController.createUser; Check server logs',
+        },
+      })
+    );
+    try {
+      const { username, password } = req.body;
+      if (!username || !password) return res.redirect('/login/?Error=missing_info');
+      const userQuery = `SELECT username, password FROM users WHERE username = $1`;
+      const response = await client.query(userQuery, [username]);
+      const passwordMatch = await bcrypt.compare(password, response.rows[0].password);
+      if (!passwordMatch)
+        res.status(401).send('Login failed; Incorrect username or password');
+      else {
+        client.release();
+        return next();
+      }
+    } catch (e) {
+      return next({
+        log: `authController.createUser - querying listings from db ERROR: ${err}`,
+        message: {
+          err: 'Error in authController.createUser; Check server logs',
+        },
+      });
+    }
+  };
 
 
 module.exports = authController;
