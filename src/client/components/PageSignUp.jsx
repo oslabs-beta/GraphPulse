@@ -26,7 +26,7 @@ function PageSignUp() {
                 password: password
             })
         })
-        // .then(data => data.json()) 
+        .then(data => data.json()) 
         .then(data => {
             console.log('Data received from signup:', data);
         })

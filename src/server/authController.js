@@ -35,13 +35,14 @@ authController.createUser = async (req, res, next) => {
                         }
                     })
                 }
-                await client.query(createUserQuery, [
+                client.query(createUserQuery, [
                     username,
                     email,
                     hash
                 ]);
             });
             console.log('Sign up successful');
+            res.locals.result = 'Login successful';
             return next();
         } else {
             console.log('User already exists in database');
