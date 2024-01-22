@@ -23,6 +23,7 @@ function QLogsContainer() {
   const sections = [];
   for (let i = 0; i < sectionNames.length; i++) {
     sections.push(<QLogsSectionHeader 
+      key={i}
       index={i} 
       // hardCodeTestLength={hardCodeTest.length} 
       sectionName={sectionNames[i]} 
@@ -34,7 +35,7 @@ function QLogsContainer() {
   const infoRow = [];
 
   for (let i = 0; i < hardCodeTest.length; i++) {
-    infoRow.push(<QLogsInfo hardCodeTest={hardCodeTest[i]} />);
+    infoRow.push(<QLogsInfo key={i} hardCodeTest={hardCodeTest[i]} />);
   }
 
   return (

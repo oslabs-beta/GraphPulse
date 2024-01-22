@@ -9,7 +9,7 @@ const QLogInput = ({}) => {
     <div className="inputArea">
       <h1>QLOG INPUT</h1>
       <form>
-        <textarea value={qInput}></textarea>
+        <textarea></textarea>
       </form>
     </div>
   );

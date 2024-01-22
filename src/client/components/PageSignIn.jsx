@@ -28,7 +28,7 @@ function PageSignIn() {
             } else {
                 console.log('Incorrect user or passowrd - signin');
                 alert('Incorrect username or password');
-                navigate('/signin');
+                navigate('/');
             }
         })
         .catch((err) => {throw new Error(err);});

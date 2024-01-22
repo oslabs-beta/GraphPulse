@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import "../styles/SignUpPage.css"
 
@@ -7,6 +7,7 @@ function PageSignUp() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,10 +27,16 @@ function PageSignUp() {
                 password: password
             })
         })
-        .then(data => data.json()) 
-        .then(data => {
-            console.log('Data received from signup:', data);
+        .then((res) => {
+            if (res.status === 200) {
+                navigate('/home')
+            }
         })
+        // .then(data => data.json()) 
+        // .then(data => {
+        //     alert(`${data.result}`);
+        //     console.log('Data received from signup:', data);
+        // })
         .catch(err => {throw new Error(err);});
     }
 

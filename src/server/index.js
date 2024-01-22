@@ -10,8 +10,9 @@ const path = require('path');
 const router = express.Router();
 const cookieParser = require('cookie-parser');
 
-const authController = require('./authController.js');
-const cookieController = require('./cookieController.js');
+const authController = require('./controllers/authController.js');
+const cookieController = require('./controllers/cookieController.js');
+const sessionController = require('./controllers/sessionController.js');
 
 const app = express();
 const PORT = 3000;
@@ -21,6 +22,8 @@ app.use(cookieParser());
 
 app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 app.use('/', express.static(path.resolve(__dirname, '../../dist')));
+app.use('/home', express.static(path.resolve(__dirname, '../../dist')));
+app.use('/signup', express.static(path.resolve(__dirname, '../../dist')));
 
 const server = new ApolloServer({
   typeDefs,
@@ -36,6 +39,7 @@ startStandaloneServer(server, {
 app.post('/signup', 
   authController.createUser,
   cookieController.setSSIDCookie,
+  sessionController.createSession,
   (req, res) => {
     return res.status(200).json(res.locals);
   }
@@ -44,10 +48,26 @@ app.post('/signup',
 app.post('/signin', 
   authController.verifyUser, 
   cookieController.setSSIDCookie,
+  sessionController.createSession,
   (req, res) => {
     return res.status(200).send('Logged In Successfully!');
   }
 );
+
+app.delete('/home', 
+  sessionController.deleteSession,
+  (req, res) => {
+    return res.status(200).sendFile(path.resolve(__dirname, '../../dist'));
+  }
+);
+
+// app.get('/home',
+//   authController.verifyUser,
+//   cookieController.setSSIDCookie,
+//   (req, res) => {
+//     return res.status(200).sendFile(path.resolve(__dirname, '../../dist'));
+//   }
+// );
 
 app.use((err, req, res, next) => {
   const defaultErr = {

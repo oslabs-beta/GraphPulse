@@ -13,8 +13,8 @@ function Navbar() {
 }
 
 function PageContainer() {
-    const pageNames = ['home', 'settings', 'signin'];
-    const pageNamesDisplay = ['Home', 'Settings', 'Sign In'];
+    const pageNames = ['home', 'settings', 'signout'];
+    const pageNamesDisplay = ['Home', 'Settings', 'Sign Out'];
 
     const pages = [];
     for (let i = 0; i < pageNames.length; i++) {
@@ -29,6 +29,33 @@ function PageContainer() {
 }
 
 function Page({pageName, pageNameDisplay}) {
+
+    // if new component pageName is 'signout', create special functionality within component before returning component
+    if (pageName === 'signout') {
+        function handleSignout(e) {
+            e.preventDefault();
+
+            fetch('/home', {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                // body: JSON.stringify({})
+            })
+        }
+
+        return (
+            <button onClick={handleSignout}>
+                <div id="page-link">
+                        <NavLink>
+                            <h1>{pageNameDisplay}</h1>
+                        </NavLink>
+                    <br></br>
+                </div>
+    
+            </button>
+        );
+    }
 
     return (
         <button>

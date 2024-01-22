@@ -1,4 +1,4 @@
-const pool = require('./db/schemaModel');
+const pool = require('../db/schemaModel');
 const bcrypt = require('bcrypt');
 const SALT_WORK_FACTOR = 10;
 
@@ -14,7 +14,7 @@ authController.createUser = async (req, res, next) => {
 
     const client = await pool.connect().catch((err) => 
         next({
-            log: `authController - pool connection failed; ERROR: ${err}`,
+            log: `authController.createUser - pool connection failed; ERROR: ${err}`,
             message: {
                 err: 'Error in authController.createUser; Check server logs'
             }
@@ -29,7 +29,7 @@ authController.createUser = async (req, res, next) => {
             bcrypt.hash(password, SALT_WORK_FACTOR, async (err, hash) => {
                 if (err) {
                     return next({
-                        log: `authController - bcrypt error; ERROR: ${err}`,
+                        log: `authController.createUser - bcrypt error; ERROR: ${err}`,
                         message: {
                             err: 'Error in authController.createUser; Check server logs'
                         }
@@ -41,8 +41,7 @@ authController.createUser = async (req, res, next) => {
                     hash
                 ]);
             });
-            console.log('Sign up successful');
-            res.locals.result = 'Login successful';
+            res.locals.result = 'User created successfully';
             // return next();
         } else {
             console.log('User already exists in database');
@@ -62,16 +61,19 @@ authController.createUser = async (req, res, next) => {
 };
 
 authController.verifyUser = async (req, res, next) => {
+    console.log('-------> authController.verifyUser');
+
     const client = await pool.connect().catch((err) =>
       next({
-        log: `authController - pool connection failed; ERROR: ${err}`,
+        log: `authController.verifyUser - pool connection failed; ERROR: ${err}`,
         message: {
-          err: 'Error in authController.createUser; Check server logs',
+          err: 'Error in authController.verifyUser; Check server logs',
         },
       })
     );
     try {
       const { username, password } = req.body;
+      //|| !req.cookies.ssid GOES BELLOW TO CHECK FOR COOKIES?
       if (!username || !password) return res.redirect('/login/?Error=missing_info');
       const userQuery = `SELECT username, password FROM users WHERE username = $1`;
       const response = await client.query(userQuery, [username]);
@@ -82,11 +84,11 @@ authController.verifyUser = async (req, res, next) => {
         client.release();
         return next();
       }
-    } catch (e) {
+    } catch (err) {
       return next({
-        log: `authController.createUser - querying listings from db ERROR: ${err}`,
+        log: `authController.verifyUser - querying listings from db ERROR: ${err}`,
         message: {
-          err: 'Error in authController.createUser; Check server logs',
+          err: 'Error in authController.verifyUser; Check server logs',
         },
       });
     }
