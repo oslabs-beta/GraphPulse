@@ -4,7 +4,7 @@ const sessionController = {};
 
 sessionController.createSession = async (req, res, next) => {
     try {
-        console.log('-------> sessionController.createSession:');
+        console.log('-------> sessionController.createSession');
         // can't access cookies from req.cookies? so get SSID cookie from res.locals
         // const { ssid } = req.cookies;
         const cookiePass = res.locals.cookiePass;
@@ -29,26 +29,33 @@ sessionController.createSession = async (req, res, next) => {
             const session_id = sessionQResult.rows[0]._id;
             const session_cookie_id = sessionQResult.rows[0].cookie_id;
             client.query(sessionQUpdateUser, [session_id, session_cookie_id]);
+            console.log('sessionController.createSession - session created');
+            client.release();
+            return next();
         } else {
             console.log('------> Session already exists');
         }
         client.release();
         return next();
     } catch (err) {
-      return next({
-        log: `sessionController.startSession - error starting session; ERROR: ${err}`,
+        client.release();
+        return next({
+        log: `sessionController.createSession - error creating session; ERROR: ${err}`,
         status: 400,
-        message: { err: 'Error in sessionController.startSession; Check server logs' }
-      });
+        message: { err: 'Error in sessionController.createSession; Check server logs' }
+        });
     }
   };
 
 
 sessionController.deleteSession = async (req, res, next) => {
     try {
+        console.log('------> sessionController.deleteSession');
         const { ssid } = req.cookies;
-        console.log('------> req.cookies.ssid: ', ssid);
         if (!ssid) throw new Error('No SSID cookie found!'); 
+
+        res.clearCookie('u');
+        res.clearCookie('ssid');
 
         const client = await pool.connect().catch((err) =>
             next({
@@ -57,16 +64,59 @@ sessionController.deleteSession = async (req, res, next) => {
             })
         );
 
-        const deleteSession = `DELETE FROM sessions `
+        const deleteSession = `DELETE FROM sessions WHERE cookie_id = $1`
+        await client.query(deleteSession, [ssid]);
+        const updateUser = `UPDATE users SET active_session = null WHERE _id = $1`
+        await client.query(updateUser, [ssid])
+
+        console.log('sessionController.deleteSession - session deleted');
+        client.release();
+        return next();
 
     } catch(err) {
-
+        client.release();
+        return next({
+            log: `sessionController.deleteSession - error deleting session; ERROR: ${err}`,
+            status: 400,
+            message: { err: 'Error in sessionController.deleteSession; Check server logs' }
+          });
     }
 }
 
 
-// sessionController.isLoggedIn = (req, res, next) => {
-//     console.log('-------> sessionController.isLoggedIn:');
-// };
+sessionController.isSignedIn = async (req, res, next) => {
+    try {
+        console.log('-------> sessionController.isSignedIn:');
+        const { ssid } = req.cookies;
+
+        const client = await pool.connect().catch((err) =>
+            next({
+                log: `sessionController.isSignedIn - pool connection failed; ERROR: ${err}`,
+                message: { err: 'Error in sessionController.isSignedIn. Check server logs' }
+            })
+        );
+
+        const findSession = 'SELECT * FROM sessions WHERE cookie_id=$1';
+        const result = await client.query(findSession, [ssid]);
+
+        if (!result.rows[0]) {
+            res.locals.result = 'Session not found; Sign up or sign in to create session';
+            console.log('------> sessionController.isSignedIn: session not found; cannot signin')
+            client.release();
+            return res.redirect('/');
+        }
+
+        console.log('------> sessionController.isSignedIn: session found; User is signed in');
+        client.release();
+        return next();
+    } catch (err) {
+        client.release();
+        return next({
+            log: `sessionController.isSignedIn - error deleting session; ERROR: ${err}`,
+            status: 400,
+            message: { err: 'Error in sessionController.isSignedIn; Check server logs' }
+          });
+    }
+};
 
 module.exports = sessionController 

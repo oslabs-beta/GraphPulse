@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import "../../../styles/LeftContainer.css"
 
@@ -32,6 +32,8 @@ function Page({pageName, pageNameDisplay}) {
 
     // if new component pageName is 'signout', create special functionality within component before returning component
     if (pageName === 'signout') {
+        const navigate = useNavigate();
+
         function handleSignout(e) {
             e.preventDefault();
 
@@ -39,9 +41,15 @@ function Page({pageName, pageNameDisplay}) {
                 method: 'DELETE',
                 headers: {
                     'Content-type': 'application/json'
-                },
+                }
                 // body: JSON.stringify({})
             })
+            .then((res) => {
+                if (res.status === 200) {
+                    navigate('/');
+                }
+            }) 
+            .catch((err) => {throw new Error(err);})
         }
 
         return (
@@ -56,6 +64,7 @@ function Page({pageName, pageNameDisplay}) {
             </button>
         );
     }
+
 
     return (
         <button>

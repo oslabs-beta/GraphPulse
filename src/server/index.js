@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 app.use('/', express.static(path.resolve(__dirname, '../../dist')));
-app.use('/home', express.static(path.resolve(__dirname, '../../dist')));
+// app.use('/home', express.static(path.resolve(__dirname, '../../dist')));
 app.use('/signup', express.static(path.resolve(__dirname, '../../dist')));
 
 const server = new ApolloServer({
@@ -50,24 +50,36 @@ app.post('/signin',
   cookieController.setSSIDCookie,
   sessionController.createSession,
   (req, res) => {
-    return res.status(200).send('Logged In Successfully!');
+    return res.status(200).send('Signed in successfully');
   }
+);
+
+app.get('/',
+(req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
+}
+);
+
+app.get('/signup',
+(req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
+}
+);
+
+app.get('/home',
+sessionController.isSignedIn,
+(req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
+}
 );
 
 app.delete('/home', 
   sessionController.deleteSession,
   (req, res) => {
-    return res.status(200).sendFile(path.resolve(__dirname, '../../dist'));
+    return res.status(200).send('Session deleted. Signed out successfully')
   }
 );
 
-// app.get('/home',
-//   authController.verifyUser,
-//   cookieController.setSSIDCookie,
-//   (req, res) => {
-//     return res.status(200).sendFile(path.resolve(__dirname, '../../dist'));
-//   }
-// );
 
 app.use((err, req, res, next) => {
   const defaultErr = {

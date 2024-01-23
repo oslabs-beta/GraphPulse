@@ -21,13 +21,13 @@ function PageSignIn() {
                 password: password
             })
         })
-        .then((res) => {
+        .then(async (res) => {
             if (res.status === 200) {
                 // window.location.href = 'http://localhost:3000/home';
                 navigate('/home')
             } else {
+                alert(`Incorrect sign in credentials or account not found`);
                 console.log('Incorrect user or passowrd - signin');
-                alert('Incorrect username or password');
                 navigate('/');
             }
         })

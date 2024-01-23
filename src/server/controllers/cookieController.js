@@ -22,7 +22,6 @@ cookieController.setSSIDCookie = async (req, res, next) => {
     const findUser = 'SELECT * FROM users WHERE username=$1';
     const result = await client.query(findUser, [username]);
     const userInfo = result.rows[0];
-    console.log('--------> cookieController - User Info: ', userInfo);
     await res.cookie('ssid', userInfo._id), { httpOnly: true };
     await res.cookie('u', userInfo.username, { httpOnly: true });
     client.release();
