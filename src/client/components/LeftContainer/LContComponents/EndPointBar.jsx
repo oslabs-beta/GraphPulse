@@ -6,7 +6,7 @@ const DEFAULT_ENDPOINT = 'https://api.mocki.io/v2/c4d7a195/graphql';
 function EndPointBar({ setEndpoint }) {
   const [endPointValue, setEndPointValue] = useState(DEFAULT_ENDPOINT);
 
-  // handler for the "send" button click
+  // handler for the "send" button
   const handleEndpointSubmit = () => {
     setEndpoint(endPointValue);
     // console.log(endPointValue);
