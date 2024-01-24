@@ -9,7 +9,7 @@ import ReactFlow, {
 import 'reactflow/dist/style.css'
 
 const initialNodes = [];
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2'}];
+const initialEdges = [];
 
 const dummyData = {
   "data": {
@@ -152,16 +152,17 @@ const dummyData = {
   }
 }
 
-let height = 0;
+let height = 1;
 const helper = (data, depth = 0) => {
   const keys = Object.keys(data);
-  keys.forEach((key, i) => {
+  keys.forEach(key => {
     // console.log(nodes);
+    const sourceNode = `${depth}, ${(height - 1) * 50}`;
     if (!Array.isArray(data[key])) {
       initialNodes.push({
-        id: `${key}: ${data[key]}`,
+        id: `${depth}, ${height * 50}`,
         position: {
-          x: depth * 50,
+          x: depth * 150,
           y: height * 50
         },
         data: {
@@ -171,13 +172,21 @@ const helper = (data, depth = 0) => {
       height++;
     } else {
       data[key].forEach(prop => {
+        const targetNode = `${depth + 1}, ${height * 50}`;
         helper(prop, depth + 1);
+        initialEdges.push({
+          id: `${sourceNode} - ${targetNode}`,
+          source: sourceNode,
+          target: targetNode
+        })
       });
+
     }
   })
 }
 helper(dummyData.data);
 console.log('nodes:', initialNodes);
+console.log('edges', initialEdges);
 
 export default function QFlow() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -191,8 +200,8 @@ export default function QFlow() {
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <ReactFlow
-        nodes={initialNodes}
-        edges={initialEdges}
+        nodes={nodes}
+        edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
