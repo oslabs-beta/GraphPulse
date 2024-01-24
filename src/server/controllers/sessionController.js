@@ -38,7 +38,6 @@ sessionController.createSession = async (req, res, next) => {
         client.release();
         return next();
     } catch (err) {
-        client.release();
         return next({
         log: `sessionController.createSession - error creating session; ERROR: ${err}`,
         status: 400,
@@ -74,7 +73,6 @@ sessionController.deleteSession = async (req, res, next) => {
         return next();
 
     } catch(err) {
-        client.release();
         return next({
             log: `sessionController.deleteSession - error deleting session; ERROR: ${err}`,
             status: 400,
@@ -101,7 +99,7 @@ sessionController.isSignedIn = async (req, res, next) => {
 
         if (!result.rows[0]) {
             res.locals.result = 'Session not found; Sign up or sign in to create session';
-            console.log('------> sessionController.isSignedIn: session not found; cannot signin')
+            console.log('------> sessionController.isSignedIn: session not found; please sign in')
             client.release();
             return res.redirect('/');
         }
@@ -110,7 +108,6 @@ sessionController.isSignedIn = async (req, res, next) => {
         client.release();
         return next();
     } catch (err) {
-        client.release();
         return next({
             log: `sessionController.isSignedIn - error deleting session; ERROR: ${err}`,
             status: 400,
