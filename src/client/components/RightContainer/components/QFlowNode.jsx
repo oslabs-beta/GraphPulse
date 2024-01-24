@@ -1,3 +1,4 @@
+import React from 'react';
 import { Handle, Position } from 'reactflow';
 
 export default function QFlowNode({ data, isConnectable }) {
