@@ -37,8 +37,8 @@ function PageSignIn() {
 
     return (
         <div id="sign-in-page">
-            <h1 id="sign-in-title">Graph Pulse</h1>
-            
+            <h1 id="sign-in-title">GraphPulse</h1>
+
             <div id="sign-in-input-container">
                 <h2>Sign In</h2>
                 <form id="sign-in-form" onSubmit={handleSubmit}>

@@ -36,7 +36,7 @@ function PageSignUp() {
 
     return (
         <div id="sign-up-page">
-            <h1 id="sign-in-title">Graph Pulse</h1>
+            <h1 id="sign-in-title">GraphPulse</h1>
             <div id="sign-up-input-container">
                 <h2>Sign Up</h2>
                 <form id="sign-up-form" onSubmit={handleSubmit}>
