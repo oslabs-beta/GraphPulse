@@ -2,23 +2,38 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     height: 100vh;
     width: 100vw;
 }
-#sign-up-box {
+
+#sign-in-title {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 300px;
-    width: 300px;
+    font-size: 60px;
     color: white;
-    border-style: solid;
-    border-color: white;
-    margin-top: -100px;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    text-shadow: 0 0 100px  #9666e4;
+}
 
-    h3 {
-        margin-bottom: 5px;
+#sign-up-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 48vh;
+    width: 20vw;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: #28193f;
+    box-shadow: 0 0 70px 10px #301c50;
+    
+    h2 {
+        font-size: 25px;
+        margin-top: -15px;
+        margin-bottom: 10px;
     }
 }
 
@@ -27,12 +42,53 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 95px;
+    height: 210px;
+    
+    /* border-style: solid; */
     margin-top: 20px;
     margin-bottom: 20px;
 
-    button {
-        width: 70px;
-        margin-top: 10px;
+    input:focus{
+        outline-style: solid;
+        outline-width: 2px;
+        outline-color: #c569e3;
+        font-size: 17px;
     }
+    input::placeholder {
+        font-size: 17px;
+    }
+    
+}
+
+#sign-up-input {
+    height: 30px;
+    width: 200px;
+    border: 0;
+    border-radius: 6px;
+    
+}
+
+#sign-up-btn {
+    height: 30px;
+    width: 200px;
+    /* margin-top: 10px; */
+    border: 0;
+    border-radius: 4px;
+    background-color: #A459BC;
+    color: #F3F3F3;
+    font-size: 17px;
+    cursor:pointer;
+}
+
+#sign-in-redirect-btn {
+    height: 30px;
+    width: 200px;
+    /* margin-top: 10px; */
+    border: 0;
+    border-radius: 4px;
+    background-color: rgb(57, 49, 141);
+    color: #F3F3F3;
+    text-decoration: none;
+    font-size: 17px;
+    cursor:pointer;
 }

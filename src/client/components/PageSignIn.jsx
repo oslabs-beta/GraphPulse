@@ -37,23 +37,33 @@ function PageSignIn() {
 
     return (
         <div id="sign-in-page">
-            <div id="sign-in-box">
+            <h1 id="sign-in-title">Graph Pulse</h1>
+            
+            <div id="sign-in-input-container">
                 <h2>Sign In</h2>
                 <form id="sign-in-form" onSubmit={handleSubmit}>
                     <input 
                         type="text"
                         placeholder="Username"
+                        id="sign-in-input"
                         onChange={e => setUsername(e.target.value)}
                     />
                     <input 
                         type="text"
                         placeholder="Password"
+                        id="sign-in-input"
                         onChange={e => setPassword(e.target.value)}
                     />
-                    <button>Sign In</button>
+                    <button id="sign-in-btn">Sign In</button>
                 </form>
-                <h3>Don't have an account?</h3>
-                <NavLink to={`/signup`} >Sign Up</NavLink>
+                <p>Don't have an account?</p>
+
+
+                    <NavLink to={`/signup`} >
+                        <button id="sign-up-redirect-btn">
+                            Sign Up
+                        </button>
+                    </NavLink>
             </div>
         </div>
     );

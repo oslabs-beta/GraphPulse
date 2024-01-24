@@ -36,31 +36,40 @@ function PageSignUp() {
 
     return (
         <div id="sign-up-page">
-            <div id="sign-up-box">
+            <h1 id="sign-in-title">Graph Pulse</h1>
+            <div id="sign-up-input-container">
                 <h2>Sign Up</h2>
                 <form id="sign-up-form" onSubmit={handleSubmit}>
                     <input 
                         type="text"
                         placeholder="Username"
+                        id="sign-up-input"
                         onChange={e => setUsername(e.target.value)}
                         value={username}
                     />
                     <input 
                         type="text"
                         placeholder="Email"
+                        id="sign-up-input"
                         onChange={e => setEmail(e.target.value)}
                         value={email}
                     />
                     <input 
                         type="text"
                         placeholder="Password"
+                        id="sign-up-input"
                         onChange={e => setPassword(e.target.value)}
                         value={password}
                     />
-                    <button>Sign Up</button>
+                    <button id="sign-up-btn">Sign Up</button>
                 </form>
-                <h3>Already have an account?</h3>
-                <NavLink to="/">Sign In</NavLink>
+                <p>Already have an account?</p>
+
+                <NavLink to="/">
+                    <button id="sign-in-redirect-btn">
+                        Sign In
+                    </button>
+                </NavLink>
             </div>
         </div>
     );
