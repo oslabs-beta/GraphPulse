@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Navbar from "./LContComponents/Navbar";
-import EndPointBar from "./LContComponents/EndPointBar";
+import React, { useState } from 'react';
+import Navbar from './LContComponents/Navbar';
+import EndPointBar from './LContComponents/EndPointBar';
 import QLogInput from './LContComponents/QLogInput';
 import QLogOutput from "./LContComponents/QLogOutput";
 
