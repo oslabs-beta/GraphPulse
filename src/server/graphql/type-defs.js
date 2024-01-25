@@ -2,7 +2,7 @@ const { gql } = require('graphql-tag');
 
 const typeDefs = gql`
   type User {
-    id: ID!
+    _id: ID!
     username: String!
     email: String!
     password: String!
@@ -19,7 +19,7 @@ const typeDefs = gql`
 
   type Query {
     users: [User!]!
-    user(id: ID!): User!
+    user(_id: ID!): User!
     querylogs: [QueryLog!]!
     querylog(name: String!): QueryLog!
   }

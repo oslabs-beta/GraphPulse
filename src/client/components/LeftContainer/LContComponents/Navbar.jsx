@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import "../../../styles/LeftContainer.css"
 
@@ -13,8 +13,8 @@ function Navbar() {
 }
 
 function PageContainer() {
-    const pageNames = ['home', 'settings'];
-    const pageNamesDisplay = ['Home', 'Settings'];
+    const pageNames = ['home', 'signout'];
+    const pageNamesDisplay = ['Home', 'Sign Out'];
 
     const pages = [];
     for (let i = 0; i < pageNames.length; i++) {
@@ -30,18 +30,51 @@ function PageContainer() {
 
 function Page({pageName, pageNameDisplay}) {
 
-    return (
-        <button>
-            <div id="page-link">
-                    <NavLink
-                        to={`/${pageName}`}
-                    >
-                        <h1>{pageNameDisplay}</h1>
-                    </NavLink>
-                <br></br>
-            </div>
+    // if new component pageName is 'signout', create special functionality within component before returning component
+    if (pageName === 'signout') {
+        const navigate = useNavigate();
 
-        </button>
+        function handleSignout(e) {
+            e.preventDefault();
+
+            fetch('/home', {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json'
+                }
+                // body: JSON.stringify({})
+            })
+            .then((res) => {
+                if (res.status === 200) {
+                    navigate('/');
+                }
+            }) 
+            .catch((err) => {throw new Error(err);})
+        }
+
+        return (
+            <>
+                <NavLink id="page-link-nav">
+                    <button onClick={handleSignout} id="page-link">   
+                        <h1>{pageNameDisplay}</h1>
+                    </button>
+                </NavLink>
+            </>
+        );
+    }
+
+
+    return (
+        <>
+            <NavLink
+                id="page-link-nav"
+                to={`/${pageName}`}
+            >
+                <button id="page-link">
+                    <h1>{pageNameDisplay}</h1>
+                </button>
+            </NavLink>
+        </>
     );
 }
 

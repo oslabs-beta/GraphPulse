@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import LeftContainer from "./LeftContainer/LeftContainer";
 import RightContainer from "./RightContainer/containers/RightContainer"
+import PageSignIn from "./PageSignIn";
+import PageSignUp from "./PageSignUp";
 
 import "../styles/MainContainer.css"
 
@@ -13,17 +15,17 @@ function AppLayout({uri, setUri}) {
     return (
         <>
             <Router>
-                <div id="main-container">
-                    <LeftContainer qInput={qInput} setQInput={setQInput} uri={uri} setUri={setUri} setQueryInfo={setQueryInfo}/>
-                    <RightContainer queryInfo={queryInfo}/>
-                </div>
-                {/* Routes encapsulates the individual routes */}
                 <Routes>
-                        {/* INDIVIDUAL ROUTES GO HERE */}
-                        {/* Dynamic querylogs page goes here. Might need to alter path to work (See comment example).
-                        Needs element property containing respective component.*/}
-                        {/* Example: <Route path='/login' element={<Login />} /> */}
-                        <Route path="/querylogs" />
+                        <Route exact path="/" element={<PageSignIn />}/>
+                        <Route exact path="/signup" element={<PageSignUp />}/>
+                        <Route exact path="/home" element=
+                            {
+                                <div id="main-container">
+                                    <LeftContainer qInput={qInput} setQInput={setQInput} uri={uri} setUri={setUri} setQueryInfo={setQueryInfo}/>
+                                    <RightContainer queryInfo={queryInfo}/>
+                                </div>
+                            }
+                        />
                 </Routes>
             </Router>
         </>

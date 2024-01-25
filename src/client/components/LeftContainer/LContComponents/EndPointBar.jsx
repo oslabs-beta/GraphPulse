@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { request } from 'graphql-request';
 
-function EndPointBar({ setEndpoint }) {
-  const [endPointValue, setEndpointValue] = useState();
 
 function EndPointBar({endpoint, setEndpoint, uri, setUri}) {
 
