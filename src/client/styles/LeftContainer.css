@@ -100,7 +100,7 @@
 
 #input-run-btn {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   align-items: center;
   height: 2px;
   min-width: 50px;
