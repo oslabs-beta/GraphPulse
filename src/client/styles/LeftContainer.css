@@ -98,6 +98,16 @@
   border-radius: 4px;
 }
 
+.query-editor .monaco-editor,
+.results-editor .monaco-editor {
+  border-radius: 10px;
+  border: 2px solid #90849b;
+}
+
+.query-editor {
+  position: relative;
+}
+
 #input-run-btn {
   display: flex;
   justify-content: flex-end;
@@ -114,6 +124,9 @@
   color: #f3f3f3;
   border: 0;
   border-radius: 4px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 }
 
 #endpoint-input {
