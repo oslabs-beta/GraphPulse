@@ -13,8 +13,8 @@ function Navbar() {
 }
 
 function PageContainer() {
-    const pageNames = ['home', 'settings', 'signout'];
-    const pageNamesDisplay = ['Home', 'Settings', 'Sign Out'];
+    const pageNames = ['home', 'signout'];
+    const pageNamesDisplay = ['Home', 'Sign Out'];
 
     const pages = [];
     for (let i = 0; i < pageNames.length; i++) {
@@ -53,31 +53,28 @@ function Page({pageName, pageNameDisplay}) {
         }
 
         return (
-            <button onClick={handleSignout}>
-                <div id="page-link">
-                        <NavLink>
-                            <h1>{pageNameDisplay}</h1>
-                        </NavLink>
-                    <br></br>
-                </div>
-    
-            </button>
+            <>
+                <NavLink id="page-link-nav">
+                    <button onClick={handleSignout} id="page-link">   
+                        <h1>{pageNameDisplay}</h1>
+                    </button>
+                </NavLink>
+            </>
         );
     }
 
 
     return (
-        <button>
-            <div id="page-link">
-                    <NavLink
-                        to={`/${pageName}`}
-                    >
-                        <h1>{pageNameDisplay}</h1>
-                    </NavLink>
-                <br></br>
-            </div>
-
-        </button>
+        <>
+            <NavLink
+                id="page-link-nav"
+                to={`/${pageName}`}
+            >
+                <button id="page-link">
+                    <h1>{pageNameDisplay}</h1>
+                </button>
+            </NavLink>
+        </>
     );
 }
 

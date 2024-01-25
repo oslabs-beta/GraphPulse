@@ -1,7 +1,7 @@
 #left-container {
     flex-direction: column;
     height: 100vh;
-    width: 31vw;
+    width: 24vw;
     border-style: solid;
     border-width: 0px 1px 0px 0px;
     border-color: #aaa4b5;
@@ -31,31 +31,31 @@
     flex-direction: column;
     margin: 1em;
     margin-top: 5px;
+    
     :hover{
+        border-radius: 10px;
         background-color: #A459BC;
+        
     }
-    button {
-        background-color: #1c1237;
-        border-style: none;
-        border-radius: 5px;
-    }
+
 }
 
 #page-link {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    overflow: hidden;
+    align-items: center;
+    height: 45px;
+    width: 100%;
+    background-color: #1c1237;;
+    color: white;
+    border: 0px;
+    border-radius: 10px;
+    cursor:pointer;
     font-family: 'Montserrat', sans-serif;
-    h1 {
-        display:inline-block;
-        font-size: 25px;
-        margin: 3px;
-        padding-left: 10px;
-        color: #F3F3F3;
-    }
+}
+
+#page-link-nav {
+    text-decoration: none!important;
 }
 
 #endpoint-container {
