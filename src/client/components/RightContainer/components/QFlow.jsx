@@ -154,7 +154,6 @@ const dummyData = {
 }
 
 const nodeTypes = { qFlowNode: QFlowNode };
-
 let height = 1;
 const targetNodeQueue = [];
 (function helper (data, depth = 0) {
@@ -191,8 +190,6 @@ const targetNodeQueue = [];
     }
   })
 })(dummyData.data); // insert graphql response here
-console.log('nodes:', initialNodes);
-console.log('edges', initialEdges);
 
 export default function QFlow() {
   const [nodes, setNodes] = useState(initialNodes);
