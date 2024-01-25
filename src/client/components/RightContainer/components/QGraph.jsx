@@ -5,24 +5,40 @@ import * as d3 from "d3";
 const data = {
   name: "Eve",
   children: [
-    { name: "Cain" },
+    {
+      name: "Cain"
+    },
     { 
       name: "Seth",
       children: [ 
-        {name: "Enos"}, {name: "Noam"}
+        {
+          name: "Enos"
+        },
+        {
+          name: "Noam"
+        }
       ]
     },
-    { name: "Abel" },
+    {
+      name: "Abel"
+    },
     { 
       name: "Awan",
-      children: [{ name: "Enoch" }]
+      children: [
+        {
+          name: "Enoch"
+        }
+      ]
     },
-    { name: "Azura" }
+    {
+      name: "Azura"
+    }
   ]
 };
 
 const root = d3.hierarchy(data);
-const tree = d3.tree().size([640, 400]);
+const tree = d3.tree();
+tree.size([300, 700]);
 
 export default function QGraph() {
   const nodesRef = useRef();
@@ -55,12 +71,13 @@ export default function QGraph() {
       .classed('tree-label', true)
       .attr('x', d => d.y)
       .attr('y', d => d.x - 10)
-      .text(d => d.data.name);
+      .text(d => d.data.name)
+      .style('fill', '#F3F3F3');
   }, [])
 
   
   return (
-    <svg width='600' height='800'>
+    <svg width='auto' height='50vh'>
       <path fill="none" stroke="currentColor" strokeWidth={'1.5'} d={tree(root)} />
       <g className="links" ref={linksRef}></g>
       <g className="nodes" ref={nodesRef}></g>

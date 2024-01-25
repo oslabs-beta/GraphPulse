@@ -1,14 +1,13 @@
-import React from "react";
+import React from 'react';
 
+function QLogOutput({ queryResults }) {
+  // show query results here
 
-
-function QLogOutput() {
-
-    
-    return (
-        <h1>Query Log Output</h1>
-    );
-
+  return (
+    <div id="q-log-output-container">
+      {/* <pre>{JSON.stringify(queryResults, null, 2)}</pre> */}
+    </div>
+  );
 }
 
 export default QLogOutput;

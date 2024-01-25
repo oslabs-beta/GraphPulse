@@ -3,10 +3,10 @@ import { useState } from 'react';
 
 import AppLayout from './components/AppLayout';
 
-function App() {
+function App({uri, setUri}) {
   return (
     <>
-      <AppLayout />
+      <AppLayout uri={uri} setUri={setUri} />
     </>
   );
 }

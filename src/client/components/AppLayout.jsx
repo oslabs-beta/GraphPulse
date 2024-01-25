@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import LeftContainer from "./LeftContainer/LeftContainer";
@@ -8,7 +8,9 @@ import PageSignUp from "./PageSignUp";
 
 import "../styles/MainContainer.css"
 
-function AppLayout() {
+function AppLayout({uri, setUri}) {
+    const [qInput, setQInput] = useState('');
+    const [queryInfo, setQueryInfo] = useState('');
 
     return (
         <>
@@ -19,8 +21,8 @@ function AppLayout() {
                         <Route exact path="/home" element=
                             {
                                 <div id="main-container">
-                                    <LeftContainer />
-                                    <RightContainer />
+                                    <LeftContainer qInput={qInput} setQInput={setQInput} uri={uri} setUri={setUri} setQueryInfo={setQueryInfo}/>
+                                    <RightContainer queryInfo={queryInfo}/>
                                 </div>
                             }
                         />
