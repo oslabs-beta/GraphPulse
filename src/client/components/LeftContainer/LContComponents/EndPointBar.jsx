@@ -4,26 +4,27 @@ import { request } from 'graphql-request';
 function EndPointBar({ setEndpoint }) {
   const [endPointValue, setEndpointValue] = useState();
 
-  // handler for "send" button
-  const handleEndpointSubmit = () => {
-    setEndpointValue(e.target.value.trim());
-  };
+function EndPointBar({endpoint, setEndpoint, uri, setUri}) {
 
+
+  const handleEndpointSubmit = () => {
+    setUri(endpoint);
+    console.log(endpoint);
+  };
   return (
-    <div id="endpoint-container">
-      <input
-        id="endpoint-input"
-        type="text"
-        placeholder="Enter URL or endpoint 🗝"
-        value={endPointValue}
-        onChange={(e) => setEndpointValue(e.target.value.trim())}
+  <div id="endpoint-container">
+    <button id="endpoint-send-btn" onClick={handleEndpointSubmit}>Send</button>
+    <input 
+      id="endpoint-input"
+      type="text"
+      placeholder="Enter URL or endpoint" 
+      value={endpoint}
+      onChange={(e) => setEndpoint(e.target.value)}
       />
 
-      <button id="endpoint-send-btn" onClick={handleEndpointSubmit}>
-        Send
-      </button>
-    </div>
-  );
+ </div>
+  )
+
 }
 
 export default EndPointBar;
