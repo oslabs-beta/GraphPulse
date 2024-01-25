@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import { request } from 'graphql-request';
 
-const DEFAULT_ENDPOINT = 'https://api.mocki.io/v2/c4d7a195/graphql';
-
 function EndPointBar({ setEndpoint }) {
-  const [endPointValue, setEndPointValue] = useState(DEFAULT_ENDPOINT);
+  const [endPointValue, setEndpointValue] = useState();
 
-  // handler for the "send" button
+  // handler for "send" button
   const handleEndpointSubmit = () => {
-    setEndpoint(endPointValue);
-    // console.log(endPointValue);
-    // console.log(typeof endPointValue);
+    setEndpointValue(e.target.value.trim());
   };
 
   return (
@@ -20,7 +16,7 @@ function EndPointBar({ setEndpoint }) {
         type="text"
         placeholder="Enter URL or endpoint 🗝"
         value={endPointValue}
-        onChange={(e) => setEndpoint(e.target.value.trim())}
+        onChange={(e) => setEndpointValue(e.target.value.trim())}
       />
 
       <button id="endpoint-send-btn" onClick={handleEndpointSubmit}>
