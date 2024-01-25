@@ -1,7 +1,24 @@
 import React, { useState } from 'react';
-import { request } from 'graphql-request';
 import MonacoEditor from 'react-monaco-editor';
 import Split from 'react-split';
+import { gql, useLazyQuery } from '@apollo/client';
+
+// Once you make a query in the apollo sandbox, you can bring it over to the FE
+// const GET_ALL_USERS = gql`
+//   query GetAllUsers {
+//     users {
+//       id
+//       username
+//       email
+//       password
+//       queryLogs {
+//         query_name
+//         timestamp
+//         depth
+//       }
+//     }
+//   }
+// `;
 
 // Default operations for the Monaco editor
 const defaultOperation = `
@@ -12,29 +29,37 @@ query {
 }
 `;
 
-function QLogInput() {
+// graphql defined query (syntax)
+let adjustedOperation = `{
+  users{
+    id
+    email
+  }
+}
+`;
+
+function QLogInput({ qInput, setQInput }) {
+
   // States for query and results
-  const [query, setQuery] = useState(defaultOperation);
+  const [getLazyResults, { loading, data }] = useLazyQuery(
+    gql`
+      ${adjustedOperation}
+    `,
+    {
+      onCompleted: (queryData) => {
+        setResults(updateResults(queryData));
+      },
+    }
+  );
+
   const [results, setResults] = useState('');
 
-  // Event handler for query input changes
-  const handleQueryChange = (newQuery) => {
-    setQuery(newQuery);
-  };
-
-  // Event handler for running the query
-  const handleRunQuery = () => {
-    // Test for mock data
-
-    const resultString = [
-      'user1user1@example.com1',
-      'user2user2@example.com1',
-      'user3user3@example.com1',
-      'user4user4@example.com1',
-      'user5user5@example.com1',
-    ].join('\n');
-
-    setResults(resultString);
+  // map query results for rendering
+  const updateResults = (queryData) => {
+    const mappedData = Object.entries(queryData).map(([key, values]) =>
+      values.map((value) => value)
+    );
+    return mappedData;
   };
 
   return (
@@ -54,14 +79,17 @@ function QLogInput() {
           <MonacoEditor
             language="graphql"
             theme="vs-dark"
-            value={query}
-            onChange={handleQueryChange}
+            value={defaultOperation}
+            onChange={(value) => setQInput(value)}
             height="300"
             width="200%"
           />
           <button
             id="input-run-btn"
-            onClick={handleRunQuery}
+            onClick={() => {
+              adjustedOperation = qInput;
+              getLazyResults();
+            }}
             className="run-query-button"
           >
             Run Query
@@ -71,7 +99,7 @@ function QLogInput() {
           <MonacoEditor
             language="plaintext"
             theme="vs-dark"
-            value={results}
+            value={JSON.stringify(results, null, 2)}
             height="300"
             width="200%"
             readOnly
