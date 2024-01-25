@@ -5,22 +5,32 @@
 
 #right-container {
   width: 100%;
-  max-height: 99vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
 
 }
 
 #graph-container {
-  height: auto;
-  padding: 3vh 0vh 0vh 2vh;
+  height: 50vh;
+  width: auto;
+  max-height: 100vh;
   display: flex;
   align-items: center;
 }
 
-.node {
-  fill: steelblue;
-  stroke: none;
+.qflow-node {
+  height: 50px;
+  border: 1px solid #eee;
+  padding: 5px;
+  border-radius: 5px;
+  background: white;
+}
+
+.qflow-node label {
+  display: block;
+  color: #777;
+  font-size: 12px;
 }
 
 .link {
@@ -30,7 +40,7 @@
 }
 
 #qlog-container {
-  height: 45vh;
+  height: auto;
   overflow-x: hidden;
   overflow-y: auto;
 }

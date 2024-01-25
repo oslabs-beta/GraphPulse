@@ -39,19 +39,14 @@ function QLogsContainer() {
   }
 
   return (
-    <>
-
-    <div id="qlog-headers-container">
-        {sections}
-    </div>
-
     <div id="qlog-container">
+      <div id="qlog-headers-container">
+          {sections}
+      </div>
       <div id="qlog-info-container">
         {infoRow}
       </div>
     </div>
-    
-    </>
   )
 }
 
