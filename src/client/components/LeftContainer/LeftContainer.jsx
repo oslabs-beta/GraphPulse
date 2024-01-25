@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './LContComponents/Navbar';
 import EndPointBar from './LContComponents/EndPointBar';
 import QLogInput from './LContComponents/QLogInput';
-import QLogOutput from './LContComponents/QLogOutput';
 
-function LeftContainer({ onQueryChange, endpoint, setEndpoint, query }) {
+function LeftContainer() {
+  const [endpoint, setEndpoint] = useState('');
+  const [qInput, setQInput] = useState('');
+
   return (
     <div id="left-container">
       <div id="graph-p-header">
@@ -17,8 +19,7 @@ function LeftContainer({ onQueryChange, endpoint, setEndpoint, query }) {
       </div>
       <Navbar />
       <EndPointBar endpoint={endpoint} setEndpoint={setEndpoint} />
-      <QLogInput onQueryChange={onQueryChange} />
-      <QLogOutput endpoint={endpoint} query={query} />
+      <QLogInput qInput={qInput} setQInput={setQInput} />
     </div>
   );
 }
