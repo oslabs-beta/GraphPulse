@@ -1,12 +1,13 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import ReactFlow, {
-  useNodesState,
-  useEdgesState,
   addEdge,
-  Background
+  Background,
+  applyEdgeChanges,
+  applyNodeChanges
 } from 'reactflow';
 
-import 'reactflow/dist/style.css'
+import 'reactflow/dist/style.css';
+import QFlowNode from './QFlowNode';
 
 const initialNodes = [];
 const initialEdges = [];
@@ -152,15 +153,18 @@ const dummyData = {
   }
 }
 
+const nodeTypes = { qFlowNode: QFlowNode };
+
 let height = 1;
-const helper = (data, depth = 0) => {
+const targetNodeQueue = [];
+(function helper (data, depth = 0) {
   const keys = Object.keys(data);
+  let sourceNode = `${depth - 1}, ${(height - 1)}`;
   keys.forEach(key => {
-    // console.log(nodes);
-    const sourceNode = `${depth}, ${(height - 1) * 50}`;
     if (!Array.isArray(data[key])) {
+      // sourceNode = `${depth - 1}, ${(height - 1)}`;
       initialNodes.push({
-        id: `${depth}, ${height * 50}`,
+        id: `${depth}, ${height}`,
         position: {
           x: depth * 150,
           y: height * 50
@@ -170,44 +174,53 @@ const helper = (data, depth = 0) => {
         }
       });
       height++;
+      targetNodeQueue.push(`${depth}, ${height}`);
     } else {
+      sourceNode = `${depth}, ${height - 1}`;
+      targetNodeQueue.push(`${depth + 1}, ${height}`);
       data[key].forEach(prop => {
-        const targetNode = `${depth + 1}, ${height * 50}`;
         helper(prop, depth + 1);
-        initialEdges.push({
-          id: `${sourceNode} - ${targetNode}`,
-          source: sourceNode,
-          target: targetNode
-        })
+        while (targetNodeQueue.length) {
+          initialEdges.push({
+            id: `${sourceNode} - ${targetNodeQueue[0]}`,
+            source: sourceNode,
+            target: targetNodeQueue.shift()
+          });
+        }
       });
-
     }
   })
-}
-helper(dummyData.data);
+})(dummyData.data); // insert graphql response here
 console.log('nodes:', initialNodes);
 console.log('edges', initialEdges);
 
 export default function QFlow() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [nodes, setNodes] = useState(initialNodes);
+  const [edges, setEdges] = useState(initialEdges);
  
+  const onNodesChange = useCallback(
+    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    [setNodes]
+  );
+  const onEdgesChange = useCallback(
+    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    [setEdges]
+  );
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     [setEdges],
   );
 
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-      >
-        <Background variant='dots' gap={12} size={1} />
-      </ReactFlow>
-    </div>
+    <ReactFlow
+      nodes={nodes}
+      edges={edges}
+      onNodesChange={onNodesChange}
+      onEdgesChange={onEdgesChange}
+      onConnect={onConnect}
+      nodeTypes={nodeTypes}
+    >
+      <Background variant='dots' gap={12} size={1} />
+    </ReactFlow>
   );
 }
