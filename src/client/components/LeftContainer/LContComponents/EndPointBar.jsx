@@ -1,13 +1,25 @@
 import React from "react";
 
 
-function EndPointBar() {
+function EndPointBar({endpoint, setEndpoint, uri, setUri}) {
 
+
+  const handleEndpointSubmit = () => {
+    setUri(endpoint);
+    console.log(endpoint);
+  };
   return (
-    <div id="endpoint-container">
-      <input id="endpoint-input" type="text" placeholder="Enter URL or endpoint"/>
-      <button id="endpoint-send-btn">Send</button>
-    </div>
+  <div id="endpoint-container">
+    <button id="endpoint-send-btn" onClick={handleEndpointSubmit}>Send</button>
+    <input 
+      id="endpoint-input"
+      type="text"
+      placeholder="Enter URL or endpoint" 
+      value={endpoint}
+      onChange={(e) => setEndpoint(e.target.value)}
+      />
+
+ </div>
   )
 
 }
