@@ -55,12 +55,16 @@ function QLogInput({ qInput, setQInput }) {
   const [results, setResults] = useState('');
 
   // map query results for rendering
-  const updateResults = (queryData) => {
-    const mappedData = Object.entries(queryData).map(([key, values]) =>
-      values.map((value) => value)
-    );
-    return mappedData;
-  };
+const updateResults = (queryData) => {
+  const mappedData = Object.entries(queryData).map(([key, values]) => {
+    if (Array.isArray(values)) {
+      return values.map((value) => value); // Handle arrays
+    } else {
+      return values; // Handle objects directly
+    }
+  });
+  return mappedData;
+};
 
   return (
     <div className="monaco-container">
