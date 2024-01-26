@@ -154,6 +154,17 @@ const dummyData = {
 }
 
 const nodeTypes = { qFlowNode: QFlowNode };
+// initialNodes.push({
+//   id: 'root',
+//   position: {
+//     x: 0,
+//     y: 0
+//   },
+//   data: {
+//     label: Array.isArray(dummyData.data.users) ? 'users' : `users: ${dummyData.data.users}`
+//   }
+// });
+
 let height = 1;
 const targetNodeQueue = [];
 (function helper (data, depth = 0) {
