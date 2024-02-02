@@ -1,11 +1,11 @@
 import React from "react";
 import QFlow from "../components/QFlow";
 
-function GraphContainer() {
+function GraphContainer({ results }) {
 
   return (
     <div id="graph-container">
-      <QFlow />
+      <QFlow results={results}/>
     </div>
   )
 

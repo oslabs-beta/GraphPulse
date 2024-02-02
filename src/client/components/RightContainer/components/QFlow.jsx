@@ -191,7 +191,7 @@ const targetNodeQueue = [];
   })
 })(dummyData.data); // insert graphql response here
 
-export default function QFlow() {
+export default function QFlow({results}) {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
  
