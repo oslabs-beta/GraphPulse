@@ -11,6 +11,7 @@ import "../styles/MainContainer.css"
 function AppLayout({uri, setUri}) {
     const [qInput, setQInput] = useState('');
     const [queryInfo, setQueryInfo] = useState('');
+    const [results, setResults] = useState('');
 
     return (
         <>
@@ -21,8 +22,15 @@ function AppLayout({uri, setUri}) {
                         <Route exact path="/home" element=
                             {
                                 <div id="main-container">
-                                    <LeftContainer qInput={qInput} setQInput={setQInput} uri={uri} setUri={setUri} setQueryInfo={setQueryInfo}/>
-                                    <RightContainer queryInfo={queryInfo}/>
+                                    <LeftContainer 
+                                      qInput={qInput} 
+                                      setQInput={setQInput} 
+                                      uri={uri} setUri={setUri} 
+                                      setQueryInfo={setQueryInfo}
+                                      results={results}
+                                      setResults={setResults}
+                                      />
+                                    <RightContainer queryInfo={queryInfo} results={results}/>
                                 </div>
                             }
                         />
