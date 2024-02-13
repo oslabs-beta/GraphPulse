@@ -3,23 +3,6 @@ import MonacoEditor from 'react-monaco-editor';
 import Split from 'react-split';
 import { gql, useLazyQuery } from '@apollo/client';
 
-// Once you make a query in the apollo sandbox, you can bring it over to the FE
-// const GET_ALL_USERS = gql`
-//   query GetAllUsers {
-//     users {
-//       id
-//       username
-//       email
-//       password
-//       queryLogs {
-//         query_name
-//         timestamp
-//         depth
-//       }
-//     }
-//   }
-// `;
-
 // Default operations for the Monaco editor
 const defaultOperation = `
 # Enter a query #
@@ -39,7 +22,6 @@ let adjustedOperation = `{
 `;
 
 function QLogInput({ qInput, setQInput }) {
-
   // States for query and results
   const [getLazyResults, { loading, data }] = useLazyQuery(
     gql`
@@ -55,16 +37,16 @@ function QLogInput({ qInput, setQInput }) {
   const [results, setResults] = useState('');
 
   // map query results for rendering
-const updateResults = (queryData) => {
-  const mappedData = Object.entries(queryData).map(([key, values]) => {
-    if (Array.isArray(values)) {
-      return values.map((value) => value); // Handle arrays
-    } else {
-      return values; // Handle objects directly
-    }
-  });
-  return mappedData;
-};
+  const updateResults = (queryData) => {
+    const mappedData = Object.entries(queryData).map(([key, values]) => {
+      if (Array.isArray(values)) {
+        return values.map((value) => value); // Handle arrays
+      } else {
+        return values; // Handle objects directly
+      }
+    });
+    return mappedData;
+  };
 
   return (
     <div className="monaco-container">
@@ -106,7 +88,9 @@ const updateResults = (queryData) => {
             value={JSON.stringify(results, null, 2)}
             height="300"
             width="200%"
-            readOnly
+            options={{
+              readOnly: true,
+            }}
           />
         </section>
       </Split>
