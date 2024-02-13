@@ -4,7 +4,7 @@ import EndPointBar from './LContComponents/EndPointBar';
 import QLogInput from './LContComponents/QLogInput';
 import QLogOutput from "./LContComponents/QLogOutput";
 
-function LeftContainer({qInput, setQInput, uri, setUri, results, setResults}) {
+function LeftContainer({qInput, setQInput, uri, setUri, results, setResults, setLatency}) {
   const [endpoint, setEndpoint] = useState('');
 
   return (
@@ -20,6 +20,7 @@ function LeftContainer({qInput, setQInput, uri, setUri, results, setResults}) {
         setQInput={setQInput}
         results={results}
         setResults={setResults}
+        setLatency={setLatency}
         />
       <QLogOutput />
     </div>

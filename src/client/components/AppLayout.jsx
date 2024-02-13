@@ -12,6 +12,8 @@ function AppLayout({uri, setUri}) {
     const [qInput, setQInput] = useState('');
     const [queryInfo, setQueryInfo] = useState('');
     const [results, setResults] = useState('');
+    const [mostRecentLatency, setRecentLatency] = useState(0);
+    console.log('from applayout', mostRecentLatency);
 
     return (
         <>
@@ -29,8 +31,9 @@ function AppLayout({uri, setUri}) {
                                       setQueryInfo={setQueryInfo}
                                       results={results}
                                       setResults={setResults}
+                                      setLatency={setRecentLatency}
                                       />
-                                    <RightContainer queryInfo={queryInfo} results={results}/>
+                                    <RightContainer queryInfo={queryInfo} results={results} latency={mostRecentLatency}/>
                                 </div>
                             }
                         />

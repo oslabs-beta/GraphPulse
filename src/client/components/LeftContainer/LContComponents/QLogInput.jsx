@@ -21,7 +21,7 @@ let adjustedOperation = `{
 }
 `;
 
-function QLogInput({ qInput, setQInput, results, setResults}) {
+function QLogInput({ qInput, setQInput, results, setResults, setLatency}) {
 
   // States for query and results
   const [getLazyResults, { loading, data }] = useLazyQuery(
@@ -78,7 +78,7 @@ function QLogInput({ qInput, setQInput, results, setResults}) {
               let endTime = performance.now();
               let latency = endTime - startTime;  //latency calculated here
               console.log("Query latency:", latency, "ms");
-
+              setLatency(latency);
             }}
             className="run-query-button"
           >
