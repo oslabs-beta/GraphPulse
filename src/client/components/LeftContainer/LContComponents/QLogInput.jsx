@@ -21,7 +21,7 @@ let adjustedOperation = `{
 }
 `;
 
-function QLogInput({ qInput, setQInput, results, setResults}) {
+function QLogInput({ qInput, setQInput, results, setResults }) {
 
   // States for query and results
   const [getLazyResults, { loading, data }] = useLazyQuery(
