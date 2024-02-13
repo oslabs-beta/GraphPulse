@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function QLogsContainer() {
+function QLogsContainer({ results }) {
   const sectionNames = ['Timestamp', 'Name', 'Latency', 'Depth'];
   const sectionNamesDisplay = ['Timestamp', 'Name', 'Latency', 'Depth'];
   const hardCodeTest = [

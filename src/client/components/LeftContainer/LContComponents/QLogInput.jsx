@@ -21,7 +21,8 @@ let adjustedOperation = `{
 }
 `;
 
-function QLogInput({ qInput, setQInput }) {
+function QLogInput({ qInput, setQInput, results, setResults}) {
+
   // States for query and results
   const [getLazyResults, { loading, data }] = useLazyQuery(
     gql`
@@ -33,8 +34,6 @@ function QLogInput({ qInput, setQInput }) {
       },
     }
   );
-
-  const [results, setResults] = useState('');
 
   // map query results for rendering
   const updateResults = (queryData) => {
@@ -74,7 +73,12 @@ function QLogInput({ qInput, setQInput }) {
             id="input-run-btn"
             onClick={() => {
               adjustedOperation = qInput;
+              let startTime = performance.now();
               getLazyResults();
+              let endTime = performance.now();
+              let latency = endTime - startTime;  //latency calculated here
+              console.log("Query latency:", latency, "ms");
+
             }}
             className="run-query-button"
           >
