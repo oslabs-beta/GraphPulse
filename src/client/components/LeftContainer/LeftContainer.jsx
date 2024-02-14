@@ -10,7 +10,7 @@ function LeftContainer({qInput, setQInput, setUri, results, setResults, setLaten
   return (
     <div id="left-container">
       <div id="graph-pulse-header">
-        <img id="graph-pulse-icon" src="../../assets/grahpqllogo.png" alt="GraphPulse Logo"/>
+      <img id="graph-pulse-icon" src="../../assets/GraphPulseLogo1.png" alt="GraphPulse Logo"/>
         <p id="project-title">GraphPulse</p>
       </div>
       <Navbar />
