@@ -25,6 +25,7 @@ export default function QFlow({ results }) {
     console.log('processing: ', data);
     const keys = Object.keys(data);
     let sourceNode = `${depth - 1}, ${(height - 1)}`;
+    // TO-DO: extremely nested query results are still troublesome.
     keys.forEach(key => {
       if (Array.isArray(data[key])) {
         newNodes.push({
