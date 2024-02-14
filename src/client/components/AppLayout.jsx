@@ -10,10 +10,9 @@ import "../styles/MainContainer.css"
 
 function AppLayout({uri, setUri}) {
     const [qInput, setQInput] = useState('');
-    const [queryInfo, setQueryInfo] = useState('');
     const [results, setResults] = useState('');
     const [mostRecentLatency, setRecentLatency] = useState(0);
-    console.log('from applayout', mostRecentLatency);
+    const [mostRecentDepth, setRecentDepth] = useState(0);
 
     return (
         <>
@@ -27,13 +26,18 @@ function AppLayout({uri, setUri}) {
                                     <LeftContainer 
                                       qInput={qInput} 
                                       setQInput={setQInput} 
-                                      uri={uri} setUri={setUri} 
-                                      setQueryInfo={setQueryInfo}
+                                      setUri={setUri}
                                       results={results}
                                       setResults={setResults}
                                       setLatency={setRecentLatency}
+                                      setDepth={setRecentDepth}
                                       />
-                                    <RightContainer queryInfo={queryInfo} results={results} latency={mostRecentLatency}/>
+                                    <RightContainer 
+                                      results={results} 
+                                      latency={mostRecentLatency}
+                                      depth={mostRecentDepth}
+                                      uri={uri}
+                                      />
                                 </div>
                             }
                         />
