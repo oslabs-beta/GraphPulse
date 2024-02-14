@@ -5,11 +5,15 @@ import GraphContainer from "./GraphContainer";
 import QLogsContainer from "./QLogsContainer";
 
 
-function RightContainer({ results, latency }) {
+function RightContainer({results, latency, depth, uri}) {
   return (
     <div id="right-container">
       <GraphContainer results={results}/>
-      <QLogsContainer results={results} latency={latency}/>
+      <QLogsContainer 
+        latency={latency} 
+        depth={depth}
+        uri={uri}
+        />
     </div>
   )
 
