@@ -4,46 +4,82 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GraphPulse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
   </head>
 
   <body>
     <div id="root">
-      <div id="mainContainer">
-
-        <div id="introContainer">
-          <h1>GraphPulse</h1>
+      <div id="mainContainer" class="container text-center">
+        <div id="introContainer" >
+          <h1 class="display-1">GraphPulse</h1>
           <p>GraphQL Performance Monitoring Tool</p>
         </div>
-
-        <div id="detailInfoContainer">
-          <h2>Core Features</h2>
-          <h1>What is GraphPulse?</h1>
+        
+        <div id="detailInfoContainer" >
+          <h1 id="detailsTitle" class="display-4">What is GraphPulse?</h1>
           <p>GraphPulse allows engineers to track GraphQL query performance metrics like latency and depth. 
             Using these metrics, developers can use GraphPulse to run analyses on schema complexity and resolver 
             time execution.
           </p>
+          <br>
+          <h2 class="display-6">Core Features</h2>
           
-          <div id="featuresContainer">
-            <div id="featureVisualization">
-              <h3>Query Visualization</h3>
-              <p>See the depth and complexity of queryies when executed in real time.</p>
+          <div id="featuresContainer" >
+            <div class="card">
+              <div class="iconContainer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-diagram-3-fill" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5zm-6 8A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5zm6 0A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5z"/>
+                </svg>
+              </div>
+              <div id="featureVisualization" class="card-body">
+                <h3 class="card-title">Visualization</h3>
+                <p class="card-subtitle">See the depth and complexity of queryies when executed in real time.</p>
+              </div>
             </div>
 
-            <div id="featureLatency">
-              <h3>Query Latency Tracking</h3>
-              <p>Track the latency of queries and compare them to past queries.</p>
+            <div class="card">
+              <div class="iconContainer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-clipboard-data" viewBox="0 0 16 16">
+                  <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0z"/>
+                  <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
+                  <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
+                </svg>
+              </div>
+              <div id="featureLatency" class="card-body">
+                <h3 class="card-title">Latency</h3>
+                <p class="card-subtitle">Track the latency of queries and compare them to past queries.</p>
+              </div>
             </div>
+
+            <div class="card">
+              <div class="iconContainer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bar-chart-steps" viewBox="0 0 16 16">
+                  <path d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0M2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+              </div>
+              <div id="featureLatency" class="card-body">
+                <h3 class="card-title">Depth</h3>
+                <p class="card-subtitle">Track the latency of queries and compare them to past queries.</p>
+              </div>
+            </div>
+
+
           </div>
         </div>
 
-        <div id="demoContainer">
-          <h1>Demo</h1>
+        <div id="demoContainer" >
+          <h1 class="display-4">Demo</h1>
           <h2>INSERT DEMO HERE</h2>
         </div>
 
-        <div id="teamContainer">
-          <h1>Meet the Team:</h1>
-          <div id="devsContainer">
+        <div id="startContainer">
+          <h1 class="display-4">How To Get Started</h1>
+          <h2>Head over to our repo on</h2><h2><a href="https://github.com/oslabs-beta/GraphPulse">Github</a></h2>
+        </div>
+
+        <div id="teamContainer" >
+          <h1 class="display-4">Meet the Team:</h1>
             <div class="dev">
               <h3>Daniel Song</h3>
             </div>
@@ -51,16 +87,17 @@
               <h3>David Tskhvedadze</h3>
             </div>
             <div class="dev">
-              <h3>Binette Maggio</h3>
+              <h3>Binetou Maggio</h3>
             </div>
             <div class="dev">
               <h3>Jerel Cruz</h3>
             </div>
-          </div>
         </div>
 
       </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 
 </html>
