@@ -1,103 +1,113 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import ReactFlow, {
   addEdge,
   Background,
   useNodesState,
-  useEdgesState,
-  applyEdgeChanges,
-  applyNodeChanges
+  useEdgesState
 } from 'reactflow';
 
 import 'reactflow/dist/style.css';
-import QFlowNode from './QFlowNode';
-
-
-
-const dummyData = {
-  "data": {
-    "__typename": "Country",
-    "name": "Brazil",
-    "native": "Brasil",
-    "capital": "Brasília",
-    "emoji": "🇧🇷",
-    "currency": "BRL",
-    "languages": [
-      {
-        "__typename": "Language",
-        "code": "pt",
-        "name": "Portuguese"
-      }
-    ]
-  }
-}      
       
 export default function QFlow({ results }) {
   const initialNodes = [];
   const initialEdges = [];
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  // const nodeTypes = { qFlowNode: QFlowNode };
 
-  let height = 1;
-  const targetNodeQueue = [];
-  const newNodes = [];
-  const newEdges = [];
-  function helper (data, depth = 0) {
+  function queryToFlow (
+    data,
+    depth = 0,
+    height = 1,
+    targetNodeQueue = [],
+    newNodes = [],
+    newEdges = []
+  ) {
     console.log('processing: ', data);
     const keys = Object.keys(data);
     let sourceNode = `${depth - 1}, ${(height - 1)}`;
     keys.forEach(key => {
-      if (!Array.isArray(data[key])) {
+      if (Array.isArray(data[key])) {
+        newNodes.push({
+          id: `${depth}, ${height}`,
+          position: {
+            x: depth * 150,
+            y: height * 50
+          },
+          data: {
+            label: `${key}:`
+          }
+        });
+        height++;
+        sourceNode = `${depth}, ${height - 1}`;
+        targetNodeQueue.push(`${depth + 1}, ${height}`);
+        
+        for (const obj of data[key]) {
+          queryToFlow(obj, depth + 1, height++, targetNodeQueue, newNodes, newEdges);
+        }
+      } else if (typeof data[key] === 'object' && data[key] !== null) {
+        newNodes.push({
+          id: `${depth}, ${height}`,
+          position: {
+            x: depth * 150,
+            y: height * 50
+          },
+          data: {
+            label: `${key}:`
+          }
+        });
+        height++;
+        sourceNode = `${depth}, ${height - 1}`;
+        targetNodeQueue.push(`${depth + 1}, ${height}`);
+        queryToFlow(data[key], depth + 1, height, targetNodeQueue, newNodes, newEdges);
+      } else {
         if (key !== '__typename') {
           newNodes.push({
             id: `${depth}, ${height}`,
             position: {
               x: depth * 150,
-              y: height * 25
+              y: height * 50
             },
             data: {
               label: `${key}: ${data[key]}`
             }
           });
           height++;
-          targetNodeQueue.push(`${depth}, ${height}`);
+          newEdges.push({
+            id: `${sourceNode} - ${depth}, ${height}`,
+            source: sourceNode,
+            target: `${depth}, ${height}`,
+            animated: true
+          });
         }
-      } else {
-        sourceNode = `${depth}, ${height - 1}`;
-        targetNodeQueue.push(`${depth + 1}, ${height}`);
-        data[key].forEach(prop => {
-          helper(prop, depth + 1);
-          while (targetNodeQueue.length) {
-            newEdges.push({
-              id: `${sourceNode} - ${targetNodeQueue[0]}`,
-              source: sourceNode,
-              target: targetNodeQueue.shift()
-            });
-          }
+      }
+      while (targetNodeQueue.length) {
+        newEdges.push({
+          id: `${sourceNode} - ${targetNodeQueue[0]}`,
+          source: sourceNode,
+          target: targetNodeQueue.shift(),
+          animated: true
         });
       }
-    })
-  }  
+    });
+    setNodes(newNodes);
+    setEdges(newEdges);
+  }
   
-  // const onNodesChange = useCallback((changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
-  //   [setNodes]
-  // );
-  // const onEdgesChange = useCallback((changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-  //   [setEdges]
-  // );
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge({ ...params, animated: true }, eds)),
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge({ ...params, animated: true }, eds)),
     []
   );
         
   useEffect(() => {
     console.log('what did we get as our result?', results);
+    while (Array.isArray(results) && Array.isArray(results[0])) {
+      results = results[0];
+    }
+
     if (results) {
-      if (Array.isArray(results[0])) {
-        results[0].forEach(obj => helper(obj));
-      } else helper(results[0]);
-      setNodes(newNodes);
-      setEdges(newEdges);
-      helper = 1;
+      if (Array.isArray(results)) {
+        queryToFlow(results);
+      } else results.forEach(obj => queryToFlow(obj));
     } 
   }, [results]);
 
@@ -108,7 +118,6 @@ export default function QFlow({ results }) {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
-      // nodeTypes={nodeTypes}
     >
       <Background variant='dots' gap={12} size={1} />
     </ReactFlow>
