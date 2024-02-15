@@ -80,7 +80,7 @@
 
 <br />
   <div align="center">
-    <img alt="Logo" src="src/client/assets/graphpulse_login.png" width="550" height="auto">
+    <img alt="Logo" src="src/client/assets/GraphPulse_guest.png" width="550" height="auto">
   </div>
 <br />
 
