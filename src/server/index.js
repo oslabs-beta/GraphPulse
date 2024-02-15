@@ -66,6 +66,13 @@ app.get('/signup',
 }
 );
 
+app.get('/guest',
+  (req, res) => {
+    const isGuest = 'true';
+    return res.status(200).redirect('/home?isGuest=' + isGuest);
+  }
+);
+
 app.get('/home',
 sessionController.isSignedIn,
 (req, res) => {

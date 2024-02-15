@@ -4,17 +4,17 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "../../../styles/LeftContainer.css"
 
 
-function Navbar() {
+function Navbar({ isGuest }) {
     return (
         <div id="navbar">
-            <PageContainer />
+            <PageContainer isGuest={isGuest} />
         </div>
     );
 }
 
-function PageContainer() {
-    const pageNames = ['home', 'signout'];
-    const pageNamesDisplay = ['Home', 'Sign Out'];
+function PageContainer({ isGuest }) {
+    const pageNames = !isGuest ? ['home', 'signout'] : ['home'];
+    const pageNamesDisplay = !isGuest ? ['Home', 'Sign Out'] : ['Home'];
 
     const pages = [];
     for (let i = 0; i < pageNames.length; i++) {
