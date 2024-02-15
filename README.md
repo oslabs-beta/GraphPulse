@@ -60,15 +60,21 @@
 
 <div align="center" width="100%">
             
-[![!JavaScript][JavaScript]][JavaScript-url][![React][React.js]][React-url][![Node][Node.js]][Node-url][![Express][Express]][Express-url]
+[![!JavaScript][JavaScript]][JavaScript-url]
+[![Node][Node.js]][Node-url]
+[![Express][Express]][Express-url]
+[![React][React.js]][React-url]
 [![React-Router][React-Router]][ReactRouter-url]
 [![React-Flow][React-Flow]][ReactFlow-url]
 [![Monaco-Editor][Monaco-editor]][Monaco-editor-url]
 [![Apollo-server][Apollo-server]][Apollo-server-url]
 [![GraphQL][GraphQL]][GraphQl-url]
-[![Postgres][Postgres]][Postgres-url][![MySQL][MySQL]][MySQL-url]
+[![Postgres][Postgres]][Postgres-url]
+[![MySQL][MySQL]][MySQL-url]
 [![Webpack][Webpack]][Webpack-url]
-[![Git][Git]][Git-url][![HTML5][HTML5]][HTML5-url][![CSS3][CSS3]][CSS3-url]
+[![Git][Git]][Git-url]
+[![HTML5][HTML5]][HTML5-url]
+[![CSS3][CSS3]][CSS3-url]
 
 </div>
 
@@ -106,9 +112,7 @@ See the [open issues](https://github.com/open-source-labs/GraphPulse/issues) for
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Graph Pulse is an open-source project, and contributions from the community are welcomed. If you're interested in contributing to Graph Pulse, fork the repository, open an issue describing your contribution (open an issue with the tag "enhancement"), and submit a pull request. Your contributions will be reviewed and merged to benefit the entire community.
-
-Don't forget to give the project a star ⭐️ ! Thanks again!
+Graph Pulse is an open-source project, and contributions from the community are welcomed. If you're interested in contributing to Graph Pulse, fork the repository, open an issue describing your contribution (open an issue with the tag "enhancement"), and submit a pull request. Your contributions will be reviewed and merged to benefit the entire community. Don't forget to give the project a star ⭐️ ! 
 
 1. Fork the repository
 2. Create your Feature Branch (`git checkout -b feature/yourFeature`)
@@ -125,7 +129,7 @@ Don't forget to give the project a star ⭐️ ! Thanks again!
   - Jerel Cruz [Github](https://github.com/jaycruz2905) | [LinkedIn](https://www.linkedin.com/in/jerel-cruz/)
  - Binetou Maggio [Github](https://github.com/bimaggio) |[LinkedIn](https://www.linkedin.com/in/binetou-maggio)
  - Daniel Song - [Github](https://github.com/djsong15) | [LinkedIn](https://www.linkedin.com/in/danieljsong/)
--  David Tskhvedadze - [Github](https://github.com/davidtskhvedadze) - [LinkedIn](Link)
+-  David Tskhvedadze - [Github](https://github.com/davidtskhvedadze) | [LinkedIn](Link)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
