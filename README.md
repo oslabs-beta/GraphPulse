@@ -78,11 +78,7 @@
 
 </div>
 
-<br />
-  <div align="center">
-    <img alt="Logo" src="src/client/assets/GraphPulse_guest.png" width="550" height="auto">
-  </div>
-<br />
+
 
 
 Graph Pulse is a application designed to tackle the challenges associated with GraphQL by offering a robust solution for monitoring performance metrics. This product aims to empower developers to optimize queries and enhance the overall performance of their GraphQL APIs.
@@ -96,6 +92,11 @@ Graph Pulse is a application designed to tackle the challenges associated with G
 <!-- GETTING STARTED -->
 ## Getting Started
 
+<br />
+  <div align="center">
+    <img alt="Logo" src="src/client/assets/GraphPulse_guest.png" width="550" height="auto">
+  </div>
+<br />
 
 
 Getting started with GraphPulse is a straightforward process. Users have two options: they can either use GraphPulse with a guest account or register for a personalized experience. Upon authentication, whether through a guest account or a registered one, users can begin running their GraphQL queries. The visualization feature can be accessed through the user-friendly interface, providing a clear overview of the query structure. This visual representation aids developers in identifying patterns, dependencies, and potential areas for improvement.
@@ -153,7 +154,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [issues-url]: https://github.com/open-source-labs/GraphPulse/issues
 [license-shield]: https://img.shields.io/github/license/open-source-labs/GraphPulse.svg?style=for-the-badge
 [license-url]: https://github.com/opens-source-labs/GraphPulse/blob/master/LICENSE.txt
-[product-screenshot]: images/screenshot.png
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
