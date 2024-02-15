@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import MonacoEditor from 'react-monaco-editor';
 import Split from 'react-split';
 import { gql, useLazyQuery } from '@apollo/client';
+const { parse } = require('graphql');
 
 // Default operations for the Monaco editor
 const defaultOperation = `
@@ -13,16 +14,18 @@ query {
 `;
 
 // graphql defined query (syntax)
-let adjustedOperation = `{
+
+function QLogInput({ qInput, setQInput, results, setResults, setLatency, setDepth}) {
+const [startTime, setStartTime] = useState(0);
+const [adjustedOperation, setAdjustedOperation] = useState(`{
   users{
-    id
-    email
+      id
+      email
   }
-}
-`;
+}`);
+
 
 function QLogInput({ qInput, setQInput, results, setResults }) {
-
   // States for query and results
   const [getLazyResults, { loading, data }] = useLazyQuery(
     gql`
@@ -30,11 +33,45 @@ function QLogInput({ qInput, setQInput, results, setResults }) {
     `,
     {
       onCompleted: (queryData) => {
-        setResults(updateResults(queryData));
+         setResults(updateResults(queryData));
+         console.log(queryData);
+         let endTime = performance.now();
+         let latency = endTime - startTime;  //latency calculated here
+         setLatency(Math.round(latency));
+         let newDepth = calculateDepth(qInput);
+         setDepth(newDepth - 1)
       },
     }
   );
 
+const calculateDepth = (queryString) =>  {
+    const ast = parse(queryString);
+  
+    function calculateDepthRecursive(node, currentDepth) {
+      
+      let depth = currentDepth;
+  
+      if (node.selectionSet && node.selectionSet.selections.length > 0) {
+        depth++;
+        node.selectionSet.selections.forEach((selection) => {
+          const selectionDepth = calculateDepthRecursive(selection, depth);
+
+          depth = Math.max(depth, selectionDepth);
+        });
+      }
+  
+      return depth;
+    }
+
+    if (ast.definitions && ast.definitions.length > 0) {
+      const firstDefinition = ast.definitions[0];
+      if (firstDefinition.selectionSet) {
+        return calculateDepthRecursive(firstDefinition, 0);
+      }
+    }
+  
+    return 0;
+  }
   // map query results for rendering
   const updateResults = (queryData) => {
     const mappedData = Object.entries(queryData).map(([key, values]) => {
@@ -71,14 +108,10 @@ function QLogInput({ qInput, setQInput, results, setResults }) {
           />
           <button
             id="input-run-btn"
-            onClick={() => {
-              adjustedOperation = qInput;
-              let startTime = performance.now();
+            onClick={ () => {
+              setAdjustedOperation(qInput)
+              setStartTime(performance.now());
               getLazyResults();
-              let endTime = performance.now();
-              let latency = endTime - startTime;  //latency calculated here
-              console.log("Query latency:", latency, "ms");
-
             }}
             className="run-query-button"
           >
