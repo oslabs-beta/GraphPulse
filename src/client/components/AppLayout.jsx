@@ -22,14 +22,15 @@ function AppLayout({uri, setUri}) {
                         <Route exact path="/home" element=
                             {
                                 <div id="main-container">
-                                    <LeftContainer 
-                                      qInput={qInput} 
-                                      setQInput={setQInput} 
-                                      uri={uri} setUri={setUri} 
-                                      setQueryInfo={setQueryInfo}
-                                      results={results}
-                                      setResults={setResults}
-                                      />
+                                    <LeftContainer
+                                        qInput={qInput}
+                                        setQInput={setQInput} 
+                                        uri={uri}
+                                        setUri={setUri}
+                                        setQueryInfo={setQueryInfo}
+                                        results={results}
+                                        setResults={setResults}
+                                    />
                                     <RightContainer queryInfo={queryInfo} results={results}/>
                                 </div>
                             }

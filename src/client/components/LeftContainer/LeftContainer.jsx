@@ -15,12 +15,7 @@ function LeftContainer({qInput, setQInput, uri, setUri, results, setResults}) {
       </div>
       <Navbar />
       <EndPointBar endpoint={endpoint} setEndpoint={setEndpoint} uri={uri} setUri={setUri}/>
-      <QLogInput 
-        qInput={qInput} 
-        setQInput={setQInput}
-        results={results}
-        setResults={setResults}
-        />
+      <QLogInput qInput={qInput} setQInput={setQInput} results={results} setResults={setResults} />
       <QLogOutput />
     </div>
   );
