@@ -97,7 +97,7 @@ sessionController.isSignedIn = async (req, res, next) => {
         const findSession = 'SELECT * FROM sessions WHERE cookie_id=$1';
         const result = await client.query(findSession, [ssid]);
 
-        if (!result.rows[0]) {
+        if (!result.rows[0] && !req.query.isGuest) {
             res.locals.result = 'Session not found; Sign up or sign in to create session';
             console.log('------> sessionController.isSignedIn: session not found; please sign in')
             client.release();

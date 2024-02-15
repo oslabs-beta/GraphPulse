@@ -10,14 +10,16 @@ import "../styles/MainContainer.css"
 
 function AppLayout({uri, setUri}) {
     const [qInput, setQInput] = useState('');
-    const [queryInfo, setQueryInfo] = useState('');
     const [results, setResults] = useState('');
+    const [mostRecentLatency, setRecentLatency] = useState(0);
+    const [mostRecentDepth, setRecentDepth] = useState(0);
+    const [isGuest, setIsGuest] = useState(false);
 
     return (
         <>
             <Router>
                 <Routes>
-                        <Route exact path="/" element={<PageSignIn />}/>
+                        <Route exact path="/" element={<PageSignIn setIsGuest={setIsGuest} />}/>
                         <Route exact path="/signup" element={<PageSignUp />}/>
                         <Route exact path="/home" element=
                             {
@@ -25,12 +27,19 @@ function AppLayout({uri, setUri}) {
                                     <LeftContainer 
                                       qInput={qInput} 
                                       setQInput={setQInput} 
-                                      uri={uri} setUri={setUri} 
-                                      setQueryInfo={setQueryInfo}
+                                      setUri={setUri}
                                       results={results}
                                       setResults={setResults}
+                                      setLatency={setRecentLatency}
+                                      setDepth={setRecentDepth}
+                                      isGuest={isGuest}
                                       />
-                                    <RightContainer queryInfo={queryInfo} results={results}/>
+                                    <RightContainer 
+                                      results={results} 
+                                      latency={mostRecentLatency}
+                                      depth={mostRecentDepth}
+                                      uri={uri}
+                                      />
                                 </div>
                             }
                         />
