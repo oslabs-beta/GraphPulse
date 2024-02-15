@@ -1,14 +1,3 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -18,12 +7,12 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -31,10 +20,10 @@
 <br />
 <div align="center">
   <a href="https://github.com/open-source-labs/GraphPulse">
-    <img src="client/assets/graphpulse_logo.png" alt="graphpulse_logo" width="80" height="80">
+    <img src="src/client/assets/gp_logo.png" alt="graphpulse_logo" width="fit" height="100">
   </a>
 
-  <h3 align="center">Graph Pulse</h3>
+  <h2 align="center">Graph Pulse</h2>
 
   <p align="center">
     An tool to monitor GraphQL performance
@@ -51,28 +40,17 @@
 </div>
 
 
-
 <!-- TABLE OF CONTENTS -->
+
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#open-issues">Open issues</a></li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#authors">Authors</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -80,77 +58,45 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<div align="center" width="100%">
+            
+[![!JavaScript][JavaScript]][JavaScript-url][![React][React.js]][React-url][![Node][Node.js]][Node-url][![Express][Express]][Express-url]
+[![React-Router][React-Router]][ReactRouter-url]
+[![React-Flow][React-Flow]][ReactFlow-url]
+[![Monaco-Editor][Monaco-editor]][Monaco-editor-url]
+[![Apollo-server][Apollo-server]][Apollo-server-url]
+[![GraphQL][GraphQL]][GraphQl-url]
+[![Postgres][Postgres]][Postgres-url][![MySQL][MySQL]][MySQL-url]
+[![Webpack][Webpack]][Webpack-url]
+[![Git][Git]][Git-url][![HTML5][HTML5]][HTML5-url][![CSS3][CSS3]][CSS3-url]
+
+</div>
+
+<br />
+  <div align="center">
+    <img alt="Logo" src="src/client/assets/graphpulse_login.png" width="550" height="auto">
+  </div>
+<br />
+
 
 Graph Pulse is a application designed to tackle the challenges associated with GraphQL by offering a robust solution for monitoring performance metrics. This product aims to empower developers to optimize queries and enhance the overall performance of their GraphQL APIs.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [![React][React.js]][React-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-* [![JQuery][JQuery.com]][JQuery-url]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+Getting started with GraphPulse is a straightforward process. Users have two options: they can either use GraphPulse with a guest account or register for a personalized experience. Upon authentication, whether through a guest account or a registered one, users can begin running their GraphQL queries. The visualization feature can be accessed through the user-friendly interface, providing a clear overview of the query structure. This visual representation aids developers in identifying patterns, dependencies, and potential areas for improvement.
 
 
 <!-- OPEN ISSUES -->
 ## Open issues
-
 
 See the [open issues](https://github.com/open-source-labs/GraphPulse/issues) for a full list of proposed features (and known issues).
 
@@ -160,10 +106,9 @@ See the [open issues](https://github.com/open-source-labs/GraphPulse/issues) for
 <!-- CONTRIBUTING -->
 ## Contributing
 
+Graph Pulse is an open-source project, and contributions from the community are welcomed. If you're interested in contributing to Graph Pulse, fork the repository, open an issue describing your contribution (open an issue with the tag "enhancement"), and submit a pull request. Your contributions will be reviewed and merged to benefit the entire community.
 
-Graph Pulse is an open-source project, and contributions from the community are welcomed. If you're interested in contributing to Graph Pulse, fork the repository, open an issue describing your contribution (open an issue with the tag "enhancement"). and submit a pull request. Your contributions will be reviewed and merged to benefit the entire community.
-
-Don't forget to give the project a star! Thanks again!
+Don't forget to give the project a star ⭐️ ! Thanks again!
 
 1. Fork the repository
 2. Create your Feature Branch (`git checkout -b feature/yourFeature`)
@@ -177,19 +122,12 @@ Don't forget to give the project a star! Thanks again!
 <!-- AUTHORS -->
 ## Authors
 
-
-  - Jerel Cruz [@jaycruz2905](https://github.com/jaycruz2905) | [LinkedIn](https://www.linkedin.com/in/jerel-cruz/)
+  - Jerel Cruz [Github](https://github.com/jaycruz2905) | [LinkedIn](https://www.linkedin.com/in/jerel-cruz/)
  - Binetou Maggio [Github](https://github.com/bimaggio) |[LinkedIn](https://www.linkedin.com/in/binetou-maggio)
- - Daniel Song - [@djsong15](https://github.com/djsong15) | [LinkedIn](https://www.linkedin.com/in/danieljsong/)
--  David Tskhvedadze - [davidtskhvedadze] (https://github.com/davidtskhvedadze) - [LinkedIn] (Link)
-
-
-
-
+ - Daniel Song - [Github](https://github.com/djsong15) | [LinkedIn](https://www.linkedin.com/in/danieljsong/)
+-  David Tskhvedadze - [Github](https://github.com/davidtskhvedadze) - [LinkedIn](Link)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- LICENSE -->
 ## License
@@ -197,37 +135,6 @@ Don't forget to give the project a star! Thanks again!
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Product Link: [https://github.com/open-source-labs/GraphPulse](https://github.com/open-source-labs/GraphPulse)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
@@ -242,8 +149,6 @@ Use this space to list resources you find helpful and would like to give credit 
 [issues-url]: https://github.com/open-source-labs/GraphPulse/issues
 [license-shield]: https://img.shields.io/github/license/open-source-labs/GraphPulse.svg?style=for-the-badge
 [license-url]: https://github.com/opens-source-labs/GraphPulse/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
@@ -251,3 +156,33 @@ Use this space to list resources you find helpful and would like to give credit 
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+[JavaScript]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
+[JavaScript-url]: https://www.javascript.com/
+[Node.js]: https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white
+[Node-url]: https://nodejs.org/en/
+[Express]: https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB
+[Express-url]: https://expressjs.com/
+[Postgres]: https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white
+[Postgres-url]: https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white](https://www.postgresql.org/)
+[Git]: https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white
+[Git-url]: https://git-scm.com/
+[CSS3]: https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white
+[CSS3-url]: https://www.w3schools.com/css/
+[HTML5]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white
+[HTML5-url]: https://www.w3schools.com/html/
+[MySQL]: https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white
+[MySQL-url]:https://www.mysql.com/
+[D3]: https://img.shields.io/badge/d3-red?style=for-the-badge&logo=d3.js
+[D3-url]: https://d3js.org
+[React-Flow]: https://img.shields.io/badge/React_Flow-42a5f5?style=for-the-badge&logo=react&logoColor=white
+[ReactFlow-url]: https://reactflow.dev/
+[React-Router]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
+[ReactRouter-url]: https://reactrouter.com/
+[Monaco-Editor]: https://img.shields.io/badge/Monaco_Editor-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white
+[Monaco-Editor-url]: https://microsoft.github.io/monaco-editor/
+[GraphQL]: https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white
+[GraphQL-url]: https://graphql.org/
+[Apollo-server]: https://img.shields.io/badge/Apollo_Server-311C87?style=for-the-badge&logo=apollo&logoColor=white
+[Apollo-server-url]: https://www.apollographql.com/docs/apollo-server/
+[Webpack]: https://img.shields.io/badge/Webpack-8DD6F9?style=for-the-badge&logo=webpack&logoColor=white
+[Webpack-url]: https://webpack.js.org/
