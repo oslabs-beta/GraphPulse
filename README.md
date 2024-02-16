@@ -23,7 +23,7 @@
     <img src="src/client/assets/gp_logo.png" alt="graphpulse_logo" width="fit" height="100">
   </a>
 
-  <h2 align="center">Graph Pulse</h2>
+  <h2 align="center">GraphPulse</h2>
 
   <p align="center">
     An tool to monitor GraphQL performance
@@ -81,7 +81,7 @@
 
 
 
-Graph Pulse is a application designed to tackle the challenges associated with GraphQL by offering a robust solution for monitoring performance metrics. This product aims to empower developers to optimize queries and enhance the overall performance of their GraphQL APIs.
+GraphPulse is a application designed to tackle the challenges associated with GraphQL by offering a robust solution for monitoring performance metrics. This product aims to empower developers to optimize queries and enhance the overall performance of their GraphQL APIs.
 
 
 
@@ -113,7 +113,7 @@ See the [open issues](https://github.com/open-source-labs/GraphPulse/issues) for
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Graph Pulse is an open-source project, and contributions from the community are welcomed. If you're interested in contributing to Graph Pulse, fork the repository, open an issue describing your contribution (open an issue with the tag "enhancement"), and submit a pull request. Your contributions will be reviewed and merged to benefit the entire community. Don't forget to give the project a star ⭐️ ! 
+GraphPulse is an open-source project, and contributions from the community are welcomed. If you're interested in contributing to Graph Pulse, fork the repository, open an issue describing your contribution (open an issue with the tag "enhancement"), and submit a pull request. Your contributions will be reviewed and merged to benefit the entire community. Don't forget to give the project a star ⭐️ ! 
 
 1. Fork the repository
 2. Create your Feature Branch (`git checkout -b feature/yourFeature`)
