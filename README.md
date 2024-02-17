@@ -19,7 +19,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/open-source-labs/GraphPulse">
+  <a href="https://github.com/oslabs-beta/GraphPulse">
     <img src="src/client/assets/gp_logo.png" alt="graphpulse_logo" width="fit" height="100">
   </a>
 
@@ -28,14 +28,14 @@
   <p align="center">
     An tool to monitor GraphQL performance
     <br />
-    <a href="https://github.com/open-source-labs/GraphPulse"><strong>Explore the code & contribute here </strong></a>
+    <a href="https://github.com/oslabs-beta/GraphPulse"><strong>Explore the code & contribute here </strong></a>
     <br />
     <br />
-    <a href="https://github.com/open-source-labs/GraphPulse/#about-the-project">View Demo</a>
+    <a href="https://github.com/oslabs-beta/GraphPulse/#about-the-project">View Demo</a>
     ·
-    <a href="https://github.com/open-source-labs/GraphPulse/issues">Report Bug</a>
+    <a href="https://github.com/oslabs-beta/GraphPulse/issues">Report Bug</a>
     ·
-    <a href="https://github.com/open-source-labs/GraphPulse">Request Feature</a>
+    <a href="https://github.com/oslabs-beta/GraphPulse">Request Feature</a>
   </p>
 </div>
 
@@ -70,7 +70,6 @@
 [![Apollo-server][Apollo-server]][Apollo-server-url]
 [![GraphQL][GraphQL]][GraphQl-url]
 [![Postgres][Postgres]][Postgres-url]
-[![MySQL][MySQL]][MySQL-url]
 [![Webpack][Webpack]][Webpack-url]
 [![Git][Git]][Git-url]
 [![HTML5][HTML5]][HTML5-url]
@@ -100,6 +99,12 @@ Graph Pulse is a application designed to tackle the challenges associated with G
 
 
 Getting started with GraphPulse is a straightforward process. Users have two options: they can either use GraphPulse with a guest account or register for a personalized experience. Upon authentication, whether through a guest account or a registered one, users can begin running their GraphQL queries. The visualization feature can be accessed through the user-friendly interface, providing a clear overview of the query structure. This visual representation aids developers in identifying patterns, dependencies, and potential areas for improvement.
+
+<br />
+  <div align="center">
+    <img alt="Logo" src="src/client/assets/GraphPulsGIF_1-min.gif" width="550" height="auto">
+  </div>
+<br />
 
 
 <!-- OPEN ISSUES -->
@@ -144,16 +149,16 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/open-source-labs/GraphPulse.svg?style=for-the-badge
-[contributors-url]: https://github.com/open-source-labs/GraphPulse/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/open-source-labs/GraphPulse.svg?style=for-the-badge
-[forks-url]: https://github.com/open-source-labs/GraphPulse/network/members
-[stars-shield]: https://img.shields.io/github/stars/open-source-labs/GraphPulse.svg?style=for-the-badge
-[stars-url]: https://github.com/open-source-labs/GraphPulse/stargazers
-[issues-shield]: https://img.shields.io/github/issues/open-source-labs/GraphPulse.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/oslabs-beta/GraphPulse.svg?style=for-the-badge
+[contributors-url]: https://github.com/oslabs-beta/GraphPulse/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/oslabs-beta/GraphPulse.svg?style=for-the-badge
+[forks-url]: https://github.com/oslabs-beta/GraphPulse/network/members
+[stars-shield]: https://img.shields.io/github/stars/oslabs-beta/GraphPulse.svg?style=for-the-badge
+[stars-url]: https://github.com/oslabs-beta/GraphPulse/stargazers
+[issues-shield]: https://img.shields.io/github/issues/oslabs-beta/GraphPulse.svg?style=for-the-badge
 [issues-url]: https://github.com/open-source-labs/GraphPulse/issues
-[license-shield]: https://img.shields.io/github/license/open-source-labs/GraphPulse.svg?style=for-the-badge
-[license-url]: https://github.com/opens-source-labs/GraphPulse/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/oslabs-beta/GraphPulse.svg?style=for-the-badge
+[license-url]: https://github.com/oslabs-beta/GraphPulse/blob/master/LICENSE.txt
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
