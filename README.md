@@ -101,7 +101,7 @@ Getting started with GraphPulse is a straightforward process. Users have two opt
 
 <br />
   <div align="center">
-    <img alt="Logo" src="src/client/assets/GraphPulse_guest.png" width="550" height="auto">
+    <img alt="Logo" src="src/client/assets/GraphPulse_guest.png" width="1000" height="auto">
   </div>
 <br />
 
