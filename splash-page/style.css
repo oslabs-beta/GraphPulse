@@ -1,0 +1,80 @@
+body {
+    background-color: #1c1237;
+  }
+
+
+
+
+#mainContainer {
+    font-family: 'Montserrat', sans-serif;
+
+    h1 {
+        color: white;
+    }
+    h2 {
+        color: white;
+    }
+    h3 {
+        color: white;
+    }
+
+    p {
+        font-size: 24px;
+        color: rgb(189, 189, 189);
+    }
+}
+
+#introContainer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+#featuresContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+#detailsTitle{
+    padding-top: 40px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+    background-color: #33255b;
+    border-radius: 14px;
+    box-shadow: 0px 0px 30px 0px #130c26;
+}
+
+.iconContainer {
+    height: 60px;
+    width: 60px;
+    margin-top: 10px;
+    background-color: #9666e4;
+    border-radius: 12px;
+}
+
+.bi-diagram-3-fill{
+    margin-top: 5;
+    color: white;
+}
+
+.bi-clipboard-data{
+    margin-top: 5px;
+    color: white;
+}
+
+.bi-bar-chart-steps{
+    margin-top: 7px;
+    color: white;
+}
+
+#demoContainer{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}

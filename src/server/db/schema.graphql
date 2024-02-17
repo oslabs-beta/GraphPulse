@@ -1,0 +1,25 @@
+type Query {
+  user(id:ID!): User
+  users: [User]
+}
+
+type Mutation {
+  createUser(username: String!, email: String!, password: String!): User
+  deleteUser(id: ID!): Boolean
+  updateUser(id: ID! username: String!, email: String!, password: String!): User
+}
+
+type User {
+  id: ID
+  username: String
+  email: String
+  password: String
+}
+
+type QueryLog {
+  query_name: String
+  timestamp: String
+  depth: Int
+  latency: Int
+  user: User
+}

@@ -1,0 +1,137 @@
+#left-container {
+    flex-direction: column;
+    height: 100vh;
+    width: 24vw;
+    border-style: solid;
+    border-width: 0px 1px 0px 0px;
+    border-color: #aaa4b5;
+}
+
+#graph-pulse-header {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 20px 0px 20px;
+}
+
+#graph-pulse-icon {
+  height: auto;
+  width: 100px;
+  padding: 5px;
+}
+
+#projectTitle {
+  font-size: 40px;
+  color: #f3f3f3;
+  margin-top: 10px;
+  padding-left: 10px;
+  margin-left: 10px;
+}
+
+#page-container {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    margin-top: 5px;
+    
+    :hover{
+        border-radius: 10px;
+        background-color: #A459BC;
+        
+    }
+
+}
+
+#page-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 45px;
+    width: 100%;
+    background-color: #1c1237;;
+    color: white;
+    border: 0px;
+    border-radius: 10px;
+    cursor:pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#page-link-nav {
+    text-decoration: none!important;
+}
+
+#endpoint-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  input::placeholder {
+    color: #b0a2b9;
+  }
+}
+
+#endpoint-input {
+  min-width: 200px;
+  min-height: 25px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #201d34;
+  color: #b0a2b9;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #90849b;
+  padding-left: 12px;
+  outline: none;
+}
+
+#endpoint-send-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2px;
+  min-width: 50px;
+  padding: 1em;
+  margin-left: 1em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  background-color: #a459bc;
+  color: #f3f3f3;
+  border: 0;
+  border-radius: 4px;
+}
+
+.query-editor .monaco-editor,
+.results-editor .monaco-editor {
+  border-radius: 10px;
+  border: 2px solid #90849b;
+}
+
+.query-editor {
+  position: relative;
+}
+
+#input-run-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 2px;
+  min-width: 50px;
+  padding: 1em;
+  margin-left: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  background-color: #a459bc;
+  color: #f3f3f3;
+  border: 0;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+#endpoint-input {
+  height: 1em;
+  width: 50%;
+}
