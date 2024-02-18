@@ -91,7 +91,7 @@ function QLogsContainer({ latency, depth, uri, isGuest}) {
                     </>
                   )}
                   <td className="qlog-table-data">
-                    <button onClick={() => deleteLog(i)}>Delete</button>
+                    <button className="delete-button" onClick={() => deleteLog(i)}>Delete</button>
                   </td>
                 </tr>
               ))
