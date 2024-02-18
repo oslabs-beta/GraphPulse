@@ -24,6 +24,7 @@ queryController.getUserQueryLogs = async (req, res, next) => {
 
   const findQueryLogs = 'SELECT * FROM querylogs WHERE user_id=$1';
   const queryLogs = await client.query(findQueryLogs, [user_id]);
+  client.release();
   res.locals.queryLogs = queryLogs.rows;
   return next()
     
@@ -65,6 +66,7 @@ queryController.addQueryLog = async (req, res, next) => {
           console.log('------> queryController.addQueryLog - Query log added successfully');
 
         }
+        client.release();
         res.locals.result = result;
         return next();
     } catch (err) {
