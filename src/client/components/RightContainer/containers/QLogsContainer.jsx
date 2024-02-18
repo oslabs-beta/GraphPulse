@@ -42,7 +42,22 @@ function QLogsContainer({ latency, depth, uri, isGuest}) {
       }
     }
   }, [latency, depth]);
+  
 
+  const deleteLog = (index) => {
+    const newQueryLogs = [...queryLogs];
+    let deletedLogId = newQueryLogs[index]._id;
+    newQueryLogs.splice(index, 1);
+    setQueryLogs(newQueryLogs);
+
+    if (!isGuest) {
+      // Delete the query log from the server
+      fetch(`/api/deletequerylog/${deletedLogId}`, {
+        method: 'DELETE',
+      })
+      .catch(error => console.error(error));
+    }
+  };
   return (
     <div id="qlog-container">
       <div id="qlog-info-container">
@@ -75,6 +90,9 @@ function QLogsContainer({ latency, depth, uri, isGuest}) {
                       <td className="qlog-table-data">{el.depth}</td>
                     </>
                   )}
+                  <td className="qlog-table-data">
+                    <button onClick={() => deleteLog(i)}>Delete</button>
+                  </td>
                 </tr>
               ))
             ) : (
