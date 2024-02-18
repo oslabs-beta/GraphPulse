@@ -56,13 +56,13 @@ function PageSignIn({ setIsGuest }) {
                     <input 
                         type="text"
                         placeholder="Username"
-                        id="sign-in-input"
+                        className="sign-in-input"
                         onChange={e => setUsername(e.target.value)}
                     />
                     <input 
                         type="password"
                         placeholder="Password"
-                        id="sign-in-input"
+                        className="sign-in-input"
                         onChange={e => setPassword(e.target.value)}
                     />
                     <button id="sign-in-btn">Sign In</button>
