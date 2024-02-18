@@ -77,6 +77,13 @@ app.post('/api/addquerylog',
   }
 );
 
+app.delete('/api/deletequerylog/:id',
+  queryController.deleteQueryLog,
+  (req, res) => {
+    return res.status(200).send('Query log deleted');
+  }
+);
+
 app.get('/signup',
 (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
