@@ -78,6 +78,36 @@ queryController.addQueryLog = async (req, res, next) => {
         });
     }
 
+
+
 };
+
+queryController.deleteQueryLog = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        console.log(id);
+        const client = await pool.connect().catch((err) =>
+            next({
+                log: `queryController.deleteQueryLog - pool connection failed; ERROR: ${err}`,
+                message: {
+                    err: 'Error in queryController.deleteQueryLog; Check server logs'
+                }
+            })
+        );
+
+        const deleteQueryLog = 'DELETE FROM querylogs WHERE _id=$1';
+        await client.query(deleteQueryLog, [id]);
+        console.log('------> queryController.deleteQueryLog - Query log deleted successfully');
+        client.release();
+        return next();
+    } catch (err) {
+        return next({
+            log: `queryController.deleteQueryLog - error querying database for query logs; ERROR: ${err}`,
+            message: {
+                err: 'Error in queryController.deleteQueryLog; Check server logs'
+            }
+        });
+    }
+}
 
 module.exports = queryController;
