@@ -39,6 +39,7 @@ function AppLayout({uri, setUri}) {
                                       latency={mostRecentLatency}
                                       depth={mostRecentDepth}
                                       uri={uri}
+                                      isGuest={isGuest}
                                       />
                                 </div>
                             }

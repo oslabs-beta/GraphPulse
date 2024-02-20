@@ -13,6 +13,7 @@ const cookieParser = require('cookie-parser');
 const authController = require('./controllers/authController.js');
 const cookieController = require('./controllers/cookieController.js');
 const sessionController = require('./controllers/sessionController.js');
+const queryController = require('./controllers/queryController.js');
 
 const app = express();
 const PORT = 3000;
@@ -60,6 +61,29 @@ app.get('/',
 }
 );
 
+app.get('/api/querylogs',
+  sessionController.isSignedIn,
+  queryController.getUserQueryLogs,
+  (req, res) => {
+    return res.status(200).json(res.locals.queryLogs);
+  }
+);
+
+app.post('/api/addquerylog',
+  sessionController.isSignedIn,
+  queryController.addQueryLog,
+  (req, res) => {
+    return res.status(200).json(res.locals.result);
+  }
+);
+
+app.delete('/api/deletequerylog/:id',
+  queryController.deleteQueryLog,
+  (req, res) => {
+    return res.status(200).send('Query log deleted');
+  }
+);
+
 app.get('/signup',
 (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
@@ -78,6 +102,15 @@ sessionController.isSignedIn,
 (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
 }
+);
+
+app.post('/home', (req, res) => {
+  sessionController.isSignedIn,
+  queryController.addQueryLog,
+  (req, res) => {
+    return res.status(200).json(res.locals);
+    }
+  }
 );
 
 app.delete('/home', 

@@ -55,17 +55,31 @@
   font-weight: bold;
   text-align: center;
   padding: 10px;
+  color: #ddd;
+  background-color: #a459bc;
   border: 1px solid #ddd;
 }
 
-.qlog-table-row {
-  border: 1px solid #ddd;
-
-}
 
 .qlog-table-data {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
+}
+.qlog-table-row .qlog-table-data:last-child {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.delete-button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  border-radius: 4px;
+  background-color: #a459bc; 
+  color: white;
+  border: none; 
+  padding: 5px 10px; 
+  cursor: pointer;
 }
 
