@@ -105,6 +105,7 @@ sessionController.isSignedIn = async (req, res, next) => {
         }
 
         console.log('------> sessionController.isSignedIn: session found; User is signed in');
+        req.ssid = ssid;
         client.release();
         return next();
     } catch (err) {

@@ -105,6 +105,9 @@ export default function QFlow({ results }) {
       results = results[0];
     }
 
+    setNodes([]);
+    setEdges([]);
+
     if (results) {
       if (Array.isArray(results)) {
         queryToFlow(results);
