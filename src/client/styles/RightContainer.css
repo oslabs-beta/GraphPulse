@@ -83,7 +83,7 @@
 }
 
 .delete-button:hover {
-  background-color: #7a4fcf;
+  background-color: #824896;
   transform: scale(1.1); 
   transition: all 0.3s ease;
   cursor:pointer;

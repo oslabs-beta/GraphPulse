@@ -96,7 +96,7 @@
 }
 
 #back-btn {
-    background-color: #9666e4;
+    background-color: #A459BC;
     color: white;
     border: none;
     margin-top: 50px;
@@ -113,11 +113,25 @@
 }
 
 #back-btn:hover {
-    background-color: #7a4fcf;
+    background-color: #824896;
     transform: scale(1.2); 
     transition: all 0.3s ease;
     cursor:pointer;
     
+}
+
+#sign-up-redirect-btn:hover {
+    background-color: #7a4fcf;
+    transform: scale(1.1); 
+    transition: all 0.3s ease;
+    cursor:pointer;
+}
+
+#sign-in-btn:hover{
+    background-color: #824896;
+    transform: scale(1.1); 
+    transition: all 0.3s ease;
+    cursor:pointer;
 }
 
 #topContainer{
