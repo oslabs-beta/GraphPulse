@@ -9,7 +9,7 @@ import SplashPage from "../SplashPage";
 
 import "../styles/MainContainer.css"
 
-function AppLayout({uri, setUri}) {
+function AppLayout({uri, setUri, client}) {
     const [qInput, setQInput] = useState('');
     const [results, setResults] = useState('');
     const [mostRecentLatency, setRecentLatency] = useState(0);
@@ -35,6 +35,7 @@ function AppLayout({uri, setUri}) {
                                       setLatency={setRecentLatency}
                                       setDepth={setRecentDepth}
                                       isGuest={isGuest}
+                                      client={client}
                                       />
                                     <RightContainer 
                                       results={results} 

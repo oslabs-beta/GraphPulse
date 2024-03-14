@@ -15,32 +15,34 @@ query {
 
 // graphql defined query (syntax)
 
-function QLogInput({ qInput, setQInput, results, setResults, setLatency, setDepth}) {
+function QLogInput({ qInput, setQInput, results, setResults, setLatency, setDepth, client}) {
 const [startTime, setStartTime] = useState(0);
-const [adjustedOperation, setAdjustedOperation] = useState(`{
-  users{
-      id
-      email
-  }
-}`);
-  // States for query and results
-  const [getLazyResults, { loading, data }] = useLazyQuery(
-    gql`
-      ${adjustedOperation}
-    `,
-    {
-      onCompleted: (queryData) => {
-         setResults(updateResults(queryData));
-         console.log(queryData);
-         let endTime = performance.now();
-         let latency = endTime - startTime;  //latency calculated here
-         setLatency(Math.round(latency));
-         let newDepth = calculateDepth(qInput);
-         setDepth(newDepth - 1)
-      },
-    }
-  );
+const [adjustedOperation, setAdjustedOperation] = useState(``);
 
+  // States for query and results
+  const fetchResults = async () => {
+    const newAdjustedOperation = qInput;
+    setAdjustedOperation(newAdjustedOperation);
+    console.log(newAdjustedOperation)
+    try {
+      const response = await client.query({
+        query: gql`${newAdjustedOperation}`
+      });
+      if (!response.data) {
+        throw new Error('No data returned from query');
+      }
+      const queryData = response.data;
+      setResults(updateResults(queryData));
+      console.log(queryData);
+      let endTime = performance.now();
+      let latency = endTime - startTime;  //latency calculated here
+      setLatency(Math.round(latency));
+      let newDepth = calculateDepth(qInput);
+      setDepth(newDepth - 1);
+    } catch (error) {
+      console.error('Error executing query:', error);
+    }
+  };
 const calculateDepth = (queryString) =>  {
     const ast = parse(queryString);
   
@@ -105,10 +107,9 @@ const calculateDepth = (queryString) =>  {
           />
           <button
             id="input-run-btn"
-            onClick={ () => {
-              setAdjustedOperation(qInput)
+            onClick={() => {
               setStartTime(performance.now());
-              getLazyResults();
+              fetchResults();
             }}
             className="run-query-button"
           >

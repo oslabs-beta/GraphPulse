@@ -106,15 +106,6 @@
   border: 2px solid #90849b;
   width: 100px;
 }
-/* 
-.query-editor {
-  display: flex;
-  flex: 1;
-  overflow: hidden;
-  justify-content: flex-end;
-  align-items: flex-end;
-} */
-
 #input-run-btn {
   display: flex;
   justify-content: center;

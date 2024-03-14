@@ -16,7 +16,7 @@ const MyComponent = () => {
   return (
     <React.StrictMode>
       <ApolloProvider client={client}>
-        <App uri={uri} setUri={setUri}/>
+        <App uri={uri} setUri={setUri} client={client}/>
       </ApolloProvider>
     </React.StrictMode>
   );
