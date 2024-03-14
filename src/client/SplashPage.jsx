@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
-import pic from './assets/GraphPulseaGIF_1-min.gif';
+import pic from '../../src/client/assets/GraphPulseGIF_1-min.gif'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import style from './styles/SplashPage.css';
 
