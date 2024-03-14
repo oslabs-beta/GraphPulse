@@ -29,7 +29,7 @@ function PageSignIn({ setIsGuest }) {
             } else {
                 alert(`Incorrect sign in credentials or account not found`);
                 console.log('Incorrect user or passowrd - signin');
-                navigate('/');
+                navigate('/signin');
             }
         })
         .catch((err) => {throw new Error(err);});
@@ -48,6 +48,7 @@ function PageSignIn({ setIsGuest }) {
 
     return (
         <div id="sign-in-page">
+            <button id="back-btn" onClick={() => navigate('/')}>Back</button>
             <h1 id="sign-in-title">GraphPulse</h1>
 
             <div id="sign-in-input-container">

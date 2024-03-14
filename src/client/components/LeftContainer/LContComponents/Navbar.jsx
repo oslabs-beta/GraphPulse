@@ -46,7 +46,7 @@ function Page({pageName, pageNameDisplay}) {
             })
             .then((res) => {
                 if (res.status === 200) {
-                    navigate('/');
+                    navigate('/signin');
                 }
             }) 
             .catch((err) => {throw new Error(err);})
