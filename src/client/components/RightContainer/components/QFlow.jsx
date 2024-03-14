@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
+import '../../../styles/RightContainer.css';
 import ReactFlow, {
   addEdge,
   Background,
@@ -13,6 +14,11 @@ export default function QFlow({ results }) {
   const initialEdges = [];
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  const clearGraph = () => {
+    setNodes([]);
+    setEdges([]);
+  };
 
   function queryToFlow (
     data,
@@ -116,6 +122,7 @@ export default function QFlow({ results }) {
   }, [results]);
 
   return (
+   <>
     <ReactFlow
       nodes={nodes}
       edges={edges}
@@ -123,7 +130,10 @@ export default function QFlow({ results }) {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
     >
+
       <Background variant='dots' gap={12} size={1} />
     </ReactFlow>
+    <button id="clear-graph-btn" style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 1 }} onClick={clearGraph}>Clear Graph</button>
+    </>
   );
 }

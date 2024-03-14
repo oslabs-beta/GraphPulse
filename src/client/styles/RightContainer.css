@@ -89,3 +89,20 @@
   cursor:pointer;
 }
 
+#clear-graph-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  border-radius: 4px;
+  background-color: #a459bc; 
+  color: white;
+  border: none; 
+  padding: 5px 10px; 
+  cursor: pointer;
+}
+
+#clear-graph-btn:hover {
+  background-color: #824896;
+  transform: scale(1.1); 
+  transition: all 0.3s ease;
+  cursor:pointer;
+}
