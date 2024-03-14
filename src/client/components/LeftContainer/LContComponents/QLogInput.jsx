@@ -63,6 +63,7 @@ const [adjustedOperation, setAdjustedOperation] = useState(``);
 
     } catch (error) {
       console.error('Error executing query:', error);
+      window.alert('Error executing query. Please check your query and try again.');
     }
   };
 const calculateDepth = (queryString) =>  {
