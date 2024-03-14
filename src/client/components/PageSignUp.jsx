@@ -36,8 +36,9 @@ function PageSignUp() {
 
     return (
         <div id="sign-up-page">
-            <h1 id="sign-in-title">GraphPulse</h1>
             <div id="sign-up-input-container">
+            <button id="back-btn" onClick={() => navigate('/')}><i className="fas fa-arrow-left"></i></button>
+            <h1 id="sign-in-title">GraphPulse</h1> 
                 <h2>Sign Up</h2>
                 <form id="sign-up-form" onSubmit={handleSubmit}>
                     <input 
@@ -65,7 +66,7 @@ function PageSignUp() {
                 </form>
                 <p>Already have an account?</p>
 
-                <NavLink to="/">
+                <NavLink to="/signin">
                     <button id="sign-in-redirect-btn">
                         Sign In
                     </button>

@@ -83,3 +83,10 @@
   cursor: pointer;
 }
 
+.delete-button:hover {
+  background-color: #7a4fcf;
+  transform: scale(1.1); 
+  transition: all 0.3s ease;
+  cursor:pointer;
+}
+

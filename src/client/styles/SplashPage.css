@@ -1,14 +1,18 @@
 #mainContainer {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: bold;
 
     h1 {
         color: white;
+        font-weight: bolder;
     }
     h2 {
         color: white;
+        font-weight: bold;
     }
     h3 {
         color: white;
+        margin-left: 20px;
     }
 
     p {
@@ -70,4 +74,58 @@
 #demoContainer{
     padding-top: 40px;
     padding-bottom: 40px;
+}
+
+.start-button {
+    background-color: #9666e4;
+    color: white;
+    border: none;
+    margin: 10px;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.start-button:hover {
+    background-color: #7a4fcf;
+    transform: scale(1.2); 
+    transition: all 0.3s ease;
+    cursor:pointer;
+}
+
+#startContainer {
+    margin-bottom: 50px; 
+    margin-top: 50px;
+}
+
+#teamContainer {
+    margin-top: 50px;
+}
+
+.dev {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.head-over {
+    margin-top: 40px;
+}
+
+.bi-github:hover {
+    color: grey; 
+    transform: scale(1.2); 
+    transition: all 0.3s ease;
+    cursor:pointer;
+}
+
+.bi-linkedin:hover {
+    color: #0e76a8; 
+    transform: scale(1.2); 
+    transition: all 0.3s ease; 
+    cursor:pointer;
 }

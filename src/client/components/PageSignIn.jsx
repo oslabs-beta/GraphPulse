@@ -48,10 +48,9 @@ function PageSignIn({ setIsGuest }) {
 
     return (
         <div id="sign-in-page">
-            <button id="back-btn" onClick={() => navigate('/')}>Back</button>
-            <h1 id="sign-in-title">GraphPulse</h1>
-
             <div id="sign-in-input-container">
+            <button id="back-btn" onClick={() => navigate('/')}><i className="fas fa-arrow-left"></i></button>
+            <h1 id="sign-in-title">GraphPulse</h1>
                 <h2>Sign In</h2>
                 <form id="sign-in-form" onSubmit={handleSubmit}>
                     <input 

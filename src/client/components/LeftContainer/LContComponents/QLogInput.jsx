@@ -84,8 +84,8 @@ const calculateDepth = (queryString) =>  {
   return (
     <div className="monaco-container">
       <Split
-        sizes={[50, 50]}
-        minSize={5}
+        // sizes={[50, 50]}
+        // minSize={5}
         expandToMin={false}
         gutterSize={10}
         gutterAlign="center"

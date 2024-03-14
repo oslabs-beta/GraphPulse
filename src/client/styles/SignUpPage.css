@@ -12,7 +12,7 @@
     align-items: center;
     font-size: 60px;
     color: white;
-    margin-top: 150px;
+    margin-top: 20px;
     margin-bottom: 50px;
     text-shadow: 0 0 100px  #9666e4;
 }
@@ -23,8 +23,9 @@
     align-items: center;
     justify-content: center;
     color: white;
-    height: 48vh;
-    width: 20vw;
+    height: 80vh;
+    width: 80vw;
+    margin-top: 90px;
     border-style: solid;
     border-radius: 10px;
     background-color: #28193f;
@@ -91,4 +92,29 @@
     text-decoration: none;
     font-size: 17px;
     cursor:pointer;
+}
+
+#back-btn {
+    background-color: #9666e4;
+    color: white;
+    border: none;
+    margin-top: 50px;
+    position: left;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    position: absolute;
+    top: 10vh;
+    left: 15vw;
+}
+
+#back-btn:hover {
+    background-color: #7a4fcf;
+    transform: scale(1.2); 
+    transition: all 0.3s ease;
+    cursor:pointer;
+    
 }
