@@ -5,6 +5,7 @@ import LeftContainer from "./LeftContainer/LeftContainer";
 import RightContainer from "./RightContainer/containers/RightContainer"
 import PageSignIn from "./PageSignIn";
 import PageSignUp from "./PageSignUp";
+import SplashPage from "../SplashPage";
 
 import "../styles/MainContainer.css"
 
@@ -19,7 +20,8 @@ function AppLayout({uri, setUri}) {
         <>
             <Router>
                 <Routes>
-                        <Route exact path="/" element={<PageSignIn setIsGuest={setIsGuest} />}/>
+                        <Route exact path="/" element={<SplashPage />}/>
+                        <Route exact path="/signin" element={<PageSignIn setIsGuest={setIsGuest} />}/>
                         <Route exact path="/signup" element={<PageSignUp />}/>
                         <Route exact path="/home" element=
                             {
