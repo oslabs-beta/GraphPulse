@@ -73,7 +73,7 @@ function QLogsContainer({ isGuest, queryLogs, setQueryLogs}) {
           <tbody>
             {queryLogs.length > 0 ? (
               // Render rows only when there are data rows
-              queryLogs.map((el, i) => (
+              queryLogs.slice().reverse().map((el, i) => (
                 <tr key={i} className="qlog-table-row">
                   {Array.isArray(el) ? (
                     el.map((item, j) => (

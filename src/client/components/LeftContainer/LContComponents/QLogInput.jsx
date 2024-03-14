@@ -55,7 +55,7 @@ const [adjustedOperation, setAdjustedOperation] = useState(``);
             timestamp: timestamp,
             endpoint: uri,
             latency: latency,
-            depth: depth,
+            depth: newDepth - 1,
           }),
         })
         .catch(error => console.error(error));
