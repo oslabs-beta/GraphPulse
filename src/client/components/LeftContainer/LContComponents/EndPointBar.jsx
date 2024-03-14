@@ -6,6 +6,7 @@ function EndPointBar({endpoint, setEndpoint, setUri}) {
 
   const handleEndpointSubmit = () => {
     setUri(endpoint);
+    window.alert(`Endpoint set to: ${endpoint}!`);
     console.log(endpoint);
   };
   return (
