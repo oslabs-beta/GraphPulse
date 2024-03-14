@@ -15,6 +15,8 @@ function AppLayout({uri, setUri, client}) {
     const [mostRecentLatency, setRecentLatency] = useState(0);
     const [mostRecentDepth, setRecentDepth] = useState(0);
     const [isGuest, setIsGuest] = useState(false);
+    const [queryLogs, setQueryLogs] = useState([]);
+
 
     return (
         <>
@@ -28,14 +30,17 @@ function AppLayout({uri, setUri, client}) {
                                 <div id="main-container">
                                     <LeftContainer 
                                       qInput={qInput} 
-                                      setQInput={setQInput} 
+                                      setQInput={setQInput}
+                                      uri={uri} 
                                       setUri={setUri}
                                       results={results}
                                       setResults={setResults}
                                       setLatency={setRecentLatency}
                                       setDepth={setRecentDepth}
+                                      depth={mostRecentDepth}
                                       isGuest={isGuest}
                                       client={client}
+                                      setQueryLogs={setQueryLogs}
                                       />
                                     <RightContainer 
                                       results={results} 
@@ -43,6 +48,8 @@ function AppLayout({uri, setUri, client}) {
                                       depth={mostRecentDepth}
                                       uri={uri}
                                       isGuest={isGuest}
+                                      queryLogs={queryLogs}
+                                      setQueryLogs={setQueryLogs}
                                       />
                                 </div>
                             }

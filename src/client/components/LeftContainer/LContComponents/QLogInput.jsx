@@ -15,7 +15,7 @@ query {
 
 // graphql defined query (syntax)
 
-function QLogInput({ qInput, setQInput, results, setResults, setLatency, setDepth, client}) {
+function QLogInput({ qInput, uri, setQInput, results, depth, setResults, setLatency, setDepth, isGuest, client, setQueryLogs}) {
 const [startTime, setStartTime] = useState(0);
 const [adjustedOperation, setAdjustedOperation] = useState(``);
 
@@ -25,6 +25,7 @@ const [adjustedOperation, setAdjustedOperation] = useState(``);
     setAdjustedOperation(newAdjustedOperation);
     console.log(newAdjustedOperation)
     try {
+      setStartTime(performance.now())
       const response = await client.query({
         query: gql`${newAdjustedOperation}`
       });
@@ -35,10 +36,31 @@ const [adjustedOperation, setAdjustedOperation] = useState(``);
       setResults(updateResults(queryData));
       console.log(queryData);
       let endTime = performance.now();
-      let latency = endTime - startTime;  //latency calculated here
+      let latency = Math.round(endTime - startTime); //latency calculated here
       setLatency(Math.round(latency));
       let newDepth = calculateDepth(qInput);
       setDepth(newDepth - 1);
+      const today = new Date();
+      const timestamp = today.toDateString();
+      const newLog = [timestamp, uri, latency, depth];
+      setQueryLogs((queryLogs) => [...queryLogs, newLog]);
+      if (!isGuest) {
+        // Post new query log to the server
+        fetch('/api/addquerylog', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            timestamp: timestamp,
+            endpoint: uri,
+            latency: latency,
+            depth: depth,
+          }),
+        })
+        .catch(error => console.error(error));
+      }
+
     } catch (error) {
       console.error('Error executing query:', error);
     }
@@ -108,7 +130,6 @@ const calculateDepth = (queryString) =>  {
           <button
             id="input-run-btn"
             onClick={() => {
-              setStartTime(performance.now());
               fetchResults();
             }}
             className="run-query-button"

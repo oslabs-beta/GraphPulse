@@ -62,7 +62,6 @@ app.get('/',
 );
 
 app.get('/api/querylogs',
-  sessionController.isSignedIn,
   queryController.getUserQueryLogs,
   (req, res) => {
     return res.status(200).json(res.locals.queryLogs);
@@ -70,7 +69,6 @@ app.get('/api/querylogs',
 );
 
 app.post('/api/addquerylog',
-  sessionController.isSignedIn,
   queryController.addQueryLog,
   (req, res) => {
     return res.status(200).json(res.locals.result);
@@ -104,14 +102,14 @@ sessionController.isSignedIn,
 }
 );
 
-app.post('/home', (req, res) => {
-  sessionController.isSignedIn,
-  queryController.addQueryLog,
-  (req, res) => {
-    return res.status(200).json(res.locals);
-    }
-  }
-);
+// app.post('/home', (req, res) => {
+//   sessionController.isSignedIn,
+//   queryController.addQueryLog,
+//   (req, res) => {
+//     return res.status(200).json(res.locals);
+//     }
+//   }
+// );
 
 app.delete('/home', 
   sessionController.deleteSession,
