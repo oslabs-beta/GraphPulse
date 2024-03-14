@@ -129,6 +129,11 @@ export default function QFlow({ results }) {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
+      defaultViewport={{
+        x: 400,
+        y: 50,
+        zoom: 0.5
+      }}
     >
 
       <Background variant='dots' gap={12} size={1} />
