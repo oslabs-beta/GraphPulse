@@ -32,10 +32,10 @@ const [adjustedOperation, setAdjustedOperation] = useState(``);
       if (!response.data) {
         throw new Error('No data returned from query');
       }
+      let endTime = performance.now();
       const queryData = response.data;
       setResults(updateResults(queryData));
       console.log(queryData);
-      let endTime = performance.now();
       let latency = Math.round(endTime - startTime); //latency calculated here
       setLatency(Math.round(latency));
       let newDepth = calculateDepth(qInput);

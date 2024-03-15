@@ -90,6 +90,9 @@ app.get('/signup',
 
 app.get('/guest',
   (req, res) => {
+    for(var cookie in req.cookies) {
+      res.clearCookie(cookie);
+    }
     const isGuest = 'true';
     return res.status(200).redirect('/home?isGuest=' + isGuest);
   }

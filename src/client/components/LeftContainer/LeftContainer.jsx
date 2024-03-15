@@ -13,7 +13,7 @@ function LeftContainer({qInput, setQInput, uri, setUri, depth, results, setResul
       <img id="graph-pulse-icon" src="../../assets/GraphPulseLogo1.png" alt="GraphPulse Logo"/>
         <p id="project-title">GraphPulse</p>
       </div>
-      <Navbar isGuest={isGuest} />
+      <Navbar isGuest={isGuest} setEndpoint={setEndpoint} />
       <EndPointBar endpoint={endpoint} setEndpoint={setEndpoint} setUri={setUri}/>
       <QLogInput 
         qInput={qInput} 

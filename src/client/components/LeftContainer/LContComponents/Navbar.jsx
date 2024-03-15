@@ -4,21 +4,21 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "../../../styles/LeftContainer.css"
 
 
-function Navbar({ isGuest }) {
+function Navbar({ isGuest, setEndpoint }) {
     return (
         <div id="navbar">
-            <PageContainer isGuest={isGuest} />
+            <PageContainer isGuest={isGuest} setEndpoint={setEndpoint} />
         </div>
     );
 }
 
-function PageContainer({ isGuest }) {
+function PageContainer({ isGuest, setEndpoint }) {
     const pageNames = !isGuest ? ['home', 'signout'] : ['home'];
     const pageNamesDisplay = !isGuest ? ['Home', 'Sign Out'] : ['Home'];
 
     const pages = [];
     for (let i = 0; i < pageNames.length; i++) {
-        pages.push(<Page key={i} pageName={pageNames[i]} pageNameDisplay={pageNamesDisplay[i]} isGuest={isGuest}/>);
+        pages.push(<Page key={i} pageName={pageNames[i]} pageNameDisplay={pageNamesDisplay[i]} isGuest={isGuest} setEndpoint={setEndpoint}/>);
     };
 
     return (
@@ -28,7 +28,7 @@ function PageContainer({ isGuest }) {
     );
 }
 
-function Page({pageName, pageNameDisplay, isGuest}) {
+function Page({pageName, pageNameDisplay, isGuest, setEndpoint}) {
     const navigate = useNavigate();
 
     // if new component pageName is 'signout', create special functionality within component before returning component

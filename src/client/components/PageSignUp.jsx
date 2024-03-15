@@ -28,7 +28,7 @@ function PageSignUp() {
             if (res.status === 200) {
                 const resJSON = await res.json();
                 alert(`${resJSON.result}`);
-                navigate('/home')
+                navigate('/signin')
             }
         })
         .catch(err => {throw new Error(err);});

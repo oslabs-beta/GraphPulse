@@ -53,8 +53,9 @@ sessionController.deleteSession = async (req, res, next) => {
         const { ssid } = req.cookies;
         if (!ssid) throw new Error('No SSID cookie found!'); 
 
-        res.clearCookie('u');
-        res.clearCookie('ssid');
+        for (var cookie in req.cookies) {
+            res.clearCookie(cookie);
+          }
 
         const client = await pool.connect().catch((err) =>
             next({
