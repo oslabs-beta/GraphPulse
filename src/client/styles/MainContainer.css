@@ -6,7 +6,10 @@ body,
     margin: 0px;
     padding: 0px;
     background-color: #1c1237;
-    overflow: hidden;
     font-family: 'Montserrat', sans-serif;
     color: #F3F3F3;
+}
+
+html {
+    overflow: auto;
 }

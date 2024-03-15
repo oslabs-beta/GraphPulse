@@ -15,32 +15,57 @@ query {
 
 // graphql defined query (syntax)
 
-function QLogInput({ qInput, setQInput, results, setResults, setLatency, setDepth}) {
+function QLogInput({ qInput, uri, setQInput, results, depth, setResults, setLatency, setDepth, isGuest, client, setQueryLogs}) {
 const [startTime, setStartTime] = useState(0);
-const [adjustedOperation, setAdjustedOperation] = useState(`{
-  users{
-      id
-      email
-  }
-}`);
-  // States for query and results
-  const [getLazyResults, { loading, data }] = useLazyQuery(
-    gql`
-      ${adjustedOperation}
-    `,
-    {
-      onCompleted: (queryData) => {
-         setResults(updateResults(queryData));
-         console.log(queryData);
-         let endTime = performance.now();
-         let latency = endTime - startTime;  //latency calculated here
-         setLatency(Math.round(latency));
-         let newDepth = calculateDepth(qInput);
-         setDepth(newDepth - 1)
-      },
-    }
-  );
+const [adjustedOperation, setAdjustedOperation] = useState(``);
 
+  // States for query and results
+  const fetchResults = async () => {
+    const newAdjustedOperation = qInput;
+    setAdjustedOperation(newAdjustedOperation);
+    console.log(newAdjustedOperation)
+    try {
+      setStartTime(performance.now())
+      const response = await client.query({
+        query: gql`${newAdjustedOperation}`
+      });
+      if (!response.data) {
+        throw new Error('No data returned from query');
+      }
+      let endTime = performance.now();
+      const queryData = response.data;
+      setResults(updateResults(queryData));
+      console.log(queryData);
+      let latency = Math.round(endTime - startTime); //latency calculated here
+      setLatency(Math.round(latency));
+      let newDepth = calculateDepth(qInput);
+      setDepth(newDepth - 1);
+      const today = new Date();
+      const timestamp = today.toDateString();
+      const newLog = [timestamp, uri, latency, depth];
+      setQueryLogs((queryLogs) => [...queryLogs, newLog]);
+      if (!isGuest) {
+        // Post new query log to the server
+        fetch('/api/addquerylog', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            timestamp: timestamp,
+            endpoint: uri,
+            latency: latency,
+            depth: newDepth - 1,
+          }),
+        })
+        .catch(error => console.error(error));
+      }
+
+    } catch (error) {
+      console.error('Error executing query:', error);
+      window.alert('Error executing query. Please check your query and try again.');
+    }
+  };
 const calculateDepth = (queryString) =>  {
     const ast = parse(queryString);
   
@@ -84,8 +109,8 @@ const calculateDepth = (queryString) =>  {
   return (
     <div className="monaco-container">
       <Split
-        sizes={[50, 50]}
-        minSize={5}
+        // sizes={[50, 50]}
+        // minSize={5}
         expandToMin={false}
         gutterSize={10}
         gutterAlign="center"
@@ -105,10 +130,8 @@ const calculateDepth = (queryString) =>  {
           />
           <button
             id="input-run-btn"
-            onClick={ () => {
-              setAdjustedOperation(qInput)
-              setStartTime(performance.now());
-              getLazyResults();
+            onClick={() => {
+              fetchResults();
             }}
             className="run-query-button"
           >
