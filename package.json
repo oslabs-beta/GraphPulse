@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "nodemon ./src/server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "dev": "nodemon server/index.js & webpack serve --mode development",
     "build": "webpack --mode production"
   },
@@ -52,6 +52,7 @@
     "dotenv-webpack": "^8.0.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.3",
+    "jest": "^29.7.0",
     "nodemon": "^3.0.2",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
