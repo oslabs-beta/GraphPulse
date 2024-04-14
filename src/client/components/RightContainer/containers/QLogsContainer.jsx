@@ -43,15 +43,13 @@ function QLogsContainer({ isGuest, queryLogs, setQueryLogs}) {
   // }, [latency, depth]);
   
 
-  const deleteLog = (index) => {
-    const newQueryLogs = [...queryLogs];
-    let deletedLogId = newQueryLogs[index]._id;
-    newQueryLogs.splice(index, 1);
+  const deleteLog = (id) => {
+    const newQueryLogs = queryLogs.filter(log => log._id !== id);
     setQueryLogs(newQueryLogs);
 
     if (!isGuest) {
       // Delete the query log from the server
-      fetch(`/api/deletequerylog/${deletedLogId}`, {
+      fetch(`/api/deletequerylog/${id}`, {
         method: 'DELETE',
       })
       .catch(error => console.error(error));
@@ -90,7 +88,7 @@ function QLogsContainer({ isGuest, queryLogs, setQueryLogs}) {
                     </>
                   )}
                   <td className="qlog-table-data">
-                    <button className="delete-button" onClick={() => deleteLog(i)}>Delete</button>
+                    <button className="delete-button" onClick={() => deleteLog(el._id)}>Delete</button>
                   </td>
                 </tr>
               ))
