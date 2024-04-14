@@ -53,7 +53,6 @@ describe('cookieController', () => {
     };
     jest.spyOn(pool, 'connect').mockResolvedValueOnce(mockClient);
 
-
     await cookieController.setSSIDCookie(req, res, next);
     expect(res.cookie).toHaveBeenCalledTimes(2);
     expect(res.locals.cookiePass).toBe('123');
