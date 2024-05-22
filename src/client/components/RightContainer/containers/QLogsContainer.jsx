@@ -1,20 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-function QLogsContainer({ isGuest, queryLogs, setQueryLogs}) {
+function QLogsContainer({ isGuest, setQueryLogs, queryLogs, fetchedData, setFetchedData}) {
   const sectionNames = ['Timestamp', 'Endpoint', 'Latency (ms)', 'Depth'];
-
-  useEffect(() => {
-    if (!isGuest) {
-      // Fetch user's query logs from the server
-      fetch(`/api/querylogs`)
-        .then(response => response.json())
-        .then(data => {
-          setQueryLogs(data)
-          
-        })
-        .catch(error => console.error(error));
-    }
-  }, [queryLogs]);
 
   // useEffect(() => {
   //   if (latency > 0 && depth > 0)  {
@@ -44,8 +31,8 @@ function QLogsContainer({ isGuest, queryLogs, setQueryLogs}) {
   
 
   const deleteLog = (id) => {
-    const newQueryLogs = queryLogs.filter(log => log._id !== id);
-    setQueryLogs(newQueryLogs);
+    console.log('Deleting log:', id);
+    setQueryLogs((queryLogs) => queryLogs.filter((log) => log._id !== id));
 
     if (!isGuest) {
       // Delete the query log from the server
@@ -72,7 +59,7 @@ function QLogsContainer({ isGuest, queryLogs, setQueryLogs}) {
             {queryLogs.length > 0 ? (
               // Render rows only when there are data rows
               queryLogs.slice().reverse().map((el, i) => (
-                <tr key={i} className="qlog-table-row">
+                <tr key={el._id} className="qlog-table-row">
                   {Array.isArray(el) ? (
                     el.map((item, j) => (
                       <td key={`${i}-${j}`} className="qlog-table-data">
