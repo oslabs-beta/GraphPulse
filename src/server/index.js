@@ -82,6 +82,13 @@ app.delete('/api/deletequerylog/:id',
   }
 );
 
+app.delete('/api/deleteuser/:id',
+  authController.deleteUser,
+  (req, res) => {
+    return res.status(200).send('User deleted');
+  }
+);
+
 app.get('/signup',
 (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));

@@ -95,5 +95,35 @@ authController.verifyUser = async (req, res, next) => {
     }
   };
 
+authController.deleteUser = async (req, res, next) => {
+  try {
+    console.log('---------> From authController.deleteUser');
+    const { id } = req.params;
+    const client = await pool.connect().catch((err) =>
+      next({
+        log: `authController.deleteUser - pool connection failed; ERROR: ${err}`,
+        message: {
+          err: 'Error in authController.deleteUser; Check server logs',
+        },
+      })
+    );
+    const deleteUserQuery = `DELETE FROM users WHERE _id = $1`;
+    client.query(deleteUserQuery, [id]);
+    console.log('------> authController.deleteUser - User deleted succesfully');
+    res.locals.result = 'User deleted successfully';
+    return next();
+  } catch (err) {
+    return next({
+      log: `authController.deleteUser - querying database for users error; ERROR: ${err}`,
+      message: {
+        err: 'Error in authController.deleteUser; Check server logs',
+      },
+    });
+  } finally {
+    // client.release();
+    return next();
+  }
+}
+
 
 module.exports = authController;
