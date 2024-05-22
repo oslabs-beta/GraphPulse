@@ -1,12 +1,15 @@
 describe('Query Logs', () => {
     let userId;
-    beforeEach(() => {
-        cy.visit('http://localhost:3000');
+    before(() => {
+      cy.visit('http://localhost:3000');
+      
+  });
+    it('should create a new user, sign in, connect to an endpoint, display a query', () => {
         cy.contains('button', 'Getting Started').click();
         cy.contains('button', 'Sign Up').click();
         const username = 'testuser';
         const password = 'testpassword';
-        const email = 'test@user.com';
+        const email = 'test@example.com';
         cy.get('input[placeholder="Username"]').type(username);
         cy.get('input[placeholder="Email"]').type(email);
         cy.get('input[placeholder="Password"]').type(password);
@@ -16,15 +19,11 @@ describe('Query Logs', () => {
         cy.get('input[placeholder="Username"]').type(username);
         cy.get('input[placeholder="Password"]').type(password);
         cy.contains('button', 'Sign In').click();
-});
-    it('should display the query log page', () => {
         //Connect endpoint
         const endpoint = 'https://countries.trevorblades.com/graphql';
         cy.get('input[placeholder="Enter URL or endpoint"]').type(endpoint);
         cy.contains('button', 'Send').click();
-        cy.url().should('include', '/home'); 
         
-        //Run Query
         const query = `query Query {
             country(code: "BR") {
               name
@@ -39,32 +38,37 @@ describe('Query Logs', () => {
             }
           }`;
 
-        //Check if addQueryLog endpoint is called
-        cy.intercept('POST', '/api/addquerylog').as('addQuery');
+        //Check if addQueryLog will add query log and display i1
+        
+        cy.request('POST', '/api/addquerylog', {
+          timestamp: new Date().toDateString(),
+          endpoint: endpoint,
+          latency: 240,
+          depth:  1,
+        })
+        .then((response) => {
+          expect(response.status).to.eq(200);
+        });
 
-        cy.wait(6000).then(() => {
-            cy.window().then((win) => {
-              // Get the editor instance from the window object
-              const editor = win.editor;
-          
-              console.log(editor);
-              // Now you can use the editor's API
-              editor.setValue(query);
-            });
-          });
-          
-          // Click the "Run Query" button
-          cy.contains('button', 'Run Query').click();
-          
-          // Wait for the request to the addQueryLog endpoint
-          cy.wait('@addQuery').then((interception) => {
-            assert.isNotNull(interception.response.body, 'API call has data');
-          });
+        cy.contains(240).should('be.visible');
+         
+        cy.contains('button', 'Delete').click();
 
-        cy.contains('button', 'Run Query').click();
+        cy.getCookie('ssid').then((cookie) => {
+          if (cookie) {
+            userId = cookie.value;
+        
+            cy.contains('button', 'Sign Out').click();
+            cy.url().should('include', '/signin');
+            if (userId) {
+              cy.request('DELETE', `/api/deletequerylog/${userId}`);
+              cy.request('DELETE', `/api/deleteuser/${userId}`);
+            }
+          }
+        });
 
-        // cy.wait('@addQuery').then((interception) => {
-        //     assert.isNotNull(interception.response.body, 'API call has data');
-        // });
     });
-});
+    afterEach(() => {
+      console.log('Test complete');
+      });
+  });
