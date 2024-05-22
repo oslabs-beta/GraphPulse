@@ -5,7 +5,7 @@ describe('User Authentication', () => {
       });
     const username = 'testuser';
     const password = 'testpassword';
-    const email = 'testuser@example.com';
+    const email = 'test@example.com';
   
     it('should create a new user, sigin in, and sign out ', () => {
         cy.visit('/signup');
@@ -36,21 +36,19 @@ describe('User Authentication', () => {
         cy.getCookie('ssid').then((cookie) => {
           if (cookie) {
             userId = cookie.value;
+        
+            cy.contains('button', 'Sign Out').click();
+            cy.url().should('include', '/signin');
+            if (userId) {
+              cy.request('DELETE', `/api/deleteuser/${userId}`);
+            }
           }
         });
-
-        
-
-        cy.contains('button', 'Sign Out').click();
-        cy.url().should('include', '/signin');
 
     })   
 
       afterEach(() => {
-        // Delete the user after each test
-        if (userId) {
-          cy.request('DELETE', `/api/deletequerylog/${userId}`);
-        }
+        console.log('Test complete');
       });
 
 
