@@ -59,7 +59,7 @@ function QLogsContainer({ isGuest, setQueryLogs, queryLogs, fetchedData, setFetc
             {queryLogs.length > 0 ? (
               // Render rows only when there are data rows
               queryLogs.slice().reverse().map((el, i) => (
-                <tr key={el._id} className="qlog-table-row">
+                <tr key={i} className="qlog-table-row">
                   {Array.isArray(el) ? (
                     el.map((item, j) => (
                       <td key={`${i}-${j}`} className="qlog-table-data">

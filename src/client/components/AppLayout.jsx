@@ -35,6 +35,17 @@ function AppLayout({uri, setUri, client}) {
         }
       }, [isGuest, location, queryLogs.length]);
 
+      useEffect(() => {
+        if (isGuest) {
+            setQInput('');
+            setResults('');
+            setRecentLatency(0);
+            setRecentDepth(0);
+            setQueryLogs([]);
+            setFetchedData([]);
+        }
+    }, [isGuest]);
+
 
     return (
         <>
@@ -56,9 +67,11 @@ function AppLayout({uri, setUri, client}) {
                                       setLatency={setRecentLatency}
                                       setDepth={setRecentDepth}
                                       depth={mostRecentDepth}
+                                      setIsGuest={setIsGuest}
                                       isGuest={isGuest}
                                       client={client}
                                       setQueryLogs={setQueryLogs}
+                                      setFetchedData={setFetchedData}
                                       />
                                     <RightContainer 
                                       results={results} 
