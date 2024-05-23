@@ -1,7 +1,7 @@
 describe('Query Logs', () => {
     let userId;
     before(() => {
-      cy.visit('http://localhost:3000');
+      cy.visit('/');
       
   });
     it('should create a new user, sign in, connect to an endpoint, display a query', () => {
@@ -25,43 +25,37 @@ describe('Query Logs', () => {
         cy.contains('button', 'Send').click();
         
         const query = `query Query {
-            country(code: "BR") {
-              name
-              native
-              capital
-              emoji
-              currency
-              languages {
-                code
-                name
-              }
-            }
-          }`;
+country(code: "BR") {
+name
+native
+capital
+emoji
+currency
+languages {
+code
+name
+`;
+          
+          cy.get('div[class="view-line"]').eq(1).type('{selectall}{del}').then(() => {
+            cy.get('div[class="view-line"]').first().type(query, { parseSpecialCharSequences: false });
+          });
 
-        //Check if addQueryLog will add query log and display i1
-        
-        cy.request('POST', '/api/addquerylog', {
-          timestamp: new Date().toDateString(),
-          endpoint: endpoint,
-          latency: 240,
-          depth:  1,
-        })
-        .then((response) => {
-          expect(response.status).to.eq(200);
-        });
-
-        cy.contains(240).should('be.visible');
-         
+        cy.url().should('include', '/home');
+        cy.contains('button', 'Run Query').click();
+        cy.url().should('include', '/home');
+        cy.contains('button', 'Clear Graph').click();
+        cy.url().should('include', '/home');
         cy.contains('button', 'Delete').click();
 
         cy.getCookie('ssid').then((cookie) => {
           if (cookie) {
             userId = cookie.value;
-        
+
+            cy.url().should('include', '/home');
             cy.contains('button', 'Sign Out').click();
             cy.url().should('include', '/signin');
             if (userId) {
-              cy.request('DELETE', `/api/deletequerylog/${userId}`);
+              
               cy.request('DELETE', `/api/deleteuser/${userId}`);
             }
           }

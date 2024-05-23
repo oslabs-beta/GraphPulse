@@ -1,13 +1,18 @@
-
-
 describe('Route tests', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:3000');
+      cy.visit('/');
     });
   
     it('should display the splash page at the root url', () => {
       cy.url().should('include', '/');
       cy.contains('GraphPulse').should('be.visible');
+    });
+
+    it('should test the back button on sign in page', () => {
+      cy.get('a[href="/signin"]').click();
+      cy.url().should('include', '/signin');
+      cy.get('button[id="back-btn"]').click();
+      cy.url().should('include', '/');
     });
   
     it('should navigate to the sign in page, sign up page, and back to the splash page', () => {
@@ -28,5 +33,14 @@ describe('Route tests', () => {
       cy.contains('button', 'Home').click();
       cy.url().should('include', '/');
     });
+
+    it('should log guest user in and check for the sign out button', () => {
+      cy.get('a[href="/signin"]').click();
+      cy.url().should('include', '/signin');
+      cy.contains('button', 'Use as guest').click();
+      cy.contains('button', 'Sign Out').should('not.exist');
+      cy.contains('button', 'Home').click();
+      cy.url().should('include', '/');
 });
 
+});

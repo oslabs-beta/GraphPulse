@@ -1,7 +1,7 @@
 describe('User Authentication', () => {
     let userId;
     beforeEach(() => {
-        cy.visit('http://localhost:3000');
+        cy.visit('/');
       });
     const username = 'testuser';
     const password = 'testpassword';
