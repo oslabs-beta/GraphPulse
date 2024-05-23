@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import MonacoEditor from 'react-monaco-editor';
 import Split from 'react-split';
 import { gql, useLazyQuery } from '@apollo/client';
@@ -21,6 +21,7 @@ const [adjustedOperation, setAdjustedOperation] = useState(``);
 
   // States for query and results
   const fetchResults = async () => {
+    
     const newAdjustedOperation = qInput;
     setAdjustedOperation(newAdjustedOperation);
     console.log(newAdjustedOperation)
@@ -42,7 +43,7 @@ const [adjustedOperation, setAdjustedOperation] = useState(``);
       setDepth(newDepth - 1);
       const today = new Date();
       const timestamp = today.toDateString();
-      const newLog = [timestamp, uri, latency, depth];
+      const newLog = [timestamp, uri, latency, newDepth - 1];
       setQueryLogs((queryLogs) => [...queryLogs, newLog]);
       if (!isGuest) {
         // Post new query log to the server

@@ -4,7 +4,7 @@ import EndPointBar from './LContComponents/EndPointBar';
 import QLogInput from './LContComponents/QLogInput';
 import QLogOutput from "./LContComponents/QLogOutput";
 
-function LeftContainer({qInput, setQInput, uri, setUri, depth, results, setResults, setLatency, setDepth, isGuest, client, setQueryLogs }) {
+function LeftContainer({qInput, setQInput, uri, setUri, depth, results, setResults, setLatency, setDepth, isGuest, client, setQueryLogs, setFetchedData }) {
   const [endpoint, setEndpoint] = useState('');
 
   return (
@@ -13,7 +13,7 @@ function LeftContainer({qInput, setQInput, uri, setUri, depth, results, setResul
       <img id="graph-pulse-icon" src="../../assets/GraphPulseLogo1.png" alt="GraphPulse Logo"/>
         <p id="project-title">GraphPulse</p>
       </div>
-      <Navbar isGuest={isGuest} setEndpoint={setEndpoint} />
+      <Navbar isGuest={isGuest} setQInput={setQInput} setResults={setResults} setLatency={setLatency} setDepth={setDepth} setQueryLogs={setQueryLogs} setFetchedData={setFetchedData} setEndpoint={setEndpoint} />
       <EndPointBar endpoint={endpoint} setEndpoint={setEndpoint} setUri={setUri}/>
       <QLogInput 
         qInput={qInput} 

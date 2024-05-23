@@ -4,21 +4,21 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "../../../styles/LeftContainer.css"
 
 
-function Navbar({ isGuest, setEndpoint }) {
+function Navbar({ isGuest, setQInput, setResults, setLatency, setDepth, setQueryLogs, setFetchedData, setEndpoint }) {
     return (
         <div id="navbar">
-            <PageContainer isGuest={isGuest} setEndpoint={setEndpoint} />
+            <PageContainer isGuest={isGuest} setQInput={setQInput} setResults={setResults} setLatency={setLatency} setDepth={setDepth} setQueryLogs={setQueryLogs} setFetchedData={setFetchedData} setEndpoint={setEndpoint} />
         </div>
     );
 }
 
-function PageContainer({ isGuest, setEndpoint }) {
+function PageContainer({ isGuest, setQInput, setResults, setLatency, setDepth, setQueryLogs, setFetchedData, setEndpoint }) {
     const pageNames = !isGuest ? ['home', 'signout'] : ['home'];
     const pageNamesDisplay = !isGuest ? ['Home', 'Sign Out'] : ['Home'];
 
     const pages = [];
     for (let i = 0; i < pageNames.length; i++) {
-        pages.push(<Page key={i} pageName={pageNames[i]} pageNameDisplay={pageNamesDisplay[i]} isGuest={isGuest} setEndpoint={setEndpoint}/>);
+        pages.push(<Page key={i} pageName={pageNames[i]} pageNameDisplay={pageNamesDisplay[i]} isGuest={isGuest} setQInput={setQInput} setResults={setResults} setLatency={setLatency} setDepth={setDepth} setQueryLogs={setQueryLogs} setFetchedData={setFetchedData} setEndpoint={setEndpoint}/>);
     };
 
     return (
@@ -28,7 +28,7 @@ function PageContainer({ isGuest, setEndpoint }) {
     );
 }
 
-function Page({pageName, pageNameDisplay, isGuest, setEndpoint}) {
+function Page({pageName, pageNameDisplay, isGuest, setQInput, setResults, setLatency, setDepth, setQueryLogs, setFetchedData, setEndpoint}) {
     const navigate = useNavigate();
 
     // if new component pageName is 'signout', create special functionality within component before returning component
@@ -66,6 +66,12 @@ function Page({pageName, pageNameDisplay, isGuest, setEndpoint}) {
             e.preventDefault();
 
             if (isGuest) {
+                setQInput('');
+                setResults('');
+                setLatency(0);
+                setDepth(0);
+                setQueryLogs([]);
+                setFetchedData([]);
                 navigate('/');
             } else {
                 fetch('/home', {

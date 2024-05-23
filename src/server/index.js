@@ -21,6 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
+
 app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 app.use('/', express.static(path.resolve(__dirname, '../../dist')));
 // app.use('/home', express.static(path.resolve(__dirname, '../../dist')));
@@ -79,6 +80,13 @@ app.delete('/api/deletequerylog/:id',
   queryController.deleteQueryLog,
   (req, res) => {
     return res.status(200).send('Query log deleted');
+  }
+);
+
+app.delete('/api/deleteuser/:id',
+  authController.deleteUser,
+  (req, res) => {
+    return res.status(200).send('User deleted');
   }
 );
 

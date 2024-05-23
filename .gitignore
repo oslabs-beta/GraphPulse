@@ -4,3 +4,5 @@ node_modules/
 dist/
 pull_request_template.md
 coverage/
+.nyc_output/
+instrumented/
