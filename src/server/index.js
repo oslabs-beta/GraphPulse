@@ -21,6 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
+
 app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 app.use('/', express.static(path.resolve(__dirname, '../../dist')));
 // app.use('/home', express.static(path.resolve(__dirname, '../../dist')));
