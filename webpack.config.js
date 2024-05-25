@@ -17,7 +17,10 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                    }
                 }
             },
             {
@@ -28,6 +31,17 @@ module.exports = {
                     'sass-loader'
                 ]
             },
+            {
+                test: /\.(jpg|jpeg|png|gif)$/,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                      name: '[path][name].[ext]',
+                    },
+                  },
+                ],
+              },
         ]
     },
     plugins: [

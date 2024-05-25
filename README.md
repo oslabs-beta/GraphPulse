@@ -75,6 +75,8 @@
 [![GraphQL][GraphQL]][GraphQl-url]
 [![Postgres][Postgres]][Postgres-url]
 [![Webpack][Webpack]][Webpack-url]
+[![Jest][Jest]][Jest-url]
+[![Cypress][Cypress]][Cypress-url]
 [![Git][Git]][Git-url]
 [![HTML5][HTML5]][HTML5-url]
 [![CSS3][CSS3]][CSS3-url]
@@ -101,7 +103,7 @@ Getting started with GraphPulse is a straightforward process. Users have two opt
 
 <br />
   <div align="center">
-    <img alt="Logo" src="src/client/assets/GraphPulse_guest.png" width="1000" height="auto">
+    <img alt="Logo" src="src/client/assets/GraphPulseGIF_1-min.gif" width="1000" height="auto">
   </div>
 <br />
 
@@ -184,6 +186,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [Postgres-url]: https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white](https://www.postgresql.org/)
 [Git]: https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white
 [Git-url]: https://git-scm.com/
+[Jest]: https://img.shields.io/badge/-Jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white
+[Jest-url]: https://jestjs.io/
+[Cypress]: https://img.shields.io/badge/-Cypress-%2317202C?style=for-the-badge&logo=cypress&logoColor=white
+[Cypress-url]: https://www.cypress.io/
 [CSS3]: https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white
 [CSS3-url]: https://www.w3schools.com/css/
 [HTML5]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white

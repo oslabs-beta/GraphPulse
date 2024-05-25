@@ -1,0 +1,131 @@
+#mainContainer {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: bold;
+
+    h1 {
+        color: white;
+        font-weight: bolder;
+    }
+    h2 {
+        color: white;
+        font-weight: bold;
+    }
+    h3 {
+        color: white;
+        margin-left: 20px;
+    }
+
+    p {
+        font-size: 24px;
+        color: rgb(189, 189, 189);
+    }
+}
+
+#introContainer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+#featuresContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+#detailsTitle{
+    padding-top: 40px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+    background-color: #33255b;
+    border-radius: 14px;
+    box-shadow: 0px 0px 30px 0px #130c26;
+}
+
+.iconContainer {
+    height: 60px;
+    width: 60px;
+    margin-top: 10px;
+    background-color: #9666e4;
+    border-radius: 12px;
+}
+
+.bi-diagram-3-fill{
+    margin-top: 5;
+    color: white;
+}
+
+.bi-clipboard-data{
+    margin-top: 5px;
+    color: white;
+}
+
+.bi-bar-chart-steps{
+    margin-top: 7px;
+    color: white;
+}
+
+#demoContainer{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.start-button {
+    background-color: #9666e4;
+    color: white;
+    border: none;
+    margin: 10px;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.start-button:hover {
+    background-color: #7a4fcf;
+    transform: scale(1.2); 
+    transition: all 0.3s ease;
+    cursor:pointer;
+}
+
+#startContainer {
+    margin-bottom: 50px; 
+    margin-top: 50px;
+}
+
+#teamContainer {
+    margin-top: 50px;
+}
+
+.dev {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.head-over {
+    margin-top: 40px;
+}
+
+.bi-github:hover {
+    color: grey; 
+    transform: scale(1.2); 
+    transition: all 0.3s ease;
+    cursor:pointer;
+}
+
+.bi-linkedin:hover {
+    color: #0e76a8; 
+    transform: scale(1.2); 
+    transition: all 0.3s ease; 
+    cursor:pointer;
+}

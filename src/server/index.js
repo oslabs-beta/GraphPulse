@@ -21,6 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
+
 app.use('/assets', express.static(path.resolve(__dirname, '../client/assets')));
 app.use('/', express.static(path.resolve(__dirname, '../../dist')));
 // app.use('/home', express.static(path.resolve(__dirname, '../../dist')));
@@ -62,7 +63,6 @@ app.get('/',
 );
 
 app.get('/api/querylogs',
-  sessionController.isSignedIn,
   queryController.getUserQueryLogs,
   (req, res) => {
     return res.status(200).json(res.locals.queryLogs);
@@ -70,7 +70,6 @@ app.get('/api/querylogs',
 );
 
 app.post('/api/addquerylog',
-  sessionController.isSignedIn,
   queryController.addQueryLog,
   (req, res) => {
     return res.status(200).json(res.locals.result);
@@ -84,6 +83,13 @@ app.delete('/api/deletequerylog/:id',
   }
 );
 
+app.delete('/api/deleteuser/:id',
+  authController.deleteUser,
+  (req, res) => {
+    return res.status(200).send('User deleted');
+  }
+);
+
 app.get('/signup',
 (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../../dist/index.html'));
@@ -92,6 +98,9 @@ app.get('/signup',
 
 app.get('/guest',
   (req, res) => {
+    for(var cookie in req.cookies) {
+      res.clearCookie(cookie);
+    }
     const isGuest = 'true';
     return res.status(200).redirect('/home?isGuest=' + isGuest);
   }
@@ -104,14 +113,14 @@ sessionController.isSignedIn,
 }
 );
 
-app.post('/home', (req, res) => {
-  sessionController.isSignedIn,
-  queryController.addQueryLog,
-  (req, res) => {
-    return res.status(200).json(res.locals);
-    }
-  }
-);
+// app.post('/home', (req, res) => {
+//   sessionController.isSignedIn,
+//   queryController.addQueryLog,
+//   (req, res) => {
+//     return res.status(200).json(res.locals);
+//     }
+//   }
+// );
 
 app.delete('/home', 
   sessionController.deleteSession,
