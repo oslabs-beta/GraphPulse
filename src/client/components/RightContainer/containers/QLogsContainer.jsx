@@ -1,58 +1,42 @@
 import React, { useState, useEffect } from "react";
 
-function QLogsContainer({ latency, depth, uri, isGuest}) {
+function QLogsContainer({ isGuest, setQueryLogs, queryLogs, fetchedData, setFetchedData}) {
   const sectionNames = ['Timestamp', 'Endpoint', 'Latency (ms)', 'Depth'];
 
-  const [queryLogs, setQueryLogs] = useState([]);
-  useEffect(() => {
-    if (!isGuest) {
-      // Fetch user's query logs from the server
-      fetch(`/api/querylogs`)
-        .then(response => response.json())
-        .then(data => {
-          setQueryLogs(data)
-          
-        })
-        .catch(error => console.error(error));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (latency > 0 && depth > 0)  {
+  //     const today = new Date();
+  //     const timestamp = today.toDateString();
+  //     const newLog = [timestamp, uri, latency, depth];
+  //     setQueryLogs((queryLogs) => [...queryLogs, newLog]);
 
-  useEffect(() => {
-    if (latency > 0 && depth > 0)  {
-      const today = new Date();
-      const timestamp = today.toDateString();
-      const newLog = [timestamp, uri, latency, depth];
-      setQueryLogs((queryLogs) => [...queryLogs, newLog]);
-
-      if (!isGuest) {
-        // Post new query log to the server
-        fetch('/api/addquerylog', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            timestamp: timestamp,
-            endpoint: uri,
-            latency: latency,
-            depth: depth,
-          }),
-        })
-        .catch(error => console.error(error));
-      }
-    }
-  }, [latency, depth]);
+  //     if (!isGuest) {
+  //       // Post new query log to the server
+  //       fetch('/api/addquerylog', {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify({
+  //           timestamp: timestamp,
+  //           endpoint: uri,
+  //           latency: latency,
+  //           depth: depth,
+  //         }),
+  //       })
+  //       .catch(error => console.error(error));
+  //     }
+  //   }
+  // }, [latency, depth]);
   
 
-  const deleteLog = (index) => {
-    const newQueryLogs = [...queryLogs];
-    let deletedLogId = newQueryLogs[index]._id;
-    newQueryLogs.splice(index, 1);
-    setQueryLogs(newQueryLogs);
+  const deleteLog = (id) => {
+    console.log('Deleting log:', id);
+    setQueryLogs((queryLogs) => queryLogs.filter((log) => log._id !== id));
 
     if (!isGuest) {
       // Delete the query log from the server
-      fetch(`/api/deletequerylog/${deletedLogId}`, {
+      fetch(`/api/deletequerylog/${id}`, {
         method: 'DELETE',
       })
       .catch(error => console.error(error));
@@ -74,7 +58,7 @@ function QLogsContainer({ latency, depth, uri, isGuest}) {
           <tbody>
             {queryLogs.length > 0 ? (
               // Render rows only when there are data rows
-              queryLogs.map((el, i) => (
+              queryLogs.slice().reverse().map((el, i) => (
                 <tr key={i} className="qlog-table-row">
                   {Array.isArray(el) ? (
                     el.map((item, j) => (
@@ -91,7 +75,7 @@ function QLogsContainer({ latency, depth, uri, isGuest}) {
                     </>
                   )}
                   <td className="qlog-table-data">
-                    <button className="delete-button" onClick={() => deleteLog(i)}>Delete</button>
+                    <button className="delete-button" onClick={() => deleteLog(el._id)}>Delete</button>
                   </td>
                 </tr>
               ))

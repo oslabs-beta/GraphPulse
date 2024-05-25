@@ -5,7 +5,7 @@ import GraphContainer from "./GraphContainer";
 import QLogsContainer from "./QLogsContainer";
 
 
-function RightContainer({results, latency, depth, uri, isGuest}) {
+function RightContainer({results, latency, depth, uri, isGuest, queryLogs, setQueryLogs, fetchedData, setFetchedData}) {
   return (
     <div id="right-container">
       <GraphContainer results={results}/>
@@ -14,6 +14,10 @@ function RightContainer({results, latency, depth, uri, isGuest}) {
         depth={depth}
         uri={uri}
         isGuest={isGuest}
+        queryLogs={queryLogs}
+        setQueryLogs={setQueryLogs}
+        fetchedData={fetchedData}
+        setFetchedData={setFetchedData}
         />
     </div>
   )

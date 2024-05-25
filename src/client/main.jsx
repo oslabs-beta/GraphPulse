@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App.jsx';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import styles from "./styles/RightContainer.css"
@@ -15,7 +16,7 @@ const MyComponent = () => {
   return (
     <React.StrictMode>
       <ApolloProvider client={client}>
-        <App uri={uri} setUri={setUri}/>
+        <App uri={uri} setUri={setUri} client={client}/>
       </ApolloProvider>
     </React.StrictMode>
   );
