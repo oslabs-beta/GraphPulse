@@ -1,13 +1,16 @@
 import { DataSource } from 'typeorm';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const AppDataSource = new DataSource({
     type: "postgres",
-    url: "postgres://exanapyf:Tltn8qzv43FUjkGxTmzsFheWqcXgpV44@berry.db.elephantsql.com/exanapyf",
-    host: "berry.db.elephantsql.com",
-    port: 5432,
-    username: "exanapyf",
-    password: "test",
-    database: "Tltn8qzv43FUjkGxTmzsFheWqcXgpV44",
+    url: process.env.PG_URI,
+    host: process.env.PG_HOST,
+    port: process.env.PG_PORT,
+    username: process.env.PG_USERNAME,
+    password: process.env.PG_PASSWORD,
+    database: process.env.PG_DATABASE,
     synchronize: true,
     logging: true,
     entities: ["./entities/*.*"],
