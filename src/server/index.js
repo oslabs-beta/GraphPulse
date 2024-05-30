@@ -16,7 +16,6 @@ const sessionController = require('./controllers/sessionController.js');
 const queryController = require('./controllers/queryController.js');
 
 const app = express();
-const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
@@ -142,6 +141,6 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(PORT, () => {
-  console.log(`...listening on port ${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`...listening on port ${process.env.PORT}`);
 });
