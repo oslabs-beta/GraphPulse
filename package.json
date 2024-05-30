@@ -10,11 +10,11 @@
     ]
   },
   "scripts": {
-    "start": "nodemon ./src/server/index.js",
-    "test:jest": "jest",
-    "cy:open": "cypress open",
-    "dev": "nodemon server/index.js & webpack serve --mode development",
-    "build": "webpack --mode production"
+    "start": "NODE_ENV=production nodemon ./src/server/index.js",
+    "test:jest": "NODE_ENV=test jest",
+    "cy:open": "NODE_ENV=test cypress open",
+    "dev": "NODE_ENV=development nodemon server/index.js & webpack serve --mode development",
+    "build": "NODE_ENV=production webpack --mode production"
   },
   "jest": {
     "transform": {
