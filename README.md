@@ -29,7 +29,7 @@
   <h2 align="center">GraphPulse</h2>
 
   <p align="center">
-    An tool to monitor GraphQL performance
+    A tool to monitor GraphQL performance
     <br />
     <a href="https://github.com/oslabs-beta/GraphPulse"><strong>Explore the code & contribute here </strong></a>
     <br />
